@@ -101,7 +101,7 @@ void MenuExtra::MoveUp()
 		std::cout << "Index : " << m_Index << std::endl;
 	}
 }
-
+//testing
 void MenuExtra::SelectMenu()
 {
 	if (m_ManagerScene.GetMenuState() == MenuScene::MenuState::menuExtra)
