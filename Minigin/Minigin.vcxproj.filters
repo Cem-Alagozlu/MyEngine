@@ -1,0 +1,207 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup>
+    <Filter Include="Resource Files">
+      <UniqueIdentifier>{67DA6AB6-F800-4c08-8B7A-83BB121AAD01}</UniqueIdentifier>
+      <Extensions>rc;ico;cur;bmp;dlg;rc2;rct;bin;rgs;gif;jpg;jpeg;jpe;resx;tiff;tif;png;wav;mfcribbon-ms</Extensions>
+    </Filter>
+    <Filter Include="Framework">
+      <UniqueIdentifier>{0fb438a8-5548-47d8-be50-74f7a0b5deb8}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Framework\Components">
+      <UniqueIdentifier>{ab49a77a-d41f-4d08-93f7-64c1dbfd3f9f}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Framework\Helpers">
+      <UniqueIdentifier>{d03f45e4-fb48-44e9-9474-01391a8a8bbf}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Framework\Main">
+      <UniqueIdentifier>{0e8ef811-8090-4044-9663-9b267c6e35a2}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Framework\Manager">
+      <UniqueIdentifier>{7e325027-0e8d-4986-a4de-b39f530a3354}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Framework\SceneGraph">
+      <UniqueIdentifier>{f0a71597-81d1-42fb-89f5-0048e731aed5}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="DigDug">
+      <UniqueIdentifier>{e89fb7af-dd26-4244-9780-48524ae7e01e}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Framework\Sound">
+      <UniqueIdentifier>{94188d05-ae0a-4199-a3c2-e5144ed575ba}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="DigDug\Menu">
+      <UniqueIdentifier>{508552e3-82da-49df-aad0-4b411f18d7f9}</UniqueIdentifier>
+    </Filter>
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="TransformComponent.h">
+      <Filter>Framework\Components</Filter>
+    </ClInclude>
+    <ClInclude Include="BaseComponent.h">
+      <Filter>Framework\Components</Filter>
+    </ClInclude>
+    <ClInclude Include="Structs.h">
+      <Filter>Framework\Helpers</Filter>
+    </ClInclude>
+    <ClInclude Include="Log.h">
+      <Filter>Framework\Helpers</Filter>
+    </ClInclude>
+    <ClInclude Include="TextureComponent.h">
+      <Filter>Framework\Components</Filter>
+    </ClInclude>
+    <ClInclude Include="TextDrawComponent.h">
+      <Filter>Framework\Components</Filter>
+    </ClInclude>
+    <ClInclude Include="FPSComponent.h">
+      <Filter>Framework\Components</Filter>
+    </ClInclude>
+    <ClInclude Include="targetver.h">
+      <Filter>Framework\Main</Filter>
+    </ClInclude>
+    <ClInclude Include="Renderer.h">
+      <Filter>Framework\Main</Filter>
+    </ClInclude>
+    <ClInclude Include="MiniginPCH.h">
+      <Filter>Framework\Main</Filter>
+    </ClInclude>
+    <ClInclude Include="Minigin.h">
+      <Filter>Framework\Main</Filter>
+    </ClInclude>
+    <ClInclude Include="ResourceManager.h">
+      <Filter>Framework\Manager</Filter>
+    </ClInclude>
+    <ClInclude Include="InputManager.h">
+      <Filter>Framework\Manager</Filter>
+    </ClInclude>
+    <ClInclude Include="Scene.h">
+      <Filter>Framework\SceneGraph</Filter>
+    </ClInclude>
+    <ClInclude Include="GameObject.h">
+      <Filter>Framework\SceneGraph</Filter>
+    </ClInclude>
+    <ClInclude Include="SceneManager.h">
+      <Filter>Framework\SceneGraph</Filter>
+    </ClInclude>
+    <ClInclude Include="Font.h">
+      <Filter>Framework\Helpers</Filter>
+    </ClInclude>
+    <ClInclude Include="Singleton.h">
+      <Filter>Framework\Helpers</Filter>
+    </ClInclude>
+    <ClInclude Include="SpriteComponent.h" />
+    <ClInclude Include="MenuMain.h">
+      <Filter>DigDug\Menu</Filter>
+    </ClInclude>
+    <ClInclude Include="IMenu.h">
+      <Filter>DigDug\Menu</Filter>
+    </ClInclude>
+    <ClInclude Include="MenuScene.h">
+      <Filter>DigDug\Menu</Filter>
+    </ClInclude>
+    <ClInclude Include="Time.h">
+      <Filter>Framework\Helpers</Filter>
+    </ClInclude>
+    <ClInclude Include="SoundStream.h">
+      <Filter>Framework\Sound</Filter>
+    </ClInclude>
+    <ClInclude Include="SoundManager.h">
+      <Filter>Framework\Sound</Filter>
+    </ClInclude>
+    <ClInclude Include="SoundEffect.h">
+      <Filter>Framework\Sound</Filter>
+    </ClInclude>
+    <ClInclude Include="Command.h">
+      <Filter>Framework\Manager</Filter>
+    </ClInclude>
+    <ClInclude Include="CommandManager.h">
+      <Filter>Framework\Manager</Filter>
+    </ClInclude>
+    <ClInclude Include="MenuQuit.h">
+      <Filter>DigDug\Menu</Filter>
+    </ClInclude>
+    <ClInclude Include="MenuExtra.h">
+      <Filter>DigDug\Menu</Filter>
+    </ClInclude>
+  </ItemGroup>
+  <ItemGroup>
+    <ClCompile Include="TransformComponent.cpp">
+      <Filter>Framework\Components</Filter>
+    </ClCompile>
+    <ClCompile Include="BaseComponent.cpp">
+      <Filter>Framework\Components</Filter>
+    </ClCompile>
+    <ClCompile Include="Log.cpp">
+      <Filter>Framework\Helpers</Filter>
+    </ClCompile>
+    <ClCompile Include="TextureComponent.cpp">
+      <Filter>Framework\Components</Filter>
+    </ClCompile>
+    <ClCompile Include="TextDrawComponent.cpp">
+      <Filter>Framework\Components</Filter>
+    </ClCompile>
+    <ClCompile Include="FPSComponent.cpp">
+      <Filter>Framework\Components</Filter>
+    </ClCompile>
+    <ClCompile Include="Main.cpp">
+      <Filter>Framework\Main</Filter>
+    </ClCompile>
+    <ClCompile Include="Minigin.cpp">
+      <Filter>Framework\Main</Filter>
+    </ClCompile>
+    <ClCompile Include="MiniginPCH.cpp">
+      <Filter>Framework\Main</Filter>
+    </ClCompile>
+    <ClCompile Include="Renderer.cpp">
+      <Filter>Framework\Main</Filter>
+    </ClCompile>
+    <ClCompile Include="InputManager.cpp">
+      <Filter>Framework\Manager</Filter>
+    </ClCompile>
+    <ClCompile Include="ResourceManager.cpp">
+      <Filter>Framework\Manager</Filter>
+    </ClCompile>
+    <ClCompile Include="GameObject.cpp">
+      <Filter>Framework\SceneGraph</Filter>
+    </ClCompile>
+    <ClCompile Include="Scene.cpp">
+      <Filter>Framework\SceneGraph</Filter>
+    </ClCompile>
+    <ClCompile Include="SceneManager.cpp">
+      <Filter>Framework\SceneGraph</Filter>
+    </ClCompile>
+    <ClCompile Include="Font.cpp">
+      <Filter>Framework\Helpers</Filter>
+    </ClCompile>
+    <ClCompile Include="SpriteComponent.cpp" />
+    <ClCompile Include="MenuMain.cpp">
+      <Filter>DigDug\Menu</Filter>
+    </ClCompile>
+    <ClCompile Include="MenuScene.cpp">
+      <Filter>DigDug\Menu</Filter>
+    </ClCompile>
+    <ClCompile Include="Time.cpp">
+      <Filter>Framework\Helpers</Filter>
+    </ClCompile>
+    <ClCompile Include="SoundStream.cpp">
+      <Filter>Framework\Sound</Filter>
+    </ClCompile>
+    <ClCompile Include="SoundManager.cpp">
+      <Filter>Framework\Sound</Filter>
+    </ClCompile>
+    <ClCompile Include="SoundEffect.cpp">
+      <Filter>Framework\Sound</Filter>
+    </ClCompile>
+    <ClCompile Include="Command.cpp">
+      <Filter>Framework\Manager</Filter>
+    </ClCompile>
+    <ClCompile Include="CommandManager.cpp">
+      <Filter>Framework\Manager</Filter>
+    </ClCompile>
+    <ClCompile Include="MenuQuit.cpp">
+      <Filter>DigDug\Menu</Filter>
+    </ClCompile>
+    <ClCompile Include="MenuExtra.cpp">
+      <Filter>DigDug\Menu</Filter>
+    </ClCompile>
+  </ItemGroup>
+</Project>
