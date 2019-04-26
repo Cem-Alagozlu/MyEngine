@@ -7,13 +7,14 @@
 #include "SoundManager.h"
 #include "TransformComponent.h"
 #include "CommandManager.h"
-#include "MenuMain.h"
 
 
 MenuQuit::MenuQuit(MenuScene& managerScene)
 	:m_ManagerScene{ managerScene }
 {
 	m_Index = 0;
+	m_SelectorPos = Vector2f{ 84.0f,457.0f };
+	m_SetBackPos = Vector2f{ 2000.0f,2000.0f };
 	//background + text
 	m_pBgQuit = std::make_shared<GameObject>();
 	m_pBgQuit->AddComponent(std::make_shared<TransformComponent>());
@@ -35,21 +36,17 @@ MenuQuit::MenuQuit(MenuScene& managerScene)
 	m_pBqQuitTxt->AddComponent(bgQuitTxt);
 	m_ManagerScene.AddChild(m_pBqQuitTxt);
 
-	m_Index = 0;
-	m_SelectorPos = Vector2f{ 84.0f,457.0f };
-
 #pragma region KeyBindings
 	CommandManager::GetInstance().AddCallBack(std::bind(&MenuQuit::MoveDown, this), CommandManager::InputCommands::increment);
 	CommandManager::GetInstance().AddCallBack(std::bind(&MenuQuit::MoveUp, this), CommandManager::InputCommands::decrement);
 	CommandManager::GetInstance().AddCallBack(std::bind(&MenuQuit::SelectMenu, this), CommandManager::InputCommands::select);
 #pragma endregion 
+	SetImagesBack();
 }
-
 
 MenuQuit::~MenuQuit()
 {
 }
-
 
 void MenuQuit::Update()
 {
@@ -69,10 +66,14 @@ void MenuQuit::Update()
 
 	if (m_IsBack)
 	{
+		
 		m_ManagerScene.SetMenuState(MenuScene::MenuState::menuMain);
+		SetImagesBack();
 		m_IsBack = false;
 	}
 }
+
+
 
 void MenuQuit::Draw() const
 {
@@ -120,4 +121,11 @@ void MenuQuit::SelectMenu()
 			break;
 		}
 	}
+}
+
+void MenuQuit::SetImagesBack()
+{
+	m_pSelector->GetComponent<TransformComponent>()->SetPosition(m_SetBackPos);
+	m_pBgQuit->GetComponent<TransformComponent>()->SetPosition(m_SetBackPos);
+	m_pBqQuitTxt->GetComponent<TransformComponent>()->SetPosition(m_SetBackPos);
 }

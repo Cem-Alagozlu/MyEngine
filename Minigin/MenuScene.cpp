@@ -4,7 +4,7 @@
 #include "MenuQuit.h"
 #include "MenuExtra.h"
 #include "SoundManager.h"
-
+#include "ResourceManager.h"
 
 
 MenuScene::MenuScene()
@@ -15,7 +15,7 @@ MenuScene::MenuScene()
 {
 	SetMenuState(MenuState::menuMain);
 
-	SoundManager::GetInstance().PlaySoundStream("Menu", true);
+	//SoundManager::GetInstance().PlaySoundStream("Menu", true);
 }
 
 void MenuScene::SetMenuState(MenuState state)
