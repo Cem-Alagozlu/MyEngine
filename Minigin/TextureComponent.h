@@ -12,6 +12,7 @@ public:
 	void Update(float deltaTime) override;
 	void Draw() const override;
 
+
 	TextureComponent(const TextureComponent &) = delete;
 	TextureComponent(TextureComponent &&) = delete;
 	TextureComponent & operator= (const TextureComponent &) = delete;

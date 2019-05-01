@@ -32,3 +32,4 @@ void TextureComponent::Draw() const
 		Renderer::GetInstance().RenderTexture(*this, pos);
 	}
 }
+
