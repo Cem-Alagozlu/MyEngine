@@ -6,6 +6,8 @@
 #include "Scene.h"
 #include "SoundManager.h"
 #include "CommandManager.h"
+#include "SpriteComponent.h"
+#include "Time.h"
 
 MenuMain::MenuMain(MenuScene & managerScene)
 	:m_ManagerScene{managerScene}
@@ -26,22 +28,19 @@ void MenuMain::Initialize()
 	//background + text
 	m_pBgIMG = std::make_shared<GameObject>();
 	m_pBgIMG->AddComponent(std::make_shared<TransformComponent>());
-	auto bgMainIMG01 = ResourceManager::GetInstance().LoadTexture("../Resources/Menu/Main/bgMain.png");
-	m_pBgIMG->AddComponent(bgMainIMG01);
+	m_pBgIMG->AddComponent(std::make_shared<TextureComponent>("../Resources/Menu/Main/bgMain.png"));
 	m_ManagerScene.AddChild(m_pBgIMG);
 
 	//selector (image of index)
 	m_pSelector = std::make_shared<GameObject>();
 	m_pSelector->AddComponent(std::make_shared<TransformComponent>());
-	auto selectorImage = ResourceManager::GetInstance().LoadTexture("../Resources/Menu/Selector.png");
-	m_pSelector->AddComponent(selectorImage);
+	m_pSelector->AddComponent(std::make_shared<TextureComponent>("../Resources/Menu/Selector.png"));
 	m_ManagerScene.AddChild(m_pSelector);
 
 	//add text (has to be in front of the selector)
 	m_pBgTxt = std::make_shared<GameObject>();
 	m_pBgTxt->AddComponent(std::make_shared<TransformComponent>());
-	auto bgMainTxt = ResourceManager::GetInstance().LoadTexture("../Resources/Menu/Main/bgMainText.png");
-	m_pBgTxt->AddComponent(bgMainTxt);
+	m_pBgTxt->AddComponent(std::make_shared<TextureComponent>("../Resources/Menu/Main/bgMainText.png"));
 	m_ManagerScene.AddChild(m_pBgTxt);
 #pragma endregion 
 
@@ -51,10 +50,18 @@ void MenuMain::Initialize()
 	CommandManager::GetInstance().AddCallBack(std::bind(&MenuMain::MoveUp, this), CommandManager::InputCommands::decrement);
 	CommandManager::GetInstance().AddCallBack(std::bind(&MenuMain::SelectMenu, this), CommandManager::InputCommands::select);
 #pragma endregion 
+
+
+	m_pSprite = std::make_shared<GameObject>();
+	m_pSprite->AddComponent(std::make_shared<SpriteComponent>("../Resources/walk.png", 0.0f, 0.0f, 5882.0f, 1794.0f, 4, 1, 6));
+	m_pSprite->AddComponent(std::make_shared<TransformComponent>());
+	m_pSprite->GetComponent<TransformComponent>()->SetScale(Vector2f{ 0.1f, 0.1f });
+	m_ManagerScene.AddChild(m_pSprite);
 }
 
 void MenuMain::Draw() const
 {
+
 }
 
 void MenuMain::Update()

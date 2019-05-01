@@ -16,29 +16,25 @@ MenuExtra::MenuExtra(MenuScene& managerScene)
 	//background + text
 	m_pBgExtraMain = std::make_shared<GameObject>();
 	m_pBgExtraMain->AddComponent(std::make_shared<TransformComponent>());
-	auto bgMainExtraIMG01 = ResourceManager::GetInstance().LoadTexture("../Resources/Menu/Extra/bgExtraMain.png");
-	m_pBgExtraMain->AddComponent(bgMainExtraIMG01);
+	m_pBgExtraMain->AddComponent(std::make_shared<TextureComponent>("../Resources/Menu/Extra/bgExtraMain.png"));
 	m_ManagerScene.AddChild(m_pBgExtraMain);
 
 	//selector (image of index)
 	m_pSelector = std::make_shared<GameObject>();
 	m_pSelector->AddComponent(std::make_shared<TransformComponent>());
-	auto selectorImage = ResourceManager::GetInstance().LoadTexture("../Resources/Menu/Selector.png");
-	m_pSelector->AddComponent(selectorImage);
+	m_pSelector->AddComponent(std::make_shared <TextureComponent>("../Resources/Menu/Selector.png"));
 	m_ManagerScene.AddChild(m_pSelector);
 
 	//add text (has to be in front of the selector)
 	m_pBgExtraMainTxt = std::make_shared<GameObject>();
 	m_pBgExtraMainTxt->AddComponent(std::make_shared<TransformComponent>());
-	auto bgExtraMainTxt = ResourceManager::GetInstance().LoadTexture("../Resources/Menu/Extra/bgExtraText.png");
-	m_pBgExtraMainTxt->AddComponent(bgExtraMainTxt);
+	m_pBgExtraMainTxt->AddComponent(std::make_shared<TextureComponent>("../Resources/Menu/Extra/bgExtraText.png"));
 	m_ManagerScene.AddChild(m_pBgExtraMainTxt);
 
 	//background story
 	m_pBgStory = std::make_shared<GameObject>();
 	m_pBgStory->AddComponent(std::make_shared<TransformComponent>());
-	auto bgStory = ResourceManager::GetInstance().LoadTexture("../Resources/Menu/Extra/bgStory.png");
-	m_pBgStory->AddComponent(bgStory);
+	m_pBgStory->AddComponent(std::make_shared<TextureComponent>("../Resources/Menu/Extra/bgStory.png"));
 	m_pBgStory->GetComponent<TransformComponent>()->SetPosition(m_SetBackPos);
 	m_ManagerScene.AddChild(m_pBgStory);
 
@@ -46,8 +42,7 @@ MenuExtra::MenuExtra(MenuScene& managerScene)
 	//background information
 	m_pBgInformation = std::make_shared<GameObject>();
 	m_pBgInformation->AddComponent(std::make_shared<TransformComponent>());
-	auto bgInformation = ResourceManager::GetInstance().LoadTexture("../Resources/Menu/Extra/bgInformation.png");
-	m_pBgInformation->AddComponent(bgInformation);
+	m_pBgInformation->AddComponent(std::make_shared<TextureComponent>("../Resources/Menu/Extra/bgInformation.png"));
 	m_pBgInformation->GetComponent<TransformComponent>()->SetPosition(m_SetBackPos);
 	m_ManagerScene.AddChild(m_pBgInformation);
 
@@ -56,8 +51,7 @@ MenuExtra::MenuExtra(MenuScene& managerScene)
 	//background credits
 	m_pBgCredits = std::make_shared<GameObject>();
 	m_pBgCredits->AddComponent(std::make_shared<TransformComponent>());
-	auto bgCredits = ResourceManager::GetInstance().LoadTexture("../Resources/Menu/Extra/bgCredits.png");
-	m_pBgCredits->AddComponent(bgCredits);
+	m_pBgCredits->AddComponent(std::make_shared<TextureComponent>("../Resources/Menu/Extra/bgCredits.png"));
 	m_pBgCredits->GetComponent<TransformComponent>()->SetPosition(m_SetBackPos);
 	m_ManagerScene.AddChild(m_pBgCredits);
 

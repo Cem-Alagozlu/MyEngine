@@ -12,7 +12,7 @@ class Texture2D;
 
 		void Init();
 
-		std::shared_ptr<TextureComponent> LoadTexture(const std::string& file);
+		SDL_Texture* LoadTexture(const std::string& file) const;
 		std::shared_ptr<Font> LoadFont(const std::string& file, unsigned int size);
 	};
 

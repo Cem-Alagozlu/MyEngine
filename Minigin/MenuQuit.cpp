@@ -18,22 +18,19 @@ MenuQuit::MenuQuit(MenuScene& managerScene)
 	//background + text
 	m_pBgQuit = std::make_shared<GameObject>();
 	m_pBgQuit->AddComponent(std::make_shared<TransformComponent>());
-	auto bgQuitIMG01 = ResourceManager::GetInstance().LoadTexture("../Resources/Menu/Quit/bgQuit.png");
-	m_pBgQuit->AddComponent(bgQuitIMG01);
+	m_pBgQuit->AddComponent(std::make_shared<TextureComponent>("../Resources/Menu/Quit/bgQuit.png"));
 	m_ManagerScene.AddChild(m_pBgQuit);
 
 	//selector (image of index)
 	m_pSelector = std::make_shared<GameObject>();
 	m_pSelector->AddComponent(std::make_shared<TransformComponent>());
-	auto selectorImage = ResourceManager::GetInstance().LoadTexture("../Resources/Menu/Selector.png");
-	m_pSelector->AddComponent(selectorImage);
+	m_pSelector->AddComponent(std::make_shared<TextureComponent>("../Resources/Menu/Selector.png"));
 	m_ManagerScene.AddChild(m_pSelector);
 
 	//add text (has to be in front of the selector)
 	m_pBqQuitTxt = std::make_shared<GameObject>();
 	m_pBqQuitTxt->AddComponent(std::make_shared<TransformComponent>());
-	auto bgQuitTxt = ResourceManager::GetInstance().LoadTexture("../Resources/Menu/Quit/bgQuitText.png");
-	m_pBqQuitTxt->AddComponent(bgQuitTxt);
+	m_pBqQuitTxt->AddComponent(std::make_shared<TextureComponent>("../Resources/Menu/Quit/bgQuitText.png"));
 	m_ManagerScene.AddChild(m_pBqQuitTxt);
 
 #pragma region KeyBindings

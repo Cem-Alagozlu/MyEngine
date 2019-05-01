@@ -1,8 +1,7 @@
 #pragma once
 #include "BaseComponent.h"
-#include "TextureComponent.h"
 
-class SpriteComponent : public BaseComponent
+class SpriteComponent final: public BaseComponent
 {
 public:
 	explicit SpriteComponent(const std::string& texture, float sheetLeft, float sheetTop, float sheetWidth, float sheetHeight, int cols, int rows, int framesPerSec);

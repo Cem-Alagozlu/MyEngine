@@ -3,10 +3,16 @@
 #include "Renderer.h"
 #include "TransformComponent.h"
 #include "GameObject.h"
+#include "ResourceManager.h"
 
 SDL_Texture * TextureComponent::GetSDLTexture() const
 {
 	return m_pTexture;
+}
+
+TextureComponent::TextureComponent(const std::string& texture )
+{
+	m_pTexture = ResourceManager::GetInstance().LoadTexture(texture);
 }
 
 TextureComponent::TextureComponent(SDL_Texture * texture)
@@ -29,7 +35,8 @@ void TextureComponent::Draw() const
 	if (go)
 	{
 		Vector2f pos = go->GetComponent<TransformComponent>()->GetPosition();
-		Renderer::GetInstance().RenderTexture(*this, pos);
+		Vector2f scale = go->GetComponent<TransformComponent>()->GetScale();
+		Renderer::GetInstance().RenderTexture(this->GetSDLTexture(),pos,scale);
 	}
 }
 

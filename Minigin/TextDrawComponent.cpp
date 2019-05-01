@@ -46,7 +46,8 @@ void TextDrawComponent::Draw() const
 		Vector2f pos = go->GetComponent<TransformComponent>()->GetPosition();
 		if (m_Texture != nullptr)
 		{
-			Renderer::GetInstance().GetInstance().RenderTexture(*m_Texture, pos);
+			Vector2f scale = go->GetComponent<TransformComponent>()->GetScale();
+			Renderer::GetInstance().GetInstance().RenderTexture(m_Texture->GetSDLTexture(), pos,scale);
 		}
 	}
 

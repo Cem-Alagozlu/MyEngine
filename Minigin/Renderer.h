@@ -16,8 +16,9 @@ class Renderer final : public Singleton<Renderer>
 	void Draw();
 	void Destroy();
 
-	void RenderTexture(const TextureComponent& texture, Vector2f pos) const;
-	void RenderTexture(const TextureComponent& texture, Vector2f pos, float width, float height) const;
+	void RenderTexture( SDL_Texture* texture, Vector2f pos,Vector2f scale) const;
+	void RenderTexture(SDL_Texture* texture,Rectf srcRect ,Vector2f pos, Vector2f scale) const;
+	//void RenderTexture( SDL_Texture* texture, Vector2f pos, float width, float height) const;
 
 	SDL_Renderer* GetSDLRenderer() const { return mRenderer; }
 };

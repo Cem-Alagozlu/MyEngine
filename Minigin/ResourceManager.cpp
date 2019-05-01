@@ -29,7 +29,7 @@ void ResourceManager::Init()
 	}
 }
 
-std::shared_ptr<TextureComponent> ResourceManager::LoadTexture(const std::string& file)
+SDL_Texture* ResourceManager::LoadTexture(const std::string& file) const
 {
 	std::string fullPath = file;
 	SDL_Texture *texture = IMG_LoadTexture(Renderer::GetInstance().GetSDLRenderer(), fullPath.c_str());
@@ -37,7 +37,7 @@ std::shared_ptr<TextureComponent> ResourceManager::LoadTexture(const std::string
 	{
 		throw std::runtime_error(std::string("Failed to load texture: ") + SDL_GetError());
 	}
-	return std::make_shared<TextureComponent>(texture);
+	return texture;
 }
 
 std::shared_ptr<Font> ResourceManager::LoadFont(const std::string& file, unsigned int size)

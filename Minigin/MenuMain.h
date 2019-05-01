@@ -1,6 +1,7 @@
 #pragma once
 #include "IMenu.h"
 #include "GameObject.h"
+#include "SpriteComponent.h"
 class MenuScene;
 
 class MenuMain final : public IMenu
@@ -21,7 +22,7 @@ public:
 	void SelectMenu();
 private:
 	MenuScene& m_ManagerScene;
-	std::shared_ptr<GameObject> m_pSelector,m_pBgIMG,m_pBgTxt;
+	std::shared_ptr<GameObject> m_pSelector,m_pBgIMG,m_pBgTxt,m_pSprite;
 	Vector2f m_SelectorPos,m_SetBackPos;
 	int m_Index;
 };

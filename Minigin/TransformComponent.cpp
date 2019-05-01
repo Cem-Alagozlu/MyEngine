@@ -4,18 +4,29 @@
 
 
 TransformComponent::TransformComponent()
-	:m_TransformObject{ 0.0f,0.0f }
+	:m_PositionformObject{ 0.0f,0.0f }
+	,m_ScaleObject{1.0f,1.0f}
 {
 }
 
 Vector2f TransformComponent::GetPosition() const
 {
-	return m_TransformObject;
+	return m_PositionformObject;
 }
 
 void TransformComponent::SetPosition(Vector2f pos)
 {
-	m_TransformObject = pos;
+	m_PositionformObject = pos;
+}
+
+Vector2f TransformComponent::GetScale() const
+{
+	return m_ScaleObject;
+}
+
+void TransformComponent::SetScale(Vector2f scale)
+{
+	m_ScaleObject = scale;
 }
 
 

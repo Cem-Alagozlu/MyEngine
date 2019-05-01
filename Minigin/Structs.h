@@ -1,5 +1,4 @@
 #pragma once
-
 struct Vector2f
 {
 	float x{};
@@ -24,3 +23,18 @@ struct Rectf
 	float height;
 };
 
+//-----------------------------------------------------------------
+// Rectf Constructors
+//-----------------------------------------------------------------
+inline Rectf::Rectf()
+	:Rectf{ 0.0f, 0.0f, 0.0f, 0.0f }
+{
+}
+
+inline Rectf::Rectf(float left, float bottom, float width, float height)
+	: left{ left }
+	, bottom{ bottom }
+	, width{ width }
+	, height{ height }
+{
+}

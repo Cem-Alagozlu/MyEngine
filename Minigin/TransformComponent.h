@@ -11,6 +11,8 @@ public:
 	Vector2f GetPosition() const;
 	void SetPosition(Vector2f pos);
 
+	Vector2f GetScale() const;
+	void SetScale(Vector2f scale);
 
 	TransformComponent(const TransformComponent& other) = delete;
 	TransformComponent(TransformComponent&& other) noexcept = delete;
@@ -22,6 +24,7 @@ protected:
 	void Draw() const override;
 
 private:
-	Vector2f m_TransformObject;
+	Vector2f m_PositionformObject;
+	Vector2f m_ScaleObject;
 };
 

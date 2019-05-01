@@ -1,5 +1,9 @@
 #include "MiniginPCH.h"
 #include "SpriteComponent.h"
+#include "GameObject.h"
+#include "Renderer.h"
+#include "TransformComponent.h"
+#include "ResourceManager.h"
 
 
 SpriteComponent::SpriteComponent(const std::string & texture, float sheetLeft, float sheetTop, float sheetWidth, float sheetHeight, int cols, int rows, int framesPerSec)
@@ -12,6 +16,7 @@ SpriteComponent::SpriteComponent(const std::string & texture, float sheetLeft, f
 	, m_FramesPerSec{ framesPerSec }
 	
 {
+	m_pTexture = ResourceManager::GetInstance().LoadTexture(texture);
 	m_SrcRect.width = m_SpriteSheetWidth / m_Cols;
 	m_SrcRect.height = m_SpriteSheetHeight / m_Rows;
 
@@ -25,6 +30,8 @@ SpriteComponent::SpriteComponent(const std::string & texture, float sheetLeft, f
 
 void SpriteComponent::Draw(bool flipped) const
 {
+	UNREFERENCED_PARAMETER(flipped);
+
 }
 
 bool SpriteComponent::HasEnded() const
@@ -61,11 +68,17 @@ void SpriteComponent::Update(float deltaTime)
 
 void SpriteComponent::Draw() const
 {
-
+	std::shared_ptr<GameObject> go = m_pGameObject.lock();
+	if (go)
+	{
+		Vector2f pos = go->GetComponent<TransformComponent>()->GetPosition();
+		Vector2f scale = go->GetComponent<TransformComponent>()->GetScale();
+		Renderer::GetInstance().RenderTexture(m_pTexture, m_SrcRect, pos,scale);
+	}
 }
 
 void SpriteComponent::UpdateSourceRect()
 {
 	m_SrcRect.left = m_SpriteSheetLeft + m_CurFrame % m_Cols * m_SrcRect.width;
-	m_SrcRect.bottom = m_SpriteSheetTop + (m_CurFrame / m_Cols + 1) * m_SrcRect.height;
+	m_SrcRect.bottom = m_SpriteSheetTop + (m_CurFrame / m_Cols ) * m_SrcRect.height;
 }
