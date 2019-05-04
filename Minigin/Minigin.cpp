@@ -12,6 +12,7 @@
 #include "MenuScene.h"
 #include <SDL_mixer.h>
 #include "CommandManager.h"
+#include "LevelOne.h"
 
 
 void Minigin::Initialize()
@@ -50,39 +51,11 @@ void Minigin::Initialize()
 
 void Minigin::LoadGame() const
 {
-	SceneManager::GetInstance().CreateScene(std::make_shared<MenuScene>());
-	SceneManager::GetInstance().SetActiveGameScene("MenuScene");
+	//SceneManager::GetInstance().CreateScene(std::make_shared<MenuScene>());
+	//SceneManager::GetInstance().SetActiveGameScene("MenuScene");
 
-//
-
-//
-//gameObject = std::make_shared<GameObject>();
-//to = ResourceManager::GetInstance().LoadTexture("logo.png");
-//auto transform = std::make_shared<TransformComponent>();
-//transform->SetPosition(Vector2f{ 216, 180 });
-//gameObject->AddComponent(transform);
-//gameObject->AddComponent(to);
-//scene.Add(gameObject);
-//
-//gameObject = std::make_shared<GameObject>();
-//auto font = ResourceManager::GetInstance().LoadFont("Lingua.otf", 36);
-//auto to1 = std::make_shared<TextDrawComponent>("Programming 4 Assignment", font);
-//auto transform1 = std::make_shared<TransformComponent>();
-//transform1->SetPosition(Vector2f{ 80, 20 });
-//gameObject->AddComponent(transform1);
-//gameObject->AddComponent(to1);
-//scene.Add(gameObject);
-//
-//gameObject = std::make_shared<GameObject>();
-//font = ResourceManager::GetInstance().LoadFont("Lingua.otf", 15);
-//auto fpsComponent = std::make_shared<FPSComponent>();
-//auto txtComponent = std::make_shared<TextDrawComponent>("", font);
-//auto transform2 = std::make_shared<TransformComponent>();
-//transform2->SetPosition(Vector2f{ 20, 20 });
-//gameObject->AddComponent(transform2);
-//gameObject->AddComponent(fpsComponent);
-//gameObject->AddComponent(txtComponent);
-//scene.Add(gameObject);
+	SceneManager::GetInstance().CreateScene(std::make_shared<LevelOne>());
+	SceneManager::GetInstance().SetActiveGameScene("LevelOne");
 }
 
 void Minigin::Cleanup()

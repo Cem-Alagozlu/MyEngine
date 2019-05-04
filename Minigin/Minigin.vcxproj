@@ -192,8 +192,16 @@ xcopy "$(SolutionDir)3rdParty\SDL2_ttf\lib\x64\*.dll" "$(OutputPath)" /R /Y</Com
   </ItemDefinitionGroup>
   <ItemGroup>
     <ClInclude Include="BaseComponent.h" />
+    <ClInclude Include="Blackboard.h" />
+    <ClInclude Include="ColliderComponent.h" />
     <ClInclude Include="Command.h" />
     <ClInclude Include="CommandManager.h" />
+    <ClInclude Include="DigDugBlackboard.h" />
+    <ClInclude Include="DigDugStateIdle.h" />
+    <ClInclude Include="DigDugStateMachine.h" />
+    <ClInclude Include="DigDugStateMove.h" />
+    <ClInclude Include="State.h" />
+    <ClInclude Include="StateMachine.h" />
     <ClInclude Include="Font.h" />
     <ClInclude Include="FPSComponent.h" />
     <ClInclude Include="GameObject.h" />
@@ -217,6 +225,7 @@ xcopy "$(SolutionDir)3rdParty\SDL2_ttf\lib\x64\*.dll" "$(OutputPath)" /R /Y</Com
     <ClInclude Include="SpriteComponent.h" />
     <ClInclude Include="Structs.h" />
     <ClInclude Include="targetver.h" />
+    <ClInclude Include="LevelOne.h" />
     <ClInclude Include="TextDrawComponent.h" />
     <ClInclude Include="TextureComponent.h" />
     <ClInclude Include="Time.h" />
@@ -224,8 +233,14 @@ xcopy "$(SolutionDir)3rdParty\SDL2_ttf\lib\x64\*.dll" "$(OutputPath)" /R /Y</Com
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="BaseComponent.cpp" />
+    <ClCompile Include="Blackboard.cpp" />
+    <ClCompile Include="ColliderComponent.cpp" />
     <ClCompile Include="Command.cpp" />
     <ClCompile Include="CommandManager.cpp" />
+    <ClCompile Include="DigDugBlackboard.cpp" />
+    <ClCompile Include="DigDugStateIdle.cpp" />
+    <ClCompile Include="DigDugStateMachine.cpp" />
+    <ClCompile Include="DigDugStateMove.cpp" />
     <ClCompile Include="Font.cpp" />
     <ClCompile Include="FPSComponent.cpp" />
     <ClCompile Include="GameObject.cpp" />
@@ -252,6 +267,9 @@ xcopy "$(SolutionDir)3rdParty\SDL2_ttf\lib\x64\*.dll" "$(OutputPath)" /R /Y</Com
     <ClCompile Include="SoundManager.cpp" />
     <ClCompile Include="SoundStream.cpp" />
     <ClCompile Include="SpriteComponent.cpp" />
+    <ClCompile Include="LevelOne.cpp" />
+    <ClCompile Include="State.cpp" />
+    <ClCompile Include="StateMachine.cpp" />
     <ClCompile Include="TextDrawComponent.cpp" />
     <ClCompile Include="TextureComponent.cpp" />
     <ClCompile Include="Time.cpp" />

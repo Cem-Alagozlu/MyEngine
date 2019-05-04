@@ -52,11 +52,11 @@ void MenuMain::Initialize()
 #pragma endregion 
 
 
-	m_pSprite = std::make_shared<GameObject>();
-	m_pSprite->AddComponent(std::make_shared<SpriteComponent>("../Resources/walk.png", 0.0f, 0.0f, 5882.0f, 1794.0f, 4, 1, 6));
-	m_pSprite->AddComponent(std::make_shared<TransformComponent>());
-	m_pSprite->GetComponent<TransformComponent>()->SetScale(Vector2f{ 0.1f, 0.1f });
-	m_ManagerScene.AddChild(m_pSprite);
+	//m_pSprite = std::make_shared<GameObject>();
+	//m_pSprite->AddComponent(std::make_shared<SpriteComponent>("../Resources/walk.png", 0.0f, 0.0f, 5882.0f, 1794.0f, 4, 1, 6));
+	//m_pSprite->AddComponent(std::make_shared<TransformComponent>());
+	//m_pSprite->GetComponent<TransformComponent>()->SetScale(Vector2f{ 0.1f, 0.1f });
+	//m_ManagerScene.AddChild(m_pSprite);
 }
 
 void MenuMain::Draw() const

@@ -7,6 +7,7 @@
 #include "ResourceManager.h"
 
 
+
 MenuScene::MenuScene()
 	:Scene{"MenuScene"},
 	m_pMenuMain{std::make_unique<MenuMain>(*this)},
@@ -14,6 +15,7 @@ MenuScene::MenuScene()
 	m_pMenuExtra{ std::make_unique<MenuExtra>(*this) }
 {
 	SetMenuState(MenuState::menuMain);
+
 
 	//SoundManager::GetInstance().PlaySoundStream("Menu", true);
 }

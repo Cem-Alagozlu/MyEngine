@@ -1,5 +1,11 @@
-﻿  MenuMain.cpp
-     Creating library C:\Users\Cem Alag÷zl³\Desktop\MyEngine\Win32\Debug\Minigin.lib and object C:\Users\Cem Alag÷zl³\Desktop\MyEngine\Win32\Debug\Minigin.exp
+﻿  DigDugStateIdle.cpp
+  DigDugStateMachine.cpp
+  DigDugStateMove.cpp
+  Minigin.cpp
+  LevelOne.cpp
+  State.cpp
+  StateMachine.cpp
+  Generating Code...
   Minigin.vcxproj -> C:\Users\Cem Alagözlü\Desktop\MyEngine\Win32\Debug\Minigin.exe
   C:\Users\Cem Alagözlü\Desktop\MyEngine\3rdParty\SDL2\lib\x86\SDL2.dll
   1 File(s) copied

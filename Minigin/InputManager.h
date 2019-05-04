@@ -3,6 +3,8 @@
 #include "Singleton.h"
 #include "Command.h"
 
+//std::pair
+
 
 
 enum class ControllerButton
@@ -26,11 +28,13 @@ enum class InputTriggerState
 };
 
 
+
 	class InputManager final : public Singleton<InputManager>
 	{
 	public:
 		bool ProcessInput();
 		InputTriggerState IsPressed(ControllerButton button) const;
+
 	private:
 		InputTriggerState GetState(WORD button) const;
 		XINPUT_STATE m_CurrentState{},m_PreviousState{};
