@@ -18,6 +18,34 @@
       <Platform>x64</Platform>
     </ProjectConfiguration>
   </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="DigDugBlackboard.h" />
+    <ClInclude Include="DigDugPCH.h" />
+    <ClInclude Include="DigDugStateIdle.h" />
+    <ClInclude Include="DigDugStateMachine.h" />
+    <ClInclude Include="DigDugStateMove.h" />
+    <ClInclude Include="IMenu.h" />
+    <ClInclude Include="LevelOne.h" />
+    <ClInclude Include="MenuExtra.h" />
+    <ClInclude Include="MenuMain.h" />
+    <ClInclude Include="MenuQuit.h" />
+    <ClInclude Include="MenuScene.h" />
+    <ClInclude Include="Minigin.h" />
+  </ItemGroup>
+  <ItemGroup>
+    <ClCompile Include="DigDugBlackboard.cpp" />
+    <ClCompile Include="DigDugPCH.cpp" />
+    <ClCompile Include="DigDugStateIdle.cpp" />
+    <ClCompile Include="DigDugStateMachine.cpp" />
+    <ClCompile Include="DigDugStateMove.cpp" />
+    <ClCompile Include="LevelOne.cpp" />
+    <ClCompile Include="Main.cpp" />
+    <ClCompile Include="MenuExtra.cpp" />
+    <ClCompile Include="MenuMain.cpp" />
+    <ClCompile Include="MenuQuit.cpp" />
+    <ClCompile Include="MenuScene.cpp" />
+    <ClCompile Include="Minigin.cpp" />
+  </ItemGroup>
   <PropertyGroup Label="Globals">
     <VCProjectVersion>15.0</VCProjectVersion>
     <ProjectGuid>{DA20181D-1989-462E-8D46-C9AC65186099}</ProjectGuid>
@@ -130,34 +158,6 @@
       <SubSystem>Console</SubSystem>
     </Link>
   </ItemDefinitionGroup>
-  <ItemGroup>
-    <ClCompile Include="..\Minigin\DigDugBlackboard.cpp" />
-    <ClCompile Include="..\Minigin\DigDugStateIdle.cpp" />
-    <ClCompile Include="..\Minigin\DigDugStateMachine.cpp" />
-    <ClCompile Include="..\Minigin\DigDugStateMove.cpp" />
-    <ClCompile Include="..\Minigin\LevelOne.cpp" />
-    <ClCompile Include="..\Minigin\Main.cpp" />
-    <ClCompile Include="..\Minigin\MenuExtra.cpp" />
-    <ClCompile Include="..\Minigin\MenuMain.cpp" />
-    <ClCompile Include="..\Minigin\MenuQuit.cpp" />
-    <ClCompile Include="..\Minigin\MenuScene.cpp" />
-    <ClCompile Include="..\Minigin\Minigin.cpp" />
-    <ClCompile Include="DigDugPCH.cpp" />
-  </ItemGroup>
-  <ItemGroup>
-    <ClInclude Include="..\Minigin\DigDugBlackboard.h" />
-    <ClInclude Include="..\Minigin\DigDugStateIdle.h" />
-    <ClInclude Include="..\Minigin\DigDugStateMachine.h" />
-    <ClInclude Include="..\Minigin\DigDugStateMove.h" />
-    <ClInclude Include="..\Minigin\IMenu.h" />
-    <ClInclude Include="..\Minigin\LevelOne.h" />
-    <ClInclude Include="..\Minigin\MenuExtra.h" />
-    <ClInclude Include="..\Minigin\MenuMain.h" />
-    <ClInclude Include="..\Minigin\MenuQuit.h" />
-    <ClInclude Include="..\Minigin\MenuScene.h" />
-    <ClInclude Include="..\Minigin\Minigin.h" />
-    <ClInclude Include="DigDugPCH.h" />
-  </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">
   </ImportGroup>
