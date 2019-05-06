@@ -1,0 +1,14 @@
+﻿  LevelOne.cpp
+  MenuExtra.cpp
+  MenuMain.cpp
+  MenuQuit.cpp
+  MenuScene.cpp
+  Minigin.cpp
+c:\users\cem alagözlü\desktop\myengine\minigin\time.h(15): error C3083: 'chrono': the symbol to the left of a '::' must be a type
+c:\users\cem alagözlü\desktop\myengine\minigin\time.h(15): error C3083: 'high_resolution_clock': the symbol to the left of a '::' must be a type
+c:\users\cem alagözlü\desktop\myengine\minigin\time.h(15): error C2039: 'time_point': is not a member of 'std'
+  d:\program files\visual studio\vc\tools\msvc\14.16.27023\include\ratio(16): note: see declaration of 'std'
+c:\users\cem alagözlü\desktop\myengine\minigin\time.h(15): error C3646: 'm_CurrentTime': unknown override specifier
+c:\users\cem alagözlü\desktop\myengine\minigin\time.h(15): error C2059: syntax error: ','
+c:\users\cem alagözlü\desktop\myengine\minigin\time.h(15): error C2238: unexpected token(s) preceding ';'
+  Generating Code...

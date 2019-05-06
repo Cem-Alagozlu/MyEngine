@@ -1,0 +1,86 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup>
+    <Filter Include="Characters">
+      <UniqueIdentifier>{dc706e65-a8fc-48b1-89bb-f8291a81249c}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Characters\DigDug">
+      <UniqueIdentifier>{c73698cc-c1f3-460e-b801-d140604d0d1a}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Characters\DigDug\StateMachine">
+      <UniqueIdentifier>{88812a8b-0330-44c4-b2ae-dd7b574b356d}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Level">
+      <UniqueIdentifier>{36650a7f-74d1-4422-8ca1-057235e5df95}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Menu">
+      <UniqueIdentifier>{439dcd01-0985-4e06-9445-276980703b3f}</UniqueIdentifier>
+    </Filter>
+  </ItemGroup>
+  <ItemGroup>
+    <ClCompile Include="..\Minigin\DigDugBlackboard.cpp">
+      <Filter>Characters\DigDug\StateMachine</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Minigin\DigDugStateIdle.cpp">
+      <Filter>Characters\DigDug\StateMachine</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Minigin\DigDugStateMachine.cpp">
+      <Filter>Characters\DigDug\StateMachine</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Minigin\DigDugStateMove.cpp">
+      <Filter>Characters\DigDug\StateMachine</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Minigin\LevelOne.cpp">
+      <Filter>Level</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Minigin\MenuExtra.cpp">
+      <Filter>Menu</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Minigin\MenuMain.cpp">
+      <Filter>Menu</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Minigin\MenuQuit.cpp">
+      <Filter>Menu</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Minigin\MenuScene.cpp">
+      <Filter>Menu</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Minigin\Main.cpp" />
+    <ClCompile Include="DigDugPCH.cpp" />
+    <ClCompile Include="..\Minigin\Minigin.cpp" />
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="..\Minigin\DigDugBlackboard.h">
+      <Filter>Characters\DigDug\StateMachine</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Minigin\DigDugStateIdle.h">
+      <Filter>Characters\DigDug\StateMachine</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Minigin\DigDugStateMachine.h">
+      <Filter>Characters\DigDug\StateMachine</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Minigin\DigDugStateMove.h">
+      <Filter>Characters\DigDug\StateMachine</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Minigin\LevelOne.h">
+      <Filter>Level</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Minigin\IMenu.h">
+      <Filter>Menu</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Minigin\MenuExtra.h">
+      <Filter>Menu</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Minigin\MenuMain.h">
+      <Filter>Menu</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Minigin\MenuQuit.h">
+      <Filter>Menu</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Minigin\MenuScene.h">
+      <Filter>Menu</Filter>
+    </ClInclude>
+    <ClInclude Include="DigDugPCH.h" />
+    <ClInclude Include="..\Minigin\Minigin.h" />
+  </ItemGroup>
+</Project>

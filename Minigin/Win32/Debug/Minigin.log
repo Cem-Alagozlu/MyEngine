@@ -1,12 +1,13 @@
-﻿  DigDugStateIdle.cpp
-  DigDugStateMachine.cpp
-  DigDugStateMove.cpp
-  Minigin.cpp
-  LevelOne.cpp
-  State.cpp
-  StateMachine.cpp
+﻿  FPSComponent.cpp
+  GameObject.cpp
+  Scene.cpp
+  SceneManager.cpp
+  SpriteComponent.cpp
+  TextDrawComponent.cpp
+  TextureComponent.cpp
   Generating Code...
-  Minigin.vcxproj -> C:\Users\Cem Alagözlü\Desktop\MyEngine\Win32\Debug\Minigin.exe
+Log.obj : warning LNK4221: This object file does not define any previously undefined public symbols, so it will not be used by any link operation that consumes this library
+  Minigin.vcxproj -> C:\Users\Cem Alagözlü\Desktop\MyEngine\Win32\Debug\Minigin.lib
   C:\Users\Cem Alagözlü\Desktop\MyEngine\3rdParty\SDL2\lib\x86\SDL2.dll
   1 File(s) copied
   C:\Users\Cem Alagözlü\Desktop\MyEngine\3rdParty\SDL2_image\lib\x86\libjpeg-9.dll

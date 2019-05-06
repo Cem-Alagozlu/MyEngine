@@ -6,8 +6,7 @@
 #include "Scene.h"
 #include "SoundManager.h"
 #include "CommandManager.h"
-#include "SpriteComponent.h"
-#include "Time.h"
+
 
 MenuMain::MenuMain(MenuScene & managerScene)
 	:m_ManagerScene{managerScene}
@@ -15,6 +14,8 @@ MenuMain::MenuMain(MenuScene & managerScene)
 	m_Index = 0;
 	m_SelectorPos = Vector2f{ 84.0f,296.0f };
 	m_SetBackPos = Vector2f{ 2000.0f,2000.0f };
+
+	
 }
 
 MenuMain::~MenuMain()
@@ -23,6 +24,7 @@ MenuMain::~MenuMain()
 
 void MenuMain::Initialize()
 {
+
 
 #pragma region Images
 	//background + text

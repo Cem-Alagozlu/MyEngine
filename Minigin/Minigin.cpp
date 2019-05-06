@@ -1,15 +1,11 @@
 #include "MiniginPCH.h"
 #include "Minigin.h"
-#include <chrono>
 #include <thread>
 #include "InputManager.h"
 #include "SceneManager.h"
 #include "Renderer.h"
-#include "ResourceManager.h"
 #include <SDL.h>
 #include "Time.h"
-#include "SceneManager.h"
-#include "MenuScene.h"
 #include <SDL_mixer.h>
 #include "CommandManager.h"
 #include "LevelOne.h"

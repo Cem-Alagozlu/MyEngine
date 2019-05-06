@@ -32,24 +32,6 @@
     <Filter Include="Game">
       <UniqueIdentifier>{e89fb7af-dd26-4244-9780-48524ae7e01e}</UniqueIdentifier>
     </Filter>
-    <Filter Include="Game\Menu">
-      <UniqueIdentifier>{508552e3-82da-49df-aad0-4b411f18d7f9}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="Game\Level">
-      <UniqueIdentifier>{40411224-03c8-4b86-b292-6cab5fdaa766}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="Game\Player">
-      <UniqueIdentifier>{32385dc2-f07e-4bbc-993c-9cbfac01a2dc}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="Game\Characters">
-      <UniqueIdentifier>{4aa7f3f4-a578-48f4-b24a-e47e32b31256}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="Game\Characters\DigDug">
-      <UniqueIdentifier>{ed51d36d-0ee4-4944-b16b-480a821aadf1}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="Game\Characters\DigDug\StateMachine">
-      <UniqueIdentifier>{3420bf10-dc5c-4527-922a-0a773cb477b0}</UniqueIdentifier>
-    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="TransformComponent.h">
@@ -82,9 +64,6 @@
     <ClInclude Include="MiniginPCH.h">
       <Filter>Framework\Main</Filter>
     </ClInclude>
-    <ClInclude Include="Minigin.h">
-      <Filter>Framework\Main</Filter>
-    </ClInclude>
     <ClInclude Include="ResourceManager.h">
       <Filter>Framework\Manager</Filter>
     </ClInclude>
@@ -106,15 +85,6 @@
     <ClInclude Include="Singleton.h">
       <Filter>Framework\Helpers</Filter>
     </ClInclude>
-    <ClInclude Include="MenuMain.h">
-      <Filter>Game\Menu</Filter>
-    </ClInclude>
-    <ClInclude Include="IMenu.h">
-      <Filter>Game\Menu</Filter>
-    </ClInclude>
-    <ClInclude Include="MenuScene.h">
-      <Filter>Game\Menu</Filter>
-    </ClInclude>
     <ClInclude Include="Time.h">
       <Filter>Framework\Helpers</Filter>
     </ClInclude>
@@ -133,19 +103,7 @@
     <ClInclude Include="CommandManager.h">
       <Filter>Framework\Manager</Filter>
     </ClInclude>
-    <ClInclude Include="MenuQuit.h">
-      <Filter>Game\Menu</Filter>
-    </ClInclude>
-    <ClInclude Include="MenuExtra.h">
-      <Filter>Game\Menu</Filter>
-    </ClInclude>
     <ClInclude Include="SpriteComponent.h">
-      <Filter>Framework\Components</Filter>
-    </ClInclude>
-    <ClInclude Include="LevelOne.h">
-      <Filter>Game\Level</Filter>
-    </ClInclude>
-    <ClInclude Include="ColliderComponent.h">
       <Filter>Framework\Components</Filter>
     </ClInclude>
     <ClInclude Include="StateMachine.h">
@@ -153,18 +111,6 @@
     </ClInclude>
     <ClInclude Include="State.h">
       <Filter>Framework\FSM</Filter>
-    </ClInclude>
-    <ClInclude Include="DigDugStateMove.h">
-      <Filter>Game\Characters\DigDug\StateMachine</Filter>
-    </ClInclude>
-    <ClInclude Include="DigDugStateIdle.h">
-      <Filter>Game\Characters\DigDug\StateMachine</Filter>
-    </ClInclude>
-    <ClInclude Include="DigDugStateMachine.h">
-      <Filter>Game\Characters\DigDug\StateMachine</Filter>
-    </ClInclude>
-    <ClInclude Include="DigDugBlackboard.h">
-      <Filter>Game\Characters\DigDug\StateMachine</Filter>
     </ClInclude>
     <ClInclude Include="Blackboard.h">
       <Filter>Framework\FSM</Filter>
@@ -188,12 +134,6 @@
     </ClCompile>
     <ClCompile Include="FPSComponent.cpp">
       <Filter>Framework\Components</Filter>
-    </ClCompile>
-    <ClCompile Include="Main.cpp">
-      <Filter>Framework\Main</Filter>
-    </ClCompile>
-    <ClCompile Include="Minigin.cpp">
-      <Filter>Framework\Main</Filter>
     </ClCompile>
     <ClCompile Include="MiniginPCH.cpp">
       <Filter>Framework\Main</Filter>
@@ -219,12 +159,6 @@
     <ClCompile Include="Font.cpp">
       <Filter>Framework\Helpers</Filter>
     </ClCompile>
-    <ClCompile Include="MenuMain.cpp">
-      <Filter>Game\Menu</Filter>
-    </ClCompile>
-    <ClCompile Include="MenuScene.cpp">
-      <Filter>Game\Menu</Filter>
-    </ClCompile>
     <ClCompile Include="Time.cpp">
       <Filter>Framework\Helpers</Filter>
     </ClCompile>
@@ -243,35 +177,11 @@
     <ClCompile Include="CommandManager.cpp">
       <Filter>Framework\Manager</Filter>
     </ClCompile>
-    <ClCompile Include="MenuQuit.cpp">
-      <Filter>Game\Menu</Filter>
-    </ClCompile>
-    <ClCompile Include="MenuExtra.cpp">
-      <Filter>Game\Menu</Filter>
-    </ClCompile>
     <ClCompile Include="SpriteComponent.cpp">
-      <Filter>Framework\Components</Filter>
-    </ClCompile>
-    <ClCompile Include="LevelOne.cpp">
-      <Filter>Game\Level</Filter>
-    </ClCompile>
-    <ClCompile Include="ColliderComponent.cpp">
       <Filter>Framework\Components</Filter>
     </ClCompile>
     <ClCompile Include="StateMachine.cpp">
       <Filter>Framework\FSM</Filter>
-    </ClCompile>
-    <ClCompile Include="DigDugStateIdle.cpp">
-      <Filter>Game\Characters\DigDug\StateMachine</Filter>
-    </ClCompile>
-    <ClCompile Include="DigDugStateMachine.cpp">
-      <Filter>Game\Characters\DigDug\StateMachine</Filter>
-    </ClCompile>
-    <ClCompile Include="DigDugStateMove.cpp">
-      <Filter>Game\Characters\DigDug\StateMachine</Filter>
-    </ClCompile>
-    <ClCompile Include="DigDugBlackboard.cpp">
-      <Filter>Game\Characters\DigDug\StateMachine</Filter>
     </ClCompile>
     <ClCompile Include="Blackboard.cpp">
       <Filter>Framework\FSM</Filter>
