@@ -1,5 +1,32 @@
-﻿  Minigin.cpp
-  Minigin.vcxproj -> C:\Users\Cem Alagözlü\Desktop\MyEngine\x64\Debug\Minigin.exe
+﻿  MiniginPCH.cpp
+  BaseComponent.cpp
+  Blackboard.cpp
+  Command.cpp
+  CommandManager.cpp
+  Font.cpp
+  FPSComponent.cpp
+  GameObject.cpp
+  InputManager.cpp
+  Log.cpp
+  Renderer.cpp
+  ResourceManager.cpp
+  Scene.cpp
+  SceneManager.cpp
+  SoundEffect.cpp
+  SoundManager.cpp
+  SoundStream.cpp
+  SpriteComponent.cpp
+  State.cpp
+  StateMachine.cpp
+  TextDrawComponent.cpp
+  Generating Code...
+  Compiling...
+  TextureComponent.cpp
+  Time.cpp
+  TransformComponent.cpp
+  Generating Code...
+Log.obj : warning LNK4221: This object file does not define any previously undefined public symbols, so it will not be used by any link operation that consumes this library
+  Minigin.vcxproj -> C:\Users\Cem Alagözlü\Desktop\MyEngine\x64\Debug\Minigin.lib
   C:\Users\Cem Alagözlü\Desktop\MyEngine\3rdParty\SDL2\lib\x64\SDL2.dll
   1 File(s) copied
   C:\Users\Cem Alagözlü\Desktop\MyEngine\3rdParty\SDL2_image\lib\x64\libjpeg-9.dll

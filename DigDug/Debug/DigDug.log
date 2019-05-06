@@ -1,4 +1,9 @@
-﻿  LevelOne.cpp
+﻿  DigDugBlackboard.cpp
+  DigDugStateIdle.cpp
+  DigDugStateMachine.cpp
+  DigDugStateMove.cpp
+  LevelOne.cpp
+  Main.cpp
   MenuExtra.cpp
   MenuMain.cpp
   MenuQuit.cpp
@@ -11,4 +16,5 @@ c:\users\cem alagözlü\desktop\myengine\minigin\time.h(15): error C2039: 'time_
 c:\users\cem alagözlü\desktop\myengine\minigin\time.h(15): error C3646: 'm_CurrentTime': unknown override specifier
 c:\users\cem alagözlü\desktop\myengine\minigin\time.h(15): error C2059: syntax error: ','
 c:\users\cem alagözlü\desktop\myengine\minigin\time.h(15): error C2238: unexpected token(s) preceding ';'
+  DigDugPCH.cpp
   Generating Code...
