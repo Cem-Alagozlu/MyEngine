@@ -2,6 +2,7 @@
 #include "MenuExtra.h"
 #include "CommandManager.h"
 #include "MenuScene.h"
+#include "TextureComponent.h"
 
 MenuExtra::MenuExtra(MenuScene& managerScene)
 	:m_ManagerScene{ managerScene }

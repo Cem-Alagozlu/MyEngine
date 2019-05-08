@@ -5,6 +5,7 @@
 #include "Scene.h"
 #include "SoundManager.h"
 #include "CommandManager.h"
+#include "TextureComponent.h"
 
 
 MenuMain::MenuMain(MenuScene & managerScene)

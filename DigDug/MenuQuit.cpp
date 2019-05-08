@@ -6,6 +6,7 @@
 #include "SoundManager.h"
 #include "TransformComponent.h"
 #include "CommandManager.h"
+#include "TextureComponent.h"
 
 
 MenuQuit::MenuQuit(MenuScene& managerScene)

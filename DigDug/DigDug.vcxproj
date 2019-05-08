@@ -51,6 +51,14 @@
     <ClCompile Include="MenuScene.cpp" />
     <ClCompile Include="Minigin.cpp" />
   </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\Box2D\Box2D.vcxproj">
+      <Project>{252cb655-8fd7-404f-829a-ab952ef6399c}</Project>
+    </ProjectReference>
+    <ProjectReference Include="..\Minigin\Minigin.vcxproj">
+      <Project>{41b0ec47-d48c-4b0f-951b-d98595ffae0a}</Project>
+    </ProjectReference>
+  </ItemGroup>
   <PropertyGroup Label="Globals">
     <VCProjectVersion>15.0</VCProjectVersion>
     <ProjectGuid>{DA20181D-1989-462E-8D46-C9AC65186099}</ProjectGuid>
@@ -102,7 +110,18 @@
     <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
   </ImportGroup>
   <PropertyGroup Label="UserMacros" />
-  <PropertyGroup />
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
+    <LibraryPath>$(SolutionDir)\3rdParty\SDL2_mixer-2.0.2\lib\x86;$(SolutionDir)\3rdParty\SDL2_image\lib\x86;$(SolutionDir)\3rdParty\glm\glm;$(SolutionDir)\3rdParty\SDL2\lib\x86;$(SolutionDir)\3rdParty\SDL2_ttf\lib\x86;$(LibraryPath)</LibraryPath>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
+    <LibraryPath>$(SolutionDir)\3rdParty\SDL2_mixer-2.0.2\lib\x86;$(SolutionDir)\3rdParty\SDL2_image\lib\x86;$(SolutionDir)\3rdParty\glm\glm;$(SolutionDir)\3rdParty\SDL2\lib\x86;$(SolutionDir)\3rdParty\SDL2_ttf\lib\x86;$(LibraryPath)</LibraryPath>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
+    <LibraryPath>$(SolutionDir)\3rdParty\SDL2_mixer-2.0.2\lib\x64;$(SolutionDir)\3rdParty\SDL2_image\lib\x64;$(SolutionDir)\3rdParty\glm\glm;$(SolutionDir)\3rdParty\SDL2\lib\x64;$(SolutionDir)\3rdParty\SDL2_ttf\lib\x64;$(LibraryPath)</LibraryPath>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
+    <LibraryPath>$(SolutionDir)\3rdParty\SDL2_mixer-2.0.2\lib\x64;$(SolutionDir)\3rdParty\SDL2_image\lib\x64;$(SolutionDir)\3rdParty\glm\glm;$(SolutionDir)\3rdParty\SDL2\lib\x64;$(SolutionDir)\3rdParty\SDL2_ttf\lib\x64;$(LibraryPath)</LibraryPath>
+  </PropertyGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
     <ClCompile>
       <WarningLevel>Level4</WarningLevel>

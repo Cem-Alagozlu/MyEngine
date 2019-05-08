@@ -248,11 +248,6 @@ xcopy "$(SolutionDir)3rdParty\SDL2_ttf\lib\x64\*.dll" "$(OutputPath)" /R /Y</Com
     <ClCompile Include="Time.cpp" />
     <ClCompile Include="TransformComponent.cpp" />
   </ItemGroup>
-  <ItemGroup>
-    <ProjectReference Include="..\Box2D\Box2D.vcxproj">
-      <Project>{252cb655-8fd7-404f-829a-ab952ef6399c}</Project>
-    </ProjectReference>
-  </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">
   </ImportGroup>
