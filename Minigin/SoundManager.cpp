@@ -1,7 +1,6 @@
 #include "MiniginPCH.h"
 #include "SoundManager.h"
-#include <ostream>
-#include <iostream>
+
 
 SoundManager::SoundManager()
 {

@@ -1,6 +1,5 @@
 #pragma once
 #include "BaseComponent.h"
-#include "TextDrawComponent.h"
 
 class FPSComponent : public BaseComponent
 {

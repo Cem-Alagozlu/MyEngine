@@ -1,8 +1,6 @@
 #include "MiniginPCH.h"
 #include "Renderer.h"
-#include <SDL.h>
 #include "SceneManager.h"
-#include "TextureComponent.h"
 
 void Renderer::Init(SDL_Window * window)
 {

@@ -1,6 +1,5 @@
 #include "MiniginPCH.h"
 #include "SoundStream.h"
-#include "SDL_mixer.h"
 
 SoundStream::SoundStream(std::string path)
 	: m_pMixMusic{std::shared_ptr<Mix_Music>(Mix_LoadMUS(path.c_str()), [](Mix_Music* track) { Mix_FreeMusic(track); })}

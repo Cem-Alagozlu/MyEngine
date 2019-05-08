@@ -1,5 +1,4 @@
 #pragma once
-#include "Structs.h"
 #include "Blackboard.h"
 
 class DigDugBlackboard final : public Blackboard

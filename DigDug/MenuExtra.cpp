@@ -1,6 +1,5 @@
-#include "MiniginPCH.h"
+#include "DigDugPCH.h"
 #include "MenuExtra.h"
-#include "ResourceManager.h"
 #include "CommandManager.h"
 #include "MenuScene.h"
 

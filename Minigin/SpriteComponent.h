@@ -1,5 +1,6 @@
 #pragma once
 #include "BaseComponent.h"
+#include "Structs.h"
 
 class SpriteComponent final: public BaseComponent
 {

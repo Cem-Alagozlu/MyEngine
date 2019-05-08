@@ -29,9 +29,6 @@
     <Filter Include="Framework\FSM">
       <UniqueIdentifier>{26332466-da2a-4808-bf35-92490f61ec19}</UniqueIdentifier>
     </Filter>
-    <Filter Include="Game">
-      <UniqueIdentifier>{e89fb7af-dd26-4244-9780-48524ae7e01e}</UniqueIdentifier>
-    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="TransformComponent.h">
@@ -43,9 +40,6 @@
     <ClInclude Include="Structs.h">
       <Filter>Framework\Helpers</Filter>
     </ClInclude>
-    <ClInclude Include="Log.h">
-      <Filter>Framework\Helpers</Filter>
-    </ClInclude>
     <ClInclude Include="TextureComponent.h">
       <Filter>Framework\Components</Filter>
     </ClInclude>
@@ -54,9 +48,6 @@
     </ClInclude>
     <ClInclude Include="FPSComponent.h">
       <Filter>Framework\Components</Filter>
-    </ClInclude>
-    <ClInclude Include="targetver.h">
-      <Filter>Framework\Main</Filter>
     </ClInclude>
     <ClInclude Include="Renderer.h">
       <Filter>Framework\Main</Filter>
@@ -122,9 +113,6 @@
     </ClCompile>
     <ClCompile Include="BaseComponent.cpp">
       <Filter>Framework\Components</Filter>
-    </ClCompile>
-    <ClCompile Include="Log.cpp">
-      <Filter>Framework\Helpers</Filter>
     </ClCompile>
     <ClCompile Include="TextureComponent.cpp">
       <Filter>Framework\Components</Filter>

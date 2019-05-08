@@ -1,6 +1,7 @@
 #pragma once
 #include "BaseComponent.h"
 #include "TextureComponent.h"
+#include "Structs.h"
 
 class Font;
 

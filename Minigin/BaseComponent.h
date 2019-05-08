@@ -1,6 +1,4 @@
 #pragma once
-#include "Structs.h"
-#include <SDL.h>
 class GameObject;
 
 class BaseComponent

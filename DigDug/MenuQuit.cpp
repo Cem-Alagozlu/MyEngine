@@ -1,7 +1,6 @@
-#include "MiniginPCH.h"
+#include "DigDugPCH.h"
 #include "MenuQuit.h"
 #include "GameObject.h"
-#include "ResourceManager.h"
 #include "MenuScene.h"
 #include "Scene.h"
 #include "SoundManager.h"

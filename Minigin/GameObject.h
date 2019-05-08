@@ -1,5 +1,4 @@
 #pragma once
-#include <memory>
 #include "GameObject.h"
 #include "BaseComponent.h"
 #include "TransformComponent.h"

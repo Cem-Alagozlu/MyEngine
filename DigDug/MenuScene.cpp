@@ -1,11 +1,8 @@
-#include "MiniginPCH.h"
+#include "DigDugPCH.h"
 #include "MenuScene.h"
 #include "MenuMain.h"
 #include "MenuQuit.h"
 #include "MenuExtra.h"
-#include "SoundManager.h"
-#include "ResourceManager.h"
-
 
 
 MenuScene::MenuScene()

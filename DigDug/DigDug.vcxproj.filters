@@ -16,33 +16,84 @@
     <Filter Include="Menu">
       <UniqueIdentifier>{439dcd01-0985-4e06-9445-276980703b3f}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Main">
+      <UniqueIdentifier>{8c02ddb0-dbd7-491f-a9b4-17286154248c}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="Minigin.h" />
-    <ClInclude Include="DigDugBlackboard.h" />
-    <ClInclude Include="DigDugPCH.h" />
-    <ClInclude Include="DigDugStateIdle.h" />
-    <ClInclude Include="DigDugStateMachine.h" />
-    <ClInclude Include="DigDugStateMove.h" />
-    <ClInclude Include="IMenu.h" />
-    <ClInclude Include="LevelOne.h" />
-    <ClInclude Include="MenuExtra.h" />
-    <ClInclude Include="MenuMain.h" />
-    <ClInclude Include="MenuQuit.h" />
-    <ClInclude Include="MenuScene.h" />
+    <ClInclude Include="MenuScene.h">
+      <Filter>Menu</Filter>
+    </ClInclude>
+    <ClInclude Include="MenuExtra.h">
+      <Filter>Menu</Filter>
+    </ClInclude>
+    <ClInclude Include="MenuMain.h">
+      <Filter>Menu</Filter>
+    </ClInclude>
+    <ClInclude Include="MenuQuit.h">
+      <Filter>Menu</Filter>
+    </ClInclude>
+    <ClInclude Include="DigDugStateMove.h">
+      <Filter>Characters\DigDug\StateMachine</Filter>
+    </ClInclude>
+    <ClInclude Include="DigDugBlackboard.h">
+      <Filter>Characters\DigDug\StateMachine</Filter>
+    </ClInclude>
+    <ClInclude Include="DigDugStateIdle.h">
+      <Filter>Characters\DigDug\StateMachine</Filter>
+    </ClInclude>
+    <ClInclude Include="DigDugStateMachine.h">
+      <Filter>Characters\DigDug\StateMachine</Filter>
+    </ClInclude>
+    <ClInclude Include="IMenu.h">
+      <Filter>Menu</Filter>
+    </ClInclude>
+    <ClInclude Include="LevelOne.h">
+      <Filter>Level</Filter>
+    </ClInclude>
+    <ClInclude Include="Minigin.h">
+      <Filter>Main</Filter>
+    </ClInclude>
+    <ClInclude Include="DigDugPCH.h">
+      <Filter>Main</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
-    <ClCompile Include="DigDugBlackboard.cpp" />
-    <ClCompile Include="DigDugPCH.cpp" />
-    <ClCompile Include="DigDugStateIdle.cpp" />
-    <ClCompile Include="DigDugStateMachine.cpp" />
-    <ClCompile Include="DigDugStateMove.cpp" />
-    <ClCompile Include="LevelOne.cpp" />
-    <ClCompile Include="Main.cpp" />
-    <ClCompile Include="MenuExtra.cpp" />
-    <ClCompile Include="MenuMain.cpp" />
-    <ClCompile Include="MenuQuit.cpp" />
-    <ClCompile Include="MenuScene.cpp" />
-    <ClCompile Include="Minigin.cpp" />
+    <ClCompile Include="MenuExtra.cpp">
+      <Filter>Menu</Filter>
+    </ClCompile>
+    <ClCompile Include="MenuMain.cpp">
+      <Filter>Menu</Filter>
+    </ClCompile>
+    <ClCompile Include="MenuQuit.cpp">
+      <Filter>Menu</Filter>
+    </ClCompile>
+    <ClCompile Include="MenuScene.cpp">
+      <Filter>Menu</Filter>
+    </ClCompile>
+    <ClCompile Include="DigDugBlackboard.cpp">
+      <Filter>Characters\DigDug\StateMachine</Filter>
+    </ClCompile>
+    <ClCompile Include="DigDugStateIdle.cpp">
+      <Filter>Characters\DigDug\StateMachine</Filter>
+    </ClCompile>
+    <ClCompile Include="DigDugStateMachine.cpp">
+      <Filter>Characters\DigDug\StateMachine</Filter>
+    </ClCompile>
+    <ClCompile Include="DigDugStateMove.cpp">
+      <Filter>Characters\DigDug\StateMachine</Filter>
+    </ClCompile>
+    <ClCompile Include="LevelOne.cpp">
+      <Filter>Level</Filter>
+    </ClCompile>
+    <ClCompile Include="Main.cpp">
+      <Filter>Main</Filter>
+    </ClCompile>
+    <ClCompile Include="Minigin.cpp">
+      <Filter>Main</Filter>
+    </ClCompile>
+    <ClCompile Include="DigDugPCH.cpp">
+      <Filter>Main</Filter>
+    </ClCompile>
   </ItemGroup>
 </Project>

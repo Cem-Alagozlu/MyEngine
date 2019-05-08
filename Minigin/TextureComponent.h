@@ -1,6 +1,7 @@
 #pragma once
 #include "BaseComponent.h"
 
+
 class TextureComponent : public BaseComponent
 {
 public:

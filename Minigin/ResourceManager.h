@@ -1,7 +1,5 @@
 #pragma once
 #include "Singleton.h"
-#include "TextureComponent.h"
-
 
 class Texture2D;
 	class Font;

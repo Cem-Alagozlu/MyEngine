@@ -1,7 +1,5 @@
 #include "MiniginPCH.h"
 #include "InputManager.h"
-#include <SDL.h>
-
 
 bool InputManager::ProcessInput()
 {

@@ -1,6 +1,4 @@
 #pragma once
-#include <string>
-#include <SDL_mixer.h> 
 
 class SoundEffect
 {
