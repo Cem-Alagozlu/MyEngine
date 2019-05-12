@@ -8,6 +8,7 @@ class MenuManager;
 class MenuMain;
 class MenuQuit;
 class MenuExtra;
+class MenuSettings;
 
 class MenuScene  : public Scene
 {
@@ -16,7 +17,7 @@ public:
 	{
 		menuMain,
 		menuQuit,
-		menuOption,
+		menuSettings,
 		menuExtra,
 		menuIntro
 	};
@@ -42,6 +43,7 @@ private:
 	std::unique_ptr<MenuMain> m_pMenuMain;
 	std::unique_ptr<MenuQuit> m_pMenuQuit;
 	std::unique_ptr<MenuExtra> m_pMenuExtra;
+	std::unique_ptr<MenuSettings> m_pMenuSettings;
 	IMenu* m_pCurrentMenu;
 
 };

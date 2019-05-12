@@ -30,7 +30,7 @@ public:
 	void SetBackEverything();
 private:
 	MenuScene& m_ManagerScene;
-	Vector2f m_SelectorPos, m_SetBackPos,m_OriginPos;
+	Vector2f m_SelectorPos, m_ScaleAway,m_ScaleNormal;
 	std::shared_ptr<GameObject> m_pSelector, m_pBgExtraMain, m_pBgExtraMainTxt,m_pBgStory,m_pBgInformation,m_pBgCredits;
 	int m_Index;
 	bool m_IsBack,m_IsStory,m_IsInformation,m_IsCredits,m_IsMainExtra;

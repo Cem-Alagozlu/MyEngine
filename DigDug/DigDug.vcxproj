@@ -24,13 +24,16 @@
     <ClInclude Include="DigDugStateIdle.h" />
     <ClInclude Include="DigDugStateMachine.h" />
     <ClInclude Include="DigDugStateMove.h" />
+    <ClInclude Include="DigDugStatePump.h" />
     <ClInclude Include="IMenu.h" />
     <ClInclude Include="LevelOne.h" />
     <ClInclude Include="MenuExtra.h" />
     <ClInclude Include="MenuMain.h" />
     <ClInclude Include="MenuQuit.h" />
     <ClInclude Include="MenuScene.h" />
+    <ClInclude Include="MenuSettings.h" />
     <ClInclude Include="Minigin.h" />
+    <ClInclude Include="Player.h" />
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="DigDugBlackboard.cpp" />
@@ -43,13 +46,16 @@
     <ClCompile Include="DigDugStateIdle.cpp" />
     <ClCompile Include="DigDugStateMachine.cpp" />
     <ClCompile Include="DigDugStateMove.cpp" />
+    <ClCompile Include="DigDugStatePump.cpp" />
     <ClCompile Include="LevelOne.cpp" />
     <ClCompile Include="Main.cpp" />
     <ClCompile Include="MenuExtra.cpp" />
     <ClCompile Include="MenuMain.cpp" />
     <ClCompile Include="MenuQuit.cpp" />
     <ClCompile Include="MenuScene.cpp" />
+    <ClCompile Include="MenuSettings.cpp" />
     <ClCompile Include="Minigin.cpp" />
+    <ClCompile Include="Player.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\Box2D\Box2D.vcxproj">

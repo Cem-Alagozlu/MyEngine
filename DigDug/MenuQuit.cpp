@@ -14,7 +14,8 @@ MenuQuit::MenuQuit(MenuScene& managerScene)
 {
 	m_Index = 0;
 	m_SelectorPos = Vector2f{ 84.0f,457.0f };
-	m_SetBackPos = Vector2f{ 2000.0f,2000.0f };
+	m_ScaleAway = Vector2f{ 0.0f,0.0f };
+	m_ScaleNormal = Vector2f{ 1.0f,1.0f };
 	//background + text
 	m_pBgQuit = std::make_shared<GameObject>();
 	m_pBgQuit->AddComponent(std::make_shared<TransformComponent>());
@@ -47,8 +48,9 @@ MenuQuit::~MenuQuit()
 
 void MenuQuit::Update()
 {
-	m_pBqQuitTxt->GetComponent<TransformComponent>()->SetPosition(Vector2f{ 0.0f,0.0f });
-	m_pBgQuit->GetComponent<TransformComponent>()->SetPosition(Vector2f{ 0.0f,0.0f });
+	m_pBqQuitTxt->GetComponent<TransformComponent>()->SetScale(m_ScaleNormal);
+	m_pBgQuit->GetComponent<TransformComponent>()->SetScale(m_ScaleNormal);
+	m_pSelector->GetComponent<TransformComponent>()->SetScale(m_ScaleNormal);
 
 	switch (m_Index)
 	{
@@ -122,7 +124,7 @@ void MenuQuit::SelectMenu()
 
 void MenuQuit::SetImagesBack()
 {
-	m_pSelector->GetComponent<TransformComponent>()->SetPosition(m_SetBackPos);
-	m_pBgQuit->GetComponent<TransformComponent>()->SetPosition(m_SetBackPos);
-	m_pBqQuitTxt->GetComponent<TransformComponent>()->SetPosition(m_SetBackPos);
+	m_pSelector->GetComponent<TransformComponent>()->SetScale(m_ScaleAway);
+	m_pBgQuit->GetComponent<TransformComponent>()->SetScale(m_ScaleAway);
+	m_pBqQuitTxt->GetComponent<TransformComponent>()->SetScale(m_ScaleAway);
 }

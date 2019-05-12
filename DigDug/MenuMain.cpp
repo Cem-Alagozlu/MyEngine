@@ -13,7 +13,7 @@ MenuMain::MenuMain(MenuScene & managerScene)
 {
 	m_Index = 0;
 	m_SelectorPos = Vector2f{ 84.0f,296.0f };
-	m_SetBackPos = Vector2f{ 2000.0f,2000.0f };
+	m_ScaleAway = Vector2f{ 0.0f,0.0f };
 
 	
 }
@@ -68,8 +68,9 @@ void MenuMain::Draw() const
 
 void MenuMain::Update()
 {
-	m_pBgIMG->GetComponent<TransformComponent>()->SetPosition(Vector2f{ 0.0f,0.0f });
-	m_pBgTxt->GetComponent<TransformComponent>()->SetPosition(Vector2f{ 0.0f,0.0f });
+	m_pBgIMG->GetComponent<TransformComponent>()->SetScale(Vector2f{ 1.0f,1.0f });
+	m_pBgTxt->GetComponent<TransformComponent>()->SetScale(Vector2f{ 1.0f,1.0f });
+	m_pSelector->GetComponent<TransformComponent>()->SetScale(Vector2f{ 1.0f,1.0f });
 	
 	switch (m_Index)
 	{
@@ -134,8 +135,8 @@ void MenuMain::SelectMenu()
 			m_ManagerScene.SetMenuState(MenuScene::MenuState::menuExtra);
 			break;
 		case 2:
-			//m_ManagerScene.SetMenuState()
-			std::cout << "Settings!\n";
+			SetImagesBack();
+			m_ManagerScene.SetMenuState(MenuScene::MenuState::menuSettings);
 			break;
 		case 3:
 			SetImagesBack();
@@ -147,7 +148,7 @@ void MenuMain::SelectMenu()
 
 void MenuMain::SetImagesBack()
 {
-	m_pSelector->GetComponent<TransformComponent>()->SetPosition(m_SetBackPos);
-	m_pBgIMG->GetComponent<TransformComponent>()->SetPosition(m_SetBackPos);
-	m_pBgTxt->GetComponent<TransformComponent>()->SetPosition(m_SetBackPos);
+	m_pSelector->GetComponent<TransformComponent>()->SetScale(m_ScaleAway);
+	m_pBgIMG->GetComponent<TransformComponent>()->SetScale(m_ScaleAway);
+	m_pBgTxt->GetComponent<TransformComponent>()->SetScale(m_ScaleAway);
 }

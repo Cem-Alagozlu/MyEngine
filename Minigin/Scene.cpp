@@ -1,7 +1,7 @@
 #include "MiniginPCH.h"
 #include "Scene.h"
 #include "GameObject.h"
-#include "Time.h"
+#include "Timing.h"
 
 //std::move -> efficient transfer -> ref cppreference.com
 
@@ -17,7 +17,7 @@ void Scene::AddChild(std::shared_ptr<GameObject> gameObject)
 
 void Scene::RootUpdate()
 {
-	auto deltaTime = Time::GetInstance().GetDeltaTime();
+	auto deltaTime = Timing::GetInstance().GetDeltaTime();
 
 	Update();
 	for (auto pObject : m_Objects)

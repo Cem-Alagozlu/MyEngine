@@ -27,6 +27,9 @@ bool InputManager::ProcessInput()
 InputTriggerState InputManager::IsPressed(ControllerButton button) const
 {
 	//m_CurrentState.Gamepad.wButtons & XINPUT_GAMEPAD_A;
+
+	//return (m_CurrentState.Gamepad.wButtons & static_cast<WORD>(button)) ! = 0:
+
 	switch (button)
 	{
 	case ControllerButton::ButtonA:

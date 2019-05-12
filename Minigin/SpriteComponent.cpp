@@ -14,6 +14,8 @@ SpriteComponent::SpriteComponent(const std::string & texture, float sheetLeft, f
 	, m_Cols{ cols }
 	, m_Rows{ rows }
 	, m_FramesPerSec{ framesPerSec }
+	, m_Flip{SDL_FLIP_NONE}
+	, m_Angle(0.0)
 	
 {
 	m_pTexture = ResourceManager::GetInstance().LoadTexture(texture);
@@ -28,11 +30,6 @@ SpriteComponent::SpriteComponent(const std::string & texture, float sheetLeft, f
 	m_FrameTime = 1.0f / m_FramesPerSec;
 }
 
-void SpriteComponent::Draw(bool flipped) const
-{
-	UNREFERENCED_PARAMETER(flipped);
-
-}
 
 bool SpriteComponent::HasEnded() const
 {
@@ -55,6 +52,16 @@ void SpriteComponent::Unlock()
 	m_AccuSec = 0.0f;
 }
 
+void SpriteComponent::FlipTexture(SDL_RendererFlip flipTexture)
+{
+	m_Flip = flipTexture;
+}
+
+void SpriteComponent::SetAngle(double angle)
+{
+	m_Angle = angle;
+}
+
 void SpriteComponent::Update(float deltaTime)
 {
 	m_AccuSec += deltaTime;
@@ -73,7 +80,7 @@ void SpriteComponent::Draw() const
 	{
 		Vector2f pos = go->GetComponent<TransformComponent>()->GetPosition();
 		Vector2f scale = go->GetComponent<TransformComponent>()->GetScale();
-		Renderer::GetInstance().RenderTexture(m_pTexture, m_SrcRect, pos,scale);
+		Renderer::GetInstance().RenderTexture(m_pTexture, m_SrcRect, pos,scale,m_Angle, m_Flip);
 	}
 }
 

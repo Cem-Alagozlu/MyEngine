@@ -1,6 +1,6 @@
 #pragma once
 #include "Scene.h"
-#include "DigDugStateMachine.h"
+#include "Player.h"
 
 class LevelOne : public Scene
 {
@@ -20,6 +20,7 @@ protected:
 	void Draw() override;
 
 private:
-	DigDugStateMachine m_TestDigdug;
+	std::shared_ptr<Player> m_pPlayer;
+	std::shared_ptr<GameObject> m_pBgLevel;
 };
 

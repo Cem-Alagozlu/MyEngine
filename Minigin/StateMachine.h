@@ -7,11 +7,13 @@ public:
 	StateMachine() = default;
 	virtual ~StateMachine() = default;
 
+
 	virtual void Update();
+	virtual void Initialize() = 0;
 
 protected:
 	void Transit(State* newState);
-	void Initialize(State* initState);
+	void InitializeState(State* initState);
 
 private:
 	Blackboard* m_pBlackboard;

@@ -8,12 +8,14 @@ public:
 	explicit SpriteComponent(const std::string& texture, float sheetLeft, float sheetTop, float sheetWidth, float sheetHeight, int cols, int rows, int framesPerSec);
 	virtual ~SpriteComponent() = default;
 
-	void Draw(bool flipped = false) const;
 	float GetWidth() const;
 	float GetHeight() const;
 	bool HasEnded() const;
 	void Lock();
 	void Unlock();
+
+	void FlipTexture(SDL_RendererFlip flipTexture);
+	void SetAngle(double angle);
 
 	SpriteComponent(const SpriteComponent& other) = delete;
 	SpriteComponent(SpriteComponent&& other) noexcept = delete;
@@ -41,6 +43,8 @@ private:
 	int m_FramesPerSec;
 	float m_FrameTime;
 	float m_Scale;
+	SDL_RendererFlip m_Flip;
+	double m_Angle;
 	void UpdateSourceRect();
 };
 

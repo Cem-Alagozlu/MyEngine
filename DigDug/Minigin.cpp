@@ -5,11 +5,12 @@
 #include "SceneManager.h"
 #include "Renderer.h"
 #include <SDL.h>
-#include "Time.h"
 #include <SDL_mixer.h>
 #include "CommandManager.h"
+#include "MenuScene.h"
+#include "Timing.h"
+#include "ResourceManager.h"
 #include "LevelOne.h"
-
 
 void Minigin::Initialize()
 {
@@ -18,8 +19,7 @@ void Minigin::Initialize()
 		throw std::runtime_error(std::string("SDL_Init Error: ") + SDL_GetError());
 	}
 
-	//HWND windowHandle = GetConsoleWindow();
-	//ShowWindow(windowHandle, SW_SHOW);
+	ResourceManager::GetInstance().Init();
 
 	window = SDL_CreateWindow(
 		"Programming 4 assignment",
@@ -42,7 +42,6 @@ void Minigin::Initialize()
 		std::cerr << "Core::Initialize( ), error when calling Mix_OpenAudio: " << Mix_GetError() << std::endl;
 		return;
 	}
-
 }
 
 void Minigin::LoadGame() const
@@ -70,7 +69,7 @@ void Minigin::Run()
 	LoadGame();
 
 	{
-		auto& time = Time::GetInstance();
+		auto& time = Timing::GetInstance();
 		auto& renderer = Renderer::GetInstance();
 		auto& sceneManager = SceneManager::GetInstance();
 		auto& input = InputManager::GetInstance();

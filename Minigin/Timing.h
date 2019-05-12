@@ -1,7 +1,7 @@
 #pragma once
 #include "Singleton.h"
 
-class Time final : public Singleton<Time>
+class Timing final : public Singleton<Timing>
 {
 public:
 	void Initialize();

@@ -14,7 +14,8 @@ enum class ControllerButton
 		ButtonUP,
 		ButtonDown,
 		ButtonLeft,
-		ButtonRight
+		ButtonRight,
+		_Size
 	};
 
 enum class InputTriggerState

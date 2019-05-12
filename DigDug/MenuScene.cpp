@@ -3,13 +3,15 @@
 #include "MenuMain.h"
 #include "MenuQuit.h"
 #include "MenuExtra.h"
+#include "MenuSettings.h"
 
 
 MenuScene::MenuScene()
 	:Scene{"MenuScene"},
 	m_pMenuMain{std::make_unique<MenuMain>(*this)},
 	m_pMenuQuit{ std::make_unique<MenuQuit>(*this) },
-	m_pMenuExtra{ std::make_unique<MenuExtra>(*this) }
+	m_pMenuExtra{ std::make_unique<MenuExtra>(*this) },
+	m_pMenuSettings{std::make_unique<MenuSettings>(*this)}
 {
 	SetMenuState(MenuState::menuMain);
 
@@ -30,6 +32,9 @@ void MenuScene::SetMenuState(MenuState state)
 		break;
 	case MenuScene::MenuState::menuQuit:
 		m_pCurrentMenu = m_pMenuQuit.get();
+		break;
+	case MenuScene::MenuState::menuSettings:
+		m_pCurrentMenu = m_pMenuSettings.get();
 		break;
 	default:
 		m_pCurrentMenu = nullptr;

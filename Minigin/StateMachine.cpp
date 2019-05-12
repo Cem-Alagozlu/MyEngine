@@ -21,7 +21,7 @@ void StateMachine::Transit(State * newState)
 	m_pState->Enter();
 }
 
-void StateMachine::Initialize(State* initState)
+void StateMachine::InitializeState(State* initState)
 {
 	m_pState = initState;
 	m_pState->Enter();

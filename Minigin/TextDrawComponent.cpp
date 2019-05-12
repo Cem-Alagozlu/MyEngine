@@ -1,7 +1,6 @@
 #include "MiniginPCH.h"
 #include "TextDrawComponent.h"
 #include "Renderer.h"
-#include <SDL_ttf.h>
 #include "Font.h"
 #include "TransformComponent.h"
 #include "GameObject.h"

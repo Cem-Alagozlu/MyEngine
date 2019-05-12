@@ -103,8 +103,11 @@
     <ClInclude Include="Blackboard.h">
       <Filter>Framework\FSM</Filter>
     </ClInclude>
-    <ClInclude Include="Time.h">
+    <ClInclude Include="Timing.h">
       <Filter>Framework\Helpers</Filter>
+    </ClInclude>
+    <ClInclude Include="CollisionComponent.h">
+      <Filter>Framework\Components</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
@@ -174,8 +177,11 @@
     <ClCompile Include="State.cpp">
       <Filter>Framework\FSM</Filter>
     </ClCompile>
-    <ClCompile Include="Time.cpp">
+    <ClCompile Include="Timing.cpp">
       <Filter>Framework\Helpers</Filter>
+    </ClCompile>
+    <ClCompile Include="CollisionComponent.cpp">
+      <Filter>Framework\Components</Filter>
     </ClCompile>
   </ItemGroup>
 </Project>

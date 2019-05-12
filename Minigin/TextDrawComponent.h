@@ -8,7 +8,6 @@ class Font;
 class TextDrawComponent : public BaseComponent
 {
 public:
-
 	explicit TextDrawComponent(const std::string& text, std::shared_ptr<Font> font, Color3i color = { 255, 255, 255 });
 
 	void Update(float deltaTime) override;

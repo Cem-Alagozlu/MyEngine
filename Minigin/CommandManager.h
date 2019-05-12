@@ -16,9 +16,15 @@ public:
 
 	enum class InputCommands
 	{
+		moveUp,
+		moveDown,
+		moveLeft,
+		moveRight,
 		increment,
 		decrement,
+		pump,
 		select
+
 	};
 
 

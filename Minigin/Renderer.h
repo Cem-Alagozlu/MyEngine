@@ -16,8 +16,7 @@ class Renderer final : public Singleton<Renderer>
 	void Destroy();
 
 	void RenderTexture( SDL_Texture* texture, Vector2f pos,Vector2f scale) const;
-	void RenderTexture(SDL_Texture* texture,Rectf srcRect ,Vector2f pos, Vector2f scale) const;
-	//void RenderTexture( SDL_Texture* texture, Vector2f pos, float width, float height) const;
+	void RenderTexture(SDL_Texture* texture,Rectf srcRect ,Vector2f pos, Vector2f scale, double angle = 0.0, SDL_RendererFlip flipTexture = SDL_FLIP_NONE) const;
 
 	SDL_Renderer* GetSDLRenderer() const { return mRenderer; }
 };

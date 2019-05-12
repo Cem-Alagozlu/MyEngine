@@ -9,8 +9,8 @@ MenuExtra::MenuExtra(MenuScene& managerScene)
 {
 	m_Index = 0;
 	m_SelectorPos = Vector2f{ 84.0f,296.0f };
-	m_SetBackPos = Vector2f{ 2000.0f,2000.0f };
-	m_OriginPos = Vector2f{ 0.0f,0.0f };
+	m_ScaleNormal = Vector2f{ 1.0f,1.0f };
+	m_ScaleAway = Vector2f{ 0.0f,0.0f };
 	m_ExtraState = ExtraState::Main;
 
 	//background + text
@@ -35,7 +35,7 @@ MenuExtra::MenuExtra(MenuScene& managerScene)
 	m_pBgStory = std::make_shared<GameObject>();
 	m_pBgStory->AddComponent(std::make_shared<TransformComponent>());
 	m_pBgStory->AddComponent(std::make_shared<TextureComponent>("../Resources/Menu/Extra/bgStory.png"));
-	m_pBgStory->GetComponent<TransformComponent>()->SetPosition(m_SetBackPos);
+	m_pBgStory->GetComponent<TransformComponent>()->SetScale(m_ScaleAway);
 	m_ManagerScene.AddChild(m_pBgStory);
 
 
@@ -43,7 +43,7 @@ MenuExtra::MenuExtra(MenuScene& managerScene)
 	m_pBgInformation = std::make_shared<GameObject>();
 	m_pBgInformation->AddComponent(std::make_shared<TransformComponent>());
 	m_pBgInformation->AddComponent(std::make_shared<TextureComponent>("../Resources/Menu/Extra/bgInformation.png"));
-	m_pBgInformation->GetComponent<TransformComponent>()->SetPosition(m_SetBackPos);
+	m_pBgInformation->GetComponent<TransformComponent>()->SetScale(m_ScaleAway);
 	m_ManagerScene.AddChild(m_pBgInformation);
 
 
@@ -52,7 +52,7 @@ MenuExtra::MenuExtra(MenuScene& managerScene)
 	m_pBgCredits = std::make_shared<GameObject>();
 	m_pBgCredits->AddComponent(std::make_shared<TransformComponent>());
 	m_pBgCredits->AddComponent(std::make_shared<TextureComponent>("../Resources/Menu/Extra/bgCredits.png"));
-	m_pBgCredits->GetComponent<TransformComponent>()->SetPosition(m_SetBackPos);
+	m_pBgCredits->GetComponent<TransformComponent>()->SetScale(m_ScaleAway);
 	m_ManagerScene.AddChild(m_pBgCredits);
 
 
@@ -80,8 +80,9 @@ void MenuExtra::Update()
 	switch (m_ExtraState)
 	{
 	case MenuExtra::ExtraState::Main:
-		m_pBgExtraMain->GetComponent<TransformComponent>()->SetPosition(m_OriginPos);
-		m_pBgExtraMainTxt->GetComponent<TransformComponent>()->SetPosition(m_OriginPos);
+		m_pBgExtraMain->GetComponent<TransformComponent>()->SetScale(m_ScaleNormal);
+		m_pBgExtraMainTxt->GetComponent<TransformComponent>()->SetScale(m_ScaleNormal);
+		m_pSelector->GetComponent<TransformComponent>()->SetScale(m_ScaleNormal);
 
 		switch (m_Index)
 		{
@@ -126,15 +127,15 @@ void MenuExtra::Update()
 		}
 		break;
 	case MenuExtra::ExtraState::Story:
-		m_pBgStory->GetComponent<TransformComponent>()->SetPosition(m_OriginPos);
+		m_pBgStory->GetComponent<TransformComponent>()->SetScale(m_ScaleNormal);
 		SetOriginPos();
 		break;
 	case MenuExtra::ExtraState::Information:
-		m_pBgInformation->GetComponent<TransformComponent>()->SetPosition(m_OriginPos);
+		m_pBgInformation->GetComponent<TransformComponent>()->SetScale(m_ScaleNormal);
 		SetOriginPos();
 		break;
 	case MenuExtra::ExtraState::Credits:
-		m_pBgCredits->GetComponent<TransformComponent>()->SetPosition(m_OriginPos);
+		m_pBgCredits->GetComponent<TransformComponent>()->SetScale(m_ScaleNormal);
 		SetOriginPos();
 		break;
 	}
@@ -208,17 +209,17 @@ void MenuExtra::SelectMenu()
 
 void MenuExtra::SetImagesBack()
 {
-	m_pSelector->GetComponent<TransformComponent>()->SetPosition(m_SetBackPos);
-	m_pBgExtraMain->GetComponent<TransformComponent>()->SetPosition(m_SetBackPos);
-	m_pBgExtraMainTxt->GetComponent<TransformComponent>()->SetPosition(m_SetBackPos);
+	m_pSelector->GetComponent<TransformComponent>()->SetScale(m_ScaleAway);
+	m_pBgExtraMain->GetComponent<TransformComponent>()->SetScale(m_ScaleAway);
+	m_pBgExtraMainTxt->GetComponent<TransformComponent>()->SetScale(m_ScaleAway);
 }
 
 void MenuExtra::SetOriginPos()
 {
 	if (m_IsMainExtra)
 	{
-		m_pBgExtraMain->GetComponent<TransformComponent>()->SetPosition(m_OriginPos);
-		m_pBgExtraMainTxt->GetComponent<TransformComponent>()->SetPosition(m_OriginPos);
+		m_pBgExtraMain->GetComponent<TransformComponent>()->SetScale(m_ScaleNormal);
+		m_pBgExtraMainTxt->GetComponent<TransformComponent>()->SetScale(m_ScaleNormal);
 		SetBackEverything();
 		m_ExtraState = MenuExtra::ExtraState::Main;
 		m_IsMainExtra = false;
@@ -228,7 +229,7 @@ void MenuExtra::SetOriginPos()
 
 void MenuExtra::SetBackEverything()
 {
-	m_pBgStory->GetComponent<TransformComponent>()->SetPosition(m_SetBackPos);
-	m_pBgInformation->GetComponent<TransformComponent>()->SetPosition(m_SetBackPos);
-	m_pBgCredits->GetComponent<TransformComponent>()->SetPosition(m_SetBackPos);
+	m_pBgStory->GetComponent<TransformComponent>()->SetScale(m_ScaleAway);
+	m_pBgInformation->GetComponent<TransformComponent>()->SetScale(m_ScaleAway);
+	m_pBgCredits->GetComponent<TransformComponent>()->SetScale(m_ScaleAway);
 }

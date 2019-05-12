@@ -5,6 +5,16 @@ struct Vector2f
 	float y{};
 };
 
+inline Vector2f operator+(const Vector2f& lhs, const Vector2f& rhs)
+{
+	float x = lhs.x + rhs.x;
+	float y = lhs.y + rhs.y;
+
+	Vector2f newVec{ x,y };
+
+	return newVec;
+}
+
 struct Color3i
 {
 	int r{};

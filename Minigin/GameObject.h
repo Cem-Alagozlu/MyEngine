@@ -6,8 +6,8 @@
 	class GameObject : public std::enable_shared_from_this<GameObject>
 	{
 	public:
-		void Update(float deltaTime);
-		void Draw() const;
+		virtual void Update(float deltaTime);
+		virtual void Draw() const;
 
 		void SetTexture(const std::string& filename);
 		void SetPosition(const Vector2f& pos);
