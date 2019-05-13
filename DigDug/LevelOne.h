@@ -1,6 +1,7 @@
 #pragma once
 #include "Scene.h"
 #include "Player.h"
+#include "World.h"
 
 class LevelOne : public Scene
 {
@@ -13,7 +14,6 @@ public:
 	LevelOne& operator=(const LevelOne& other) = delete;
 	LevelOne& operator=(LevelOne&& other) noexcept = delete;
 
-
 protected:
 	void Initialize() override;
 	void Update() override;
@@ -21,6 +21,6 @@ protected:
 
 private:
 	std::shared_ptr<Player> m_pPlayer;
-	std::shared_ptr<GameObject> m_pBgLevel;
+	std::shared_ptr<World> m_pWorld;
 };
 

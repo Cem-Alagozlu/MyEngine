@@ -7,18 +7,19 @@ LevelOne::LevelOne()
 {
 }
 
+
+
 void LevelOne::Initialize()
 {
-	m_pBgLevel = std::make_shared<GameObject>();
-	m_pBgLevel->AddComponent(std::make_shared<TextureComponent>("../Resources/Level/bgLevel.png"));
-	m_pBgLevel->AddComponent(std::make_shared<TransformComponent>());
-	AddChild(m_pBgLevel);
+	m_pWorld = std::make_shared<World>();
+	AddChild(m_pWorld);
+	m_pWorld->Initialize(*this);
 
 	m_pPlayer = std::make_shared<Player>();
 	m_pPlayer->Initialize();
 	AddChild(m_pPlayer);
 
-
+	m_pWorld->SetPlayer(m_pPlayer);
 }
 
 void LevelOne::Update()

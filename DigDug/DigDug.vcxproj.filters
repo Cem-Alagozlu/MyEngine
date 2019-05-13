@@ -69,6 +69,12 @@
     <ClInclude Include="DigDugStatePump.h">
       <Filter>Characters\DigDug\StateMachine</Filter>
     </ClInclude>
+    <ClInclude Include="World.h">
+      <Filter>Level</Filter>
+    </ClInclude>
+    <ClInclude Include="Tunnel.h">
+      <Filter>Level</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="MenuExtra.cpp">
@@ -115,6 +121,12 @@
     </ClCompile>
     <ClCompile Include="DigDugStatePump.cpp">
       <Filter>Characters\DigDug\StateMachine</Filter>
+    </ClCompile>
+    <ClCompile Include="World.cpp">
+      <Filter>Level</Filter>
+    </ClCompile>
+    <ClCompile Include="Tunnel.cpp">
+      <Filter>Level</Filter>
     </ClCompile>
   </ItemGroup>
 </Project>

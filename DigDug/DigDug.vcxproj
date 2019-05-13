@@ -34,6 +34,8 @@
     <ClInclude Include="MenuSettings.h" />
     <ClInclude Include="Minigin.h" />
     <ClInclude Include="Player.h" />
+    <ClInclude Include="Tunnel.h" />
+    <ClInclude Include="World.h" />
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="DigDugBlackboard.cpp" />
@@ -56,6 +58,8 @@
     <ClCompile Include="MenuSettings.cpp" />
     <ClCompile Include="Minigin.cpp" />
     <ClCompile Include="Player.cpp" />
+    <ClCompile Include="Tunnel.cpp" />
+    <ClCompile Include="World.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\Box2D\Box2D.vcxproj">

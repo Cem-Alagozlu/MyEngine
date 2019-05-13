@@ -2,7 +2,15 @@
 #include "CollisionComponent.h"
 
 CollisionComponent::CollisionComponent()
+	:m_CollisionType(CollisionType::Static)
 {
+	/*
+	 * collision type constructor meegeven , rectf ook meegeven
+	 * physics manager -> singleton -> update : alle collision compon uit scene !
+	 * check every comp with each other
+	 * then if overlap = true , callback , van coll & call die functie 
+	 * met collision components
+	 */
 }
 
 bool CollisionComponent::IsOverlapping(const Rectf & r1, const Rectf & r2)
@@ -20,6 +28,11 @@ bool CollisionComponent::IsOverlapping(const Rectf & r1, const Rectf & r2)
 	}
 
 	return true;
+}
+
+void CollisionComponent::AddCallBack(std::function<void(std::shared_ptr<CollisionComponent>, std::shared_ptr<CollisionComponent>)> callBack)
+{
+	m_Functions.push_back(callBack);
 }
 
 void CollisionComponent::Update(float /*deltaTime*/)
