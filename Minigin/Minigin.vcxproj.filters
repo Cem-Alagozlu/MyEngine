@@ -109,6 +109,9 @@
     <ClInclude Include="CollisionComponent.h">
       <Filter>Framework\Components</Filter>
     </ClInclude>
+    <ClInclude Include="PhysicsManager.h">
+      <Filter>Framework\Manager</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="TransformComponent.cpp">
@@ -182,6 +185,9 @@
     </ClCompile>
     <ClCompile Include="CollisionComponent.cpp">
       <Filter>Framework\Components</Filter>
+    </ClCompile>
+    <ClCompile Include="PhysicsManager.cpp">
+      <Filter>Framework\Manager</Filter>
     </ClCompile>
   </ItemGroup>
 </Project>

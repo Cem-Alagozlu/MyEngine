@@ -2,6 +2,7 @@
 #include "DigDugStateMachine.h"
 #include "SpriteComponent.h"
 #include "GameObject.h"
+#include "CollisionComponent.h"
 
 class Player final : public GameObject
 {
@@ -10,7 +11,7 @@ public:
 	~Player();
 
 	void Initialize();
-
+	void OnOverlap(std::shared_ptr<CollisionComponent> playerCollision, std::shared_ptr<CollisionComponent> otherCollision);
 	
 
 protected:

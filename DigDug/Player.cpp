@@ -3,6 +3,8 @@
 #include "SpriteComponent.h"
 #include "CommandManager.h"
 #include "Timing.h"
+#include "CollisionComponent.h"
+#include "PhysicsManager.h"
 
 
 Player::Player()
@@ -28,9 +30,17 @@ void Player::Initialize()
 	m_pSprites.push_back(spriteWalking);
 	GetComponent<TransformComponent>()->SetScale(Vector2f{ 1.0f,2.3f });
 	AddComponent(spriteWalking);
+	AddComponent(std::make_shared<CollisionComponent>(CollisionComponent::CollisionType::Dynamic,Rectf(0.0f, 0.0f,14.0f,14.0f)));
+	GetComponent<CollisionComponent>()->AddCallBack(std::bind(&Player::OnOverlap, this,std::placeholders::_1,std::placeholders::_2));
+
 
 	m_DigDug.GetBlackboard().m_pPlayer = weak_from_this();
 	m_DigDug.Initialize();
+}
+
+void Player::OnOverlap(std::shared_ptr<CollisionComponent> playerCollision, std::shared_ptr<CollisionComponent> otherCollision)
+{
+	std::cout << "Collision \n";
 }
 
 void Player::Update(float deltaTime)

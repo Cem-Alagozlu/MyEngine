@@ -20,6 +20,8 @@ void LevelOne::Initialize()
 	AddChild(m_pPlayer);
 
 	m_pWorld->SetPlayer(m_pPlayer);
+
+	
 }
 
 void LevelOne::Update()

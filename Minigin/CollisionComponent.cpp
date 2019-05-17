@@ -1,16 +1,13 @@
 ﻿#include "MiniginPCH.h"
 #include "CollisionComponent.h"
+#include "PhysicsManager.h"
+#include "GameObject.h"
 
-CollisionComponent::CollisionComponent()
-	:m_CollisionType(CollisionType::Static)
+CollisionComponent::CollisionComponent(CollisionType type, const Rectf& collisionRect)
+	:m_CollisionType(type)
+	,m_CollisionRect{collisionRect}
 {
-	/*
-	 * collision type constructor meegeven , rectf ook meegeven
-	 * physics manager -> singleton -> update : alle collision compon uit scene !
-	 * check every comp with each other
-	 * then if overlap = true , callback , van coll & call die functie 
-	 * met collision components
-	 */
+
 }
 
 bool CollisionComponent::IsOverlapping(const Rectf & r1, const Rectf & r2)
@@ -30,9 +27,45 @@ bool CollisionComponent::IsOverlapping(const Rectf & r1, const Rectf & r2)
 	return true;
 }
 
+bool CollisionComponent::IsOverlapping(std::shared_ptr<CollisionComponent> otherComp)
+{
+
+	if (GetGameObject())
+	{
+
+		Rectf newCollisionRect = m_CollisionRect;
+		Rectf newOtherCollisionRect = otherComp->m_CollisionRect;
+
+		newCollisionRect.left += GetGameObject()->GetComponent<TransformComponent>()->GetPosition().x;
+		newCollisionRect.bottom += GetGameObject()->GetComponent<TransformComponent>()->GetPosition().y;
+
+		newOtherCollisionRect.left += otherComp->GetGameObject()->GetComponent<TransformComponent>()->GetPosition().x;
+		newOtherCollisionRect.bottom += otherComp->GetGameObject()->GetComponent<TransformComponent>()->GetPosition().y;
+
+		return IsOverlapping(newCollisionRect, newOtherCollisionRect);
+	}
+	return false;
+}
+
 void CollisionComponent::AddCallBack(std::function<void(std::shared_ptr<CollisionComponent>, std::shared_ptr<CollisionComponent>)> callBack)
 {
 	m_Functions.push_back(callBack);
+}
+
+
+const std::vector<CollisionComponent::CollisionCallBack>& CollisionComponent::GetCallBacks()
+{
+	return m_Functions;
+}
+
+void CollisionComponent::SetCollisionType(CollisionType type)
+{
+	m_CollisionType = type;
+}
+
+CollisionComponent::CollisionType CollisionComponent::GetCollisionType()
+{
+	return m_CollisionType;
 }
 
 void CollisionComponent::Update(float /*deltaTime*/)

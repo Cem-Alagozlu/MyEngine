@@ -1,13 +1,14 @@
 #pragma once
 class GameObject;
 
-class BaseComponent
+class BaseComponent : public std::enable_shared_from_this<BaseComponent>
 {
 	friend GameObject;
 public:
 	BaseComponent();
 	virtual ~BaseComponent() = default;
 
+	std::shared_ptr<GameObject> GetGameObject();
 
 	BaseComponent(const BaseComponent& other) = delete;
 	BaseComponent(BaseComponent&& other) noexcept = delete;

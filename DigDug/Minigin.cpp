@@ -8,6 +8,7 @@
 #include <SDL_mixer.h>
 #include "CommandManager.h"
 #include "MenuScene.h"
+#include "PhysicsManager.h"
 #include "Timing.h"
 #include "ResourceManager.h"
 #include "LevelOne.h"
@@ -74,6 +75,7 @@ void Minigin::Run()
 		auto& sceneManager = SceneManager::GetInstance();
 		auto& input = InputManager::GetInstance();
 		auto& commandManager = CommandManager::GetInstance();
+		auto& physicsManager = PhysicsManager::GetInstance();
 
 		bool doContinue = true; 
 		time.Initialize();
@@ -83,6 +85,7 @@ void Minigin::Run()
 			time.Update();
 			doContinue = input.ProcessInput();
 			commandManager.Update();
+			physicsManager.Update();
 			sceneManager.Update();
 			renderer.Draw();
 		}

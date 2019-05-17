@@ -4,6 +4,8 @@
 #include "Tunnel.h"
 #include "CollisionComponent.h"
 #include "Scene.h"
+#include "FPSComponent.h"
+#include "TextDrawComponent.h"
 
 
 World::World()
@@ -20,7 +22,6 @@ void World::Initialize(Scene& scene)
 {
 	AddComponent(std::make_shared<TransformComponent>());
 	AddComponent(std::make_shared<TextureComponent>("../Resources/Level/bgLevel.png"));
-
 	for (int i = 0; i < 20; i++)
 	{
 		for (int j = 0; j < 14;j ++)

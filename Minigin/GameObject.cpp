@@ -1,5 +1,7 @@
 #include "MiniginPCH.h"
 #include "GameObject.h"
+#include "CollisionComponent.h"
+#include "PhysicsManager.h"
 
 GameObject::~GameObject()
 {
@@ -8,6 +10,11 @@ GameObject::~GameObject()
 void GameObject::AddComponent(std::shared_ptr<BaseComponent> component)
 {
 	m_pComponents.push_back(component);
+	std::shared_ptr<CollisionComponent> collComp = std::dynamic_pointer_cast<CollisionComponent>(component);
+	if (collComp)
+	{
+		PhysicsManager::GetInstance().AddComponent(collComp);
+	}
 	component->m_pGameObject = shared_from_this();
 }
 
