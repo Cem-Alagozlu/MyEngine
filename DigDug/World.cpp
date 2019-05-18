@@ -4,7 +4,6 @@
 #include "Tunnel.h"
 #include "CollisionComponent.h"
 #include "Scene.h"
-#include "FPSComponent.h"
 #include "TextDrawComponent.h"
 
 
@@ -40,12 +39,6 @@ void World::OnOverlap(std::shared_ptr<CollisionComponent> playerComponent, std::
 	auto it = std::find_if(m_pTunnels.begin(), m_pTunnels.end(),
 		[otherComponent](std::shared_ptr<Tunnel>& tunnel) 
 	{return tunnel->GetComponent<CollisionComponent>() == otherComponent; });
-
-
-	if (playerComponent == m_pPlayer->GetComponent<CollisionComponent>() && it != m_pTunnels.end())
-	{
-		//(*it)-> set visibility
-	}
 
 }
 

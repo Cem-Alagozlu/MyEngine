@@ -11,7 +11,7 @@ public:
 
 
 	Vector2f m_Velocity;
-	//no ownership 
+	bool m_IsDigging;
 	std::weak_ptr<GameObject> m_pPlayer;
 };
 

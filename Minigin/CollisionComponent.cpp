@@ -29,18 +29,19 @@ bool CollisionComponent::IsOverlapping(const Rectf & r1, const Rectf & r2)
 
 bool CollisionComponent::IsOverlapping(std::shared_ptr<CollisionComponent> otherComp)
 {
+	auto getInfo = GetGameObject()->GetComponent<TransformComponent>()->GetPosition();
+	auto getInfoOther = otherComp->GetGameObject()->GetComponent<TransformComponent>()->GetPosition();
 
 	if (GetGameObject())
 	{
-
 		Rectf newCollisionRect = m_CollisionRect;
 		Rectf newOtherCollisionRect = otherComp->m_CollisionRect;
 
-		newCollisionRect.left += GetGameObject()->GetComponent<TransformComponent>()->GetPosition().x;
-		newCollisionRect.bottom += GetGameObject()->GetComponent<TransformComponent>()->GetPosition().y;
+		newCollisionRect.left += getInfo.x;
+		newCollisionRect.bottom += getInfo.y;
 
-		newOtherCollisionRect.left += otherComp->GetGameObject()->GetComponent<TransformComponent>()->GetPosition().x;
-		newOtherCollisionRect.bottom += otherComp->GetGameObject()->GetComponent<TransformComponent>()->GetPosition().y;
+		newOtherCollisionRect.left += getInfoOther.x;
+		newOtherCollisionRect.bottom += getInfoOther.y;
 
 		return IsOverlapping(newCollisionRect, newOtherCollisionRect);
 	}

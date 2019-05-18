@@ -62,6 +62,16 @@ void SpriteComponent::SetAngle(double angle)
 	m_Angle = angle;
 }
 
+void SpriteComponent::SetVisibility(bool isVisible)
+{
+	m_IsVisible = isVisible;
+}
+
+bool SpriteComponent::GetVisibility()
+{
+	return m_IsVisible;
+}
+
 void SpriteComponent::Update(float deltaTime)
 {
 	m_AccuSec += deltaTime;
@@ -75,6 +85,11 @@ void SpriteComponent::Update(float deltaTime)
 
 void SpriteComponent::Draw() const
 {
+	if (!m_IsVisible)
+	{
+		return;
+	}
+
 	std::shared_ptr<GameObject> go = m_pGameObject.lock();
 	if (go)
 	{

@@ -62,9 +62,6 @@
     <ClCompile Include="World.cpp" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\Box2D\Box2D.vcxproj">
-      <Project>{252cb655-8fd7-404f-829a-ab952ef6399c}</Project>
-    </ProjectReference>
     <ProjectReference Include="..\Minigin\Minigin.vcxproj">
       <Project>{41b0ec47-d48c-4b0f-951b-d98595ffae0a}</Project>
     </ProjectReference>

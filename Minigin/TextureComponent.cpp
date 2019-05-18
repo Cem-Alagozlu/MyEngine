@@ -31,6 +31,10 @@ void TextureComponent::Update(float /*deltaTime*/)
 
 void TextureComponent::Draw() const
 {
+	if (!m_IsVisible)
+	{
+		return;
+	}
 	std::shared_ptr<GameObject> go = m_pGameObject.lock();
 	if (go)
 	{
@@ -38,5 +42,15 @@ void TextureComponent::Draw() const
 		Vector2f scale = go->GetComponent<TransformComponent>()->GetScale();
 		Renderer::GetInstance().RenderTexture(this->GetSDLTexture(),pos,scale);
 	}
+}
+
+void TextureComponent::SetVisibility(bool isVisible)
+{
+	m_IsVisible = isVisible;
+}
+
+bool TextureComponent::GetVisibility()
+{
+	return m_IsVisible;
 }
 

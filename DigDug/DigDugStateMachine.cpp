@@ -19,6 +19,7 @@ void DigDugStateMachine::Initialize()
 	m_Idle.AddTransitionState(&m_Move);
 	m_Idle.AddTransitionState(&m_Pump);
 
+
 	//MOVE
 	m_Move.AddTransitionState(&m_Idle);
 	m_Move.AddTransitionState(&m_Pump);
@@ -26,8 +27,8 @@ void DigDugStateMachine::Initialize()
 	//PUMP
 	m_Pump.AddTransitionState(&m_Move);
 	m_Pump.AddTransitionState(&m_Idle);
-
 }
+
 
 DigDugBlackboard & DigDugStateMachine::GetBlackboard()
 {

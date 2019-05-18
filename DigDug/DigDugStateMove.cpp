@@ -16,6 +16,7 @@ DigDugStateMove::~DigDugStateMove()
 void DigDugStateMove::Enter()
 {
 	std::shared_ptr<GameObject> player = GetBlackboard<DigDugBlackboard>()->m_pPlayer.lock();
+	std::dynamic_pointer_cast<Player>(player)->SetSpritesInvisible();
 
 	if (player)
 	{
@@ -40,6 +41,16 @@ void DigDugStateMove::Update()
 	Vector2f velocity = GetBlackboard<DigDugBlackboard>()->m_Velocity;
 	std::shared_ptr<GameObject> player = GetBlackboard<DigDugBlackboard>()->m_pPlayer.lock();
 
+	if (GetBlackboard<DigDugBlackboard>()->m_IsDigging)
+	{
+		std::dynamic_pointer_cast<Player>(player)->GetPlayerSprites(Player::PlayerSprites::walking)->SetVisibility(false);
+		std::dynamic_pointer_cast<Player>(player)->GetPlayerSprites(Player::PlayerSprites::digging)->SetVisibility(true);
+	}
+	else
+	{
+		std::dynamic_pointer_cast<Player>(player)->GetPlayerSprites(Player::PlayerSprites::walking)->SetVisibility(true);
+		std::dynamic_pointer_cast<Player>(player)->GetPlayerSprites(Player::PlayerSprites::digging)->SetVisibility(false);
+	}
 
 	if (player)
 	{
@@ -67,7 +78,6 @@ void DigDugStateMove::Update()
 
 	}
 
-	std::cout << "MOVE STATE \n";
 
 }
 

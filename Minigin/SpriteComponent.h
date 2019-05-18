@@ -16,6 +16,8 @@ public:
 
 	void FlipTexture(SDL_RendererFlip flipTexture);
 	void SetAngle(double angle);
+	void SetVisibility(bool isVisible);
+	bool GetVisibility();
 
 	SpriteComponent(const SpriteComponent& other) = delete;
 	SpriteComponent(SpriteComponent&& other) noexcept = delete;
@@ -33,6 +35,7 @@ private:
 	float m_AccuSec{};
 	int m_CurFrame{};
 	bool m_IsLocked{ false };
+	bool m_IsVisible{ true };
 
 	const float m_SpriteSheetLeft;
 	const float m_SpriteSheetTop;

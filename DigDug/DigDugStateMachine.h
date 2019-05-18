@@ -18,7 +18,6 @@ private:
 	DigDugStateIdle m_Idle;
 	DigDugStateMove m_Move;
 	DigDugStatePump m_Pump;
-
 	DigDugBlackboard m_Blackboard;
 };
 

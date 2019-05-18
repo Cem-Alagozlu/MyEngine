@@ -14,11 +14,15 @@ public:
 	void Update(float deltaTime) override;
 	void Draw() const override;
 
+	void SetVisibility(bool isVisible);
+	bool GetVisibility();
+
 	TextureComponent(const TextureComponent &) = delete;
 	TextureComponent(TextureComponent &&) = delete;
 	TextureComponent & operator= (const TextureComponent &) = delete;
 	TextureComponent & operator= (const TextureComponent &&) = delete;
 private:
 	SDL_Texture* m_pTexture;
+	bool m_IsVisible = true;
 };
 
