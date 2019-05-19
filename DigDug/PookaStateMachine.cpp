@@ -9,7 +9,9 @@ void PookaStateMachine::Update()
 
 void PookaStateMachine::Initialize()
 {
-	//m_Idle.Initialize(&m_Blackboard);
+	m_Move.Initialize(&m_Blackboard);
+
+	InitializeState(&m_Move);
 }
 
 PookaBlackboard& PookaStateMachine::GetBlackboard()

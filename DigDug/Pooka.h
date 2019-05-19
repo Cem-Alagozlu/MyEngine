@@ -2,6 +2,7 @@
 #include "GameObject.h"
 #include "CollisionComponent.h"
 #include "SpriteComponent.h"
+#include "PookaStateMachine.h"
 
 class Pooka final : public GameObject
 {
@@ -18,13 +19,18 @@ public:
 	~Pooka();
 
 	void Initialize();
-	void OnOverlap(std::shared_ptr<CollisionComponent> playerCollision, std::shared_ptr<CollisionComponent> otherCollision);
-	std::shared_ptr<SpriteComponent> GetPookaSprites(PookaSprites playerSprites);
+	void OnOverlap(std::shared_ptr<CollisionComponent> pookaCollision, std::shared_ptr<CollisionComponent> otherCollision);
+	std::shared_ptr<SpriteComponent> GetPookaSprites(PookaSprites pookaSprites);
+
 	void SetSpritesInvisible();
 
 protected:
 	virtual void Update(float deltaTime) override;
 	void Draw() const;
+
+private:
+	PookaStateMachine m_Pooka;
+	std::vector<std::shared_ptr<SpriteComponent>> m_pSprites;
 
 	float m_Speed;
 };

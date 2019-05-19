@@ -9,6 +9,9 @@ public:
 	PookaBlackboard();
 	~PookaBlackboard();
 
+
+
+	std::weak_ptr<GameObject> m_pPooka;
 	Vector2f m_Velocity;
 };
 

@@ -38,6 +38,7 @@
     <ClInclude Include="Pooka.h" />
     <ClInclude Include="PookaBlackboard.h" />
     <ClInclude Include="PookaStateMachine.h" />
+    <ClInclude Include="PookaStateMove.h" />
     <ClInclude Include="Tunnel.h" />
     <ClInclude Include="World.h" />
   </ItemGroup>
@@ -66,6 +67,7 @@
     <ClCompile Include="Pooka.cpp" />
     <ClCompile Include="PookaBlackboard.cpp" />
     <ClCompile Include="PookaStateMachine.cpp" />
+    <ClCompile Include="PookaStateMove.cpp" />
     <ClCompile Include="Tunnel.cpp" />
     <ClCompile Include="World.cpp" />
   </ItemGroup>

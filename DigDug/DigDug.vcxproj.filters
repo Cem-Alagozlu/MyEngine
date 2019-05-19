@@ -96,6 +96,7 @@
     <ClInclude Include="PookaStateMachine.h">
       <Filter>Characters\Pooka\StateMachine</Filter>
     </ClInclude>
+    <ClInclude Include="PookaStateMove.h" />
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="MenuExtra.cpp">
@@ -161,5 +162,6 @@
     <ClCompile Include="PookaStateMachine.cpp">
       <Filter>Characters\Pooka\StateMachine</Filter>
     </ClCompile>
+    <ClCompile Include="PookaStateMove.cpp" />
   </ItemGroup>
 </Project>

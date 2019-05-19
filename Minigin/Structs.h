@@ -15,6 +15,20 @@ inline Vector2f operator+(const Vector2f& lhs, const Vector2f& rhs)
 	return newVec;
 }
 
+inline bool operator==(const Vector2f& lhs, const Vector2f& rhs)
+{
+	if (lhs.x == rhs.x && lhs.y == rhs.y)
+	{
+		return true;
+	}
+	return false;
+}
+
+float Distance(const Vector2f& lhs, const Vector2f& rhs)
+{
+	return sqrt(pow((lhs.x - rhs.x), 2) + pow((lhs.y - rhs.y), 2));
+}
+
 struct Color3i
 {
 	int r{};

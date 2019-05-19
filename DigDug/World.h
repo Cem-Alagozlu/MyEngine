@@ -3,18 +3,40 @@
 #include "Tunnel.h"
 #include "CollisionComponent.h"
 #include "Player.h"
+#include <array>
 
 class Scene;
+
+struct NeighbouringTiles
+{
+	std::array<std::shared_ptr<Tunnel>, 4> tunnels;
+
+	enum Direction
+	{
+		left,
+		right,
+		up,
+		down
+	};
+
+	std::shared_ptr<Tunnel> operator[](Direction dir)
+	{
+		return tunnels[dir];
+	}
+};
 
 class World final : public GameObject
 {
 public:
+
 	World();
 	~World();
 
 	void Initialize(Scene& scene);
 	void OnOverlap(std::shared_ptr<CollisionComponent> playerComponent, std::shared_ptr<CollisionComponent> otherComponent);
 	void SetPlayer(std::shared_ptr<Player> player);
+	NeighbouringTiles GetNeighbours(std::shared_ptr<Tunnel> tunnel);
+	std::shared_ptr<Tunnel> GetTarget(std::shared_ptr<Player> player, std::shared_ptr<GameObject> enemy, NeighbouringTiles& neighbours);
 
 
 protected:
