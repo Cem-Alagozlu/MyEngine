@@ -4,6 +4,7 @@
 #include "StateMachine.h"
 #include "DigDugBlackboard.h"
 #include "DigDugStatePump.h"
+#include "DigDugStateDig.h"
 
 class DigDugStateMachine final : public StateMachine
 {
@@ -18,6 +19,7 @@ private:
 	DigDugStateIdle m_Idle;
 	DigDugStateMove m_Move;
 	DigDugStatePump m_Pump;
+	DigDugStateDig m_Dig;
 	DigDugBlackboard m_Blackboard;
 };
 

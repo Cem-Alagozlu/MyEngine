@@ -32,14 +32,11 @@ void DigDugStateIdle::Exit()
 
 void DigDugStateIdle::Update()
 {
-	std::cout << "IDLE STATE \n";
 }
 
 bool DigDugStateIdle::CanTransition()
 {
 	Vector2f velocity = GetBlackboard<DigDugBlackboard>()->m_Velocity;
-	std::cout << "Velocity X: " << velocity.x << "Velocity Y: " << velocity.y << std::endl;
-
 	if (velocity.x == 0 && velocity.y == 0)
 	{
 		return true;

@@ -21,6 +21,7 @@
   <ItemGroup>
     <ClInclude Include="DigDugBlackboard.h" />
     <ClInclude Include="DigDugPCH.h" />
+    <ClInclude Include="DigDugStateDig.h" />
     <ClInclude Include="DigDugStateIdle.h" />
     <ClInclude Include="DigDugStateMachine.h" />
     <ClInclude Include="DigDugStateMove.h" />
@@ -34,6 +35,9 @@
     <ClInclude Include="MenuSettings.h" />
     <ClInclude Include="Minigin.h" />
     <ClInclude Include="Player.h" />
+    <ClInclude Include="Pooka.h" />
+    <ClInclude Include="PookaBlackboard.h" />
+    <ClInclude Include="PookaStateMachine.h" />
     <ClInclude Include="Tunnel.h" />
     <ClInclude Include="World.h" />
   </ItemGroup>
@@ -45,6 +49,7 @@
       <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">Create</PrecompiledHeader>
       <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Release|x64'">Create</PrecompiledHeader>
     </ClCompile>
+    <ClCompile Include="DigDugStateDig.cpp" />
     <ClCompile Include="DigDugStateIdle.cpp" />
     <ClCompile Include="DigDugStateMachine.cpp" />
     <ClCompile Include="DigDugStateMove.cpp" />
@@ -58,6 +63,9 @@
     <ClCompile Include="MenuSettings.cpp" />
     <ClCompile Include="Minigin.cpp" />
     <ClCompile Include="Player.cpp" />
+    <ClCompile Include="Pooka.cpp" />
+    <ClCompile Include="PookaBlackboard.cpp" />
+    <ClCompile Include="PookaStateMachine.cpp" />
     <ClCompile Include="Tunnel.cpp" />
     <ClCompile Include="World.cpp" />
   </ItemGroup>

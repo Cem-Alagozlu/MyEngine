@@ -22,6 +22,15 @@
     <Filter Include="Characters\DigDug\Player">
       <UniqueIdentifier>{862949f7-3286-40e7-8e9b-a4044a7aaccc}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Characters\Pooka">
+      <UniqueIdentifier>{61c1707f-2398-4a52-88d9-5e1b05419de2}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Characters\Pooka\Player">
+      <UniqueIdentifier>{2d61c01b-931c-4193-8ee1-0cc6320e5287}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Characters\Pooka\StateMachine">
+      <UniqueIdentifier>{82e19098-ddc8-482b-9f95-06ab5c0f5b7f}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="MenuScene.h">
@@ -75,6 +84,18 @@
     <ClInclude Include="Tunnel.h">
       <Filter>Level</Filter>
     </ClInclude>
+    <ClInclude Include="DigDugStateDig.h">
+      <Filter>Characters\DigDug\StateMachine</Filter>
+    </ClInclude>
+    <ClInclude Include="Pooka.h">
+      <Filter>Characters\Pooka\Player</Filter>
+    </ClInclude>
+    <ClInclude Include="PookaBlackboard.h">
+      <Filter>Characters\Pooka\StateMachine</Filter>
+    </ClInclude>
+    <ClInclude Include="PookaStateMachine.h">
+      <Filter>Characters\Pooka\StateMachine</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="MenuExtra.cpp">
@@ -127,6 +148,18 @@
     </ClCompile>
     <ClCompile Include="Tunnel.cpp">
       <Filter>Level</Filter>
+    </ClCompile>
+    <ClCompile Include="DigDugStateDig.cpp">
+      <Filter>Characters\DigDug\StateMachine</Filter>
+    </ClCompile>
+    <ClCompile Include="Pooka.cpp">
+      <Filter>Characters\Pooka\Player</Filter>
+    </ClCompile>
+    <ClCompile Include="PookaBlackboard.cpp">
+      <Filter>Characters\Pooka\StateMachine</Filter>
+    </ClCompile>
+    <ClCompile Include="PookaStateMachine.cpp">
+      <Filter>Characters\Pooka\StateMachine</Filter>
     </ClCompile>
   </ItemGroup>
 </Project>

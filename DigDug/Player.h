@@ -34,6 +34,8 @@ private:
 	float m_Speed;
 	bool m_IsButtonPressed;
 	bool m_HasSpearThrown;
+	int m_Pump;
+	float m_ElapsedSec;
 
 	void MoveLeft();
 	void MoveRight();

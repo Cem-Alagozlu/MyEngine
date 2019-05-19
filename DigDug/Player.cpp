@@ -28,12 +28,13 @@ void Player::Initialize()
 	AddComponent(std::make_shared<TransformComponent>());
 
 	auto spriteWalking = std::make_shared<SpriteComponent>("../Resources/Character/DigDug/Walk.png", 0.0f, 0.0f, 27.0f, 14.0f, 2, 1, 8);
-	auto spriteDigging = std::make_shared<SpriteComponent>("../Resources/Character/DigDug/Dig.png", 0.0f, 0.0f, 29.0f, 14.0f,2,1,8);
-	auto playerCollision = std::make_shared<CollisionComponent>(CollisionComponent::CollisionType::Dynamic, Rectf(0.0f, 0.0f, 14.0f, 14.0f));
+	auto spriteDigging = std::make_shared<SpriteComponent>("../Resources/Character/DigDug/Dig.png", 0.0f, 0.0f, 29.0f, 14.0f,2,1,6);
+	auto playerCollision = std::make_shared<CollisionComponent>(CollisionComponent::CollisionType::Dynamic, Rectf(3.0f, 3.0f, 12.0f, 12.0f));
 
 	m_pSprites.push_back(spriteWalking);
 	m_pSprites.push_back(spriteDigging);
 	SetSpritesInvisible();
+	m_pSprites[static_cast<int>(PlayerSprites::walking)]->SetVisibility(true);
 	
 
 	GetComponent<TransformComponent>()->SetScale(Vector2f{ 1.0f,2.3f });
@@ -54,16 +55,15 @@ void Player::OnOverlap(std::shared_ptr<CollisionComponent> playerCollision, std:
 
 	if (std::shared_ptr<Tunnel> tunnel = std::dynamic_pointer_cast<Tunnel>(otherCollision->GetGameObject()))
 	{
-		if (!tunnel->GetComponent<TextureComponent>()->GetVisibility())
-		{
-			m_DigDug.GetBlackboard().m_IsDigging = false;
-		}
-
 		m_DigDug.GetBlackboard().m_IsDigging = true;
 		tunnel->GetComponent<TextureComponent>()->SetVisibility(true);
+	}
+	else
+	{
+		m_DigDug.GetBlackboard().m_IsDigging = false;
+	}
 		
 
-	}
 }
 
 std::shared_ptr<SpriteComponent> Player::GetPlayerSprites(PlayerSprites playerSprites)
@@ -75,6 +75,7 @@ void Player::Update(float deltaTime)
 {
 	GameObject::Update(deltaTime);
 	m_DigDug.Update();
+	m_ElapsedSec += deltaTime;
 
 	Vector2f currPos = GetComponent<TransformComponent>()->GetPosition();
 	Vector2f velocity = m_DigDug.GetBlackboard().m_Velocity;
@@ -82,8 +83,6 @@ void Player::Update(float deltaTime)
 	GetComponent<TransformComponent>()->SetPosition(velocity + currPos);
 	m_DigDug.GetBlackboard().m_Velocity = Vector2f{ 0,0 };
 	m_IsButtonPressed = false;
-	m_DigDug.GetBlackboard().m_IsDigging = false;
-
 }
 
 void Player::Draw() const
@@ -115,7 +114,6 @@ void Player::MoveRight()
 		m_DigDug.GetBlackboard().m_Velocity.x = m_Speed * Timing::GetInstance().GetDeltaTime();
 		m_IsButtonPressed = true;
 	}
-	std::cout << "Move right \n";
 }
 
 void Player::MoveUp()
@@ -125,7 +123,6 @@ void Player::MoveUp()
 		m_DigDug.GetBlackboard().m_Velocity.y = -m_Speed * Timing::GetInstance().GetDeltaTime();
 		m_IsButtonPressed = true;
 	}
-	std::cout << "Move up \n";
 }
 
 void Player::MoveDown()
@@ -135,10 +132,39 @@ void Player::MoveDown()
 		m_DigDug.GetBlackboard().m_Velocity.y = m_Speed * Timing::GetInstance().GetDeltaTime();
 		m_IsButtonPressed = true;
 	}
-	std::cout << "Move down \n";
 }
 
 void Player::Pump()
 {
-	std::cout << "Pump\n";
+	m_ElapsedSec = 0.0f;
+
+
+	if (m_ElapsedSec >= 1.0f)
+	{
+		if (--m_Pump > 0)
+		{
+			m_DigDug.GetBlackboard().m_IsPumping = false;
+		}
+		m_ElapsedSec = 0.0f;
+	}
+
+	m_DigDug.GetBlackboard().m_IsPumping = true;
+	++m_Pump;
+
+
+	switch (m_Pump) 
+	{
+	case 0:
+		std::cout << "THREW THE PUMP\n";
+		break;
+	case 1:
+		std::cout << "Pump phase 01\n";
+		break;
+	case 2:
+		std::cout << "Pump phase 02\n";
+		break;
+	case 3:
+		std::cout << "Pump phase 02\n";
+		break;
+	}
 }
