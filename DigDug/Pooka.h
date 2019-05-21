@@ -3,6 +3,7 @@
 #include "CollisionComponent.h"
 #include "SpriteComponent.h"
 #include "PookaStateMachine.h"
+#include "World.h"
 
 class Pooka final : public GameObject
 {
@@ -18,7 +19,7 @@ public:
 	Pooka();
 	~Pooka();
 
-	void Initialize();
+	void Initialize(std::shared_ptr<World> pWorld,std::shared_ptr<Player> pPlayer);
 	void OnOverlap(std::shared_ptr<CollisionComponent> pookaCollision, std::shared_ptr<CollisionComponent> otherCollision);
 	std::shared_ptr<SpriteComponent> GetPookaSprites(PookaSprites pookaSprites);
 
@@ -31,7 +32,9 @@ protected:
 private:
 	PookaStateMachine m_Pooka;
 	std::vector<std::shared_ptr<SpriteComponent>> m_pSprites;
-
+	Vector2f m_TargetPos;
+	std::weak_ptr<World> m_pWorld;
+	std::weak_ptr<Player> m_pPlayer;
 	float m_Speed;
 };
 

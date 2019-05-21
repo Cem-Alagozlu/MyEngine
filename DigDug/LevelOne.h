@@ -2,6 +2,7 @@
 #include "Scene.h"
 #include "Player.h"
 #include "World.h"
+#include "Pooka.h"
 
 class LevelOne : public Scene
 {
@@ -22,5 +23,6 @@ protected:
 private:
 	std::shared_ptr<Player> m_pPlayer;
 	std::shared_ptr<World> m_pWorld;
+	std::shared_ptr<Pooka> m_pPooka;
 };
 

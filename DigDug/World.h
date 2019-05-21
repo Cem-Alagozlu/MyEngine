@@ -23,6 +23,12 @@ struct NeighbouringTiles
 	{
 		return tunnels[dir];
 	}
+
+	void Set(Direction dir, std::shared_ptr<Tunnel> pTunnel)
+	{
+		tunnels[dir] = pTunnel;
+	}
+
 };
 
 class World final : public GameObject
@@ -36,7 +42,7 @@ public:
 	void OnOverlap(std::shared_ptr<CollisionComponent> playerComponent, std::shared_ptr<CollisionComponent> otherComponent);
 	void SetPlayer(std::shared_ptr<Player> player);
 	NeighbouringTiles GetNeighbours(std::shared_ptr<Tunnel> tunnel);
-	std::shared_ptr<Tunnel> GetTarget(std::shared_ptr<Player> player, std::shared_ptr<GameObject> enemy, NeighbouringTiles& neighbours);
+	Vector2f GetTarget(std::shared_ptr<Player> player, std::shared_ptr<GameObject> enemy);
 
 
 protected:

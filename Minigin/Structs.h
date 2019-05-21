@@ -15,6 +15,17 @@ inline Vector2f operator+(const Vector2f& lhs, const Vector2f& rhs)
 	return newVec;
 }
 
+inline Vector2f operator-(const Vector2f& lhs, const Vector2f& rhs)
+{
+	float x = lhs.x - rhs.x;
+	float y = lhs.y - rhs.y;
+
+	Vector2f newVec{ x,y };
+
+	return newVec;
+}
+
+
 inline bool operator==(const Vector2f& lhs, const Vector2f& rhs)
 {
 	if (lhs.x == rhs.x && lhs.y == rhs.y)
@@ -23,10 +34,22 @@ inline bool operator==(const Vector2f& lhs, const Vector2f& rhs)
 	}
 	return false;
 }
-
-float Distance(const Vector2f& lhs, const Vector2f& rhs)
+//"heavy function -> inline" 
+inline float Distance(const Vector2f& lhs, const Vector2f& rhs)
 {
 	return sqrt(pow((lhs.x - rhs.x), 2) + pow((lhs.y - rhs.y), 2));
+}
+
+inline Vector2f Normalize(const Vector2f& lhs)
+{
+	Vector2f newVector = lhs;
+	float magnitude = sqrt(pow(lhs.x,2) + pow(lhs.y,2));
+
+
+	newVector.x /= magnitude;
+	newVector.y /= magnitude;
+
+	return newVector;
 }
 
 struct Color3i

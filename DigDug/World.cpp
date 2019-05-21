@@ -60,6 +60,7 @@ NeighbouringTiles World::GetNeighbours(std::shared_ptr<Tunnel> tunnel)
 		{
 			return true;
 		}
+		return false;
 	});
 
 
@@ -71,6 +72,7 @@ NeighbouringTiles World::GetNeighbours(std::shared_ptr<Tunnel> tunnel)
 		{
 			return true;
 		}
+		return false;
 	});
 
 	auto itUp = std::find_if(m_pTunnels.begin(), m_pTunnels.end(),
@@ -81,6 +83,7 @@ NeighbouringTiles World::GetNeighbours(std::shared_ptr<Tunnel> tunnel)
 		{
 			return true;
 		}
+		return false;
 	});
 
 	auto itDown = std::find_if(m_pTunnels.begin(), m_pTunnels.end(),
@@ -91,13 +94,26 @@ NeighbouringTiles World::GetNeighbours(std::shared_ptr<Tunnel> tunnel)
 		{
 			return true;
 		}
+		return false;
 	});
 
+	if (itDown != m_pTunnels.end())
+	{
+		neighbourTiles.Set(NeighbouringTiles::down, *itDown);
+	}
+	if (itUp != m_pTunnels.end())
+	{
+		neighbourTiles.Set(NeighbouringTiles::up, *itUp);
+	}
+	if (itRight != m_pTunnels.end())
+	{
 
-	neighbourTiles[NeighbouringTiles::left] = *itLeft;
-	neighbourTiles[NeighbouringTiles::right] = *itRight;
-	neighbourTiles[NeighbouringTiles::up ]= *itUp;
-	neighbourTiles[NeighbouringTiles::down] = *itDown;
+		neighbourTiles.Set(NeighbouringTiles::right, *itRight);
+	}
+	if (itLeft != m_pTunnels.end())
+	{
+		neighbourTiles.Set(NeighbouringTiles::left, *itLeft);
+	}
 
 	//pos asignen
 	//update van enemy naar targetpos
@@ -105,30 +121,50 @@ NeighbouringTiles World::GetNeighbours(std::shared_ptr<Tunnel> tunnel)
 	return neighbourTiles;
 }
 
-std::shared_ptr<Tunnel> World::GetTarget(std::shared_ptr<Player> player, std::shared_ptr<GameObject> enemy,
-	NeighbouringTiles& neighbours)
+Vector2f World::GetTarget(std::shared_ptr<Player> player, std::shared_ptr<GameObject> enemy)
 {
-	auto posPlayer = player->GetComponent<TransformComponent>()->GetPosition();
-	float distanceLeft{}, distanceRight{}, distanceUp{}, distanceDown{};
+	Vector2f pos = enemy->GetComponent<TransformComponent>()->GetPosition();
 
+	auto it = std::min_element(m_pTunnels.begin(),m_pTunnels.end(),
+		[pos](std::shared_ptr<Tunnel> pTunnel01, std::shared_ptr<Tunnel> pTunnel02)
+	{
+		float tunnelDistance01 = Distance(pos, pTunnel01->GetComponent<TransformComponent>()->GetPosition());
+		float tunnelDistance02 = Distance(pos, pTunnel02->GetComponent<TransformComponent>()->GetPosition());
+
+		return tunnelDistance01 < tunnelDistance02;
+	});
+
+
+	NeighbouringTiles tiles = GetNeighbours(*it);
+
+
+	auto posPlayer = player->GetComponent<TransformComponent>()->GetPosition();
 	float currMinDistance = std::numeric_limits<float>::max();
 	std::shared_ptr<Tunnel> currClosestTunnel;
 
 
-	for (int i = 0; i < neighbours.tunnels.size(); i++)
+	for (int i = 0; i < tiles.tunnels.size(); i++)
 	{
-		if (neighbours.tunnels[i]->GetComponent<SpriteComponent>()->GetVisibility())
+		if (!tiles.tunnels[i])
 		{
-			float distance = Distance(player->GetComponent<TransformComponent>()->GetPosition(), neighbours.tunnels[i]->GetComponent<TransformComponent>()->GetPosition());
+			continue;
+		}
+		if (tiles.tunnels[i]->GetComponent<TextureComponent>()->GetVisibility())
+		{
+			float distance = Distance(player->GetComponent<TransformComponent>()->GetPosition(), tiles.tunnels[i]->GetComponent<TransformComponent>()->GetPosition());
 
 			if (distance < currMinDistance)
 			{
 				currMinDistance = distance;
-				currClosestTunnel = neighbours.tunnels[i];
+				currClosestTunnel = tiles.tunnels[i];
 			}
 		}
 	}
-	return currClosestTunnel;
+	if (!currClosestTunnel)
+	{
+		return player->GetComponent<TransformComponent>()->GetPosition();
+	}
+	return currClosestTunnel->GetComponent<TransformComponent>()->GetPosition();
 }
 
 
