@@ -25,6 +25,16 @@ inline Vector2f operator-(const Vector2f& lhs, const Vector2f& rhs)
 	return newVec;
 }
 
+inline Vector2f operator*(const Vector2f& lhs, const float& scalar)
+{
+	float x = lhs.x * scalar;
+	float y = lhs.y * scalar;
+
+	Vector2f newVec{ x,y };
+
+	return newVec;
+}
+
 
 inline bool operator==(const Vector2f& lhs, const Vector2f& rhs)
 {

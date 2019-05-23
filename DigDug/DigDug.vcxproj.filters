@@ -13,9 +13,6 @@
     <Filter Include="Level">
       <UniqueIdentifier>{36650a7f-74d1-4422-8ca1-057235e5df95}</UniqueIdentifier>
     </Filter>
-    <Filter Include="Menu">
-      <UniqueIdentifier>{439dcd01-0985-4e06-9445-276980703b3f}</UniqueIdentifier>
-    </Filter>
     <Filter Include="Main">
       <UniqueIdentifier>{8c02ddb0-dbd7-491f-a9b4-17286154248c}</UniqueIdentifier>
     </Filter>
@@ -30,6 +27,9 @@
     </Filter>
     <Filter Include="Characters\Pooka\StateMachine">
       <UniqueIdentifier>{82e19098-ddc8-482b-9f95-06ab5c0f5b7f}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Menu">
+      <UniqueIdentifier>{439dcd01-0985-4e06-9445-276980703b3f}</UniqueIdentifier>
     </Filter>
   </ItemGroup>
   <ItemGroup>
@@ -96,7 +96,12 @@
     <ClInclude Include="PookaStateMachine.h">
       <Filter>Characters\Pooka\StateMachine</Filter>
     </ClInclude>
-    <ClInclude Include="PookaStateMove.h" />
+    <ClInclude Include="PookaStateMove.h">
+      <Filter>Characters\Pooka\StateMachine</Filter>
+    </ClInclude>
+    <ClInclude Include="PookaStateTeleport.h">
+      <Filter>Characters\Pooka\StateMachine</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="MenuExtra.cpp">
@@ -162,6 +167,11 @@
     <ClCompile Include="PookaStateMachine.cpp">
       <Filter>Characters\Pooka\StateMachine</Filter>
     </ClCompile>
-    <ClCompile Include="PookaStateMove.cpp" />
+    <ClCompile Include="PookaStateMove.cpp">
+      <Filter>Characters\Pooka\StateMachine</Filter>
+    </ClCompile>
+    <ClCompile Include="PookaStateTeleport.cpp">
+      <Filter>Characters\Pooka\StateMachine</Filter>
+    </ClCompile>
   </ItemGroup>
 </Project>

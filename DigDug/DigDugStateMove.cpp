@@ -3,6 +3,7 @@
 #include "DigDugBlackboard.h"
 #include "SpriteComponent.h"
 #include "Player.h"
+#include "Timing.h"
 
 DigDugStateMove::DigDugStateMove()
 {
@@ -68,6 +69,8 @@ void DigDugStateMove::Update()
 
 	}
 
+
+	
 
 }
 

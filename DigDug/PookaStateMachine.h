@@ -2,6 +2,7 @@
 #include "StateMachine.h"
 #include "PookaBlackboard.h"
 #include "PookaStateMove.h"
+#include "PookaStateTeleport.h"
 
 class PookaStateMachine final : public StateMachine
 {
@@ -15,7 +16,7 @@ public:
 private:
 	//add states here
 	PookaStateMove m_Move;
-
+	PookaStateTeleport m_Teleport;
 	PookaBlackboard m_Blackboard;
 };
 

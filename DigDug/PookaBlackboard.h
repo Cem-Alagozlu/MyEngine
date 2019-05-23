@@ -12,6 +12,7 @@ public:
 
 
 	std::weak_ptr<GameObject> m_pPooka;
+	bool m_IsTeleporting;
 	Vector2f m_Velocity;
 };
 
