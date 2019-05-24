@@ -1,22 +1,25 @@
 #pragma once
 
-class SoundStream
+namespace cem
 {
-public:
-	explicit SoundStream(std::string path);
-	~SoundStream();
-	SoundStream(const SoundStream& other) = default;
-	SoundStream& operator=(const SoundStream& rhs) = default;
+	class SoundStream
+	{
+	public:
+		explicit SoundStream(std::string path);
+		~SoundStream();
+		SoundStream(const SoundStream& other) = default;
+		SoundStream& operator=(const SoundStream& rhs) = default;
 
-	bool IsLoaded() const;
-	void Play(bool repeat) const;
-	static void Stop();
-	static void Pause();
-	static void Resume();
-	static void SetVolume(int value);
-	static int GetVolume();
-	static bool IsPlaying();
+		bool IsLoaded() const;
+		void Play(bool repeat) const;
+		static void Stop();
+		static void Pause();
+		static void Resume();
+		static void SetVolume(int value);
+		static int GetVolume();
+		static bool IsPlaying();
 
-private:
-	std::shared_ptr<Mix_Music> m_pMixMusic;
-};
+	private:
+		std::shared_ptr<Mix_Music> m_pMixMusic;
+	};
+}

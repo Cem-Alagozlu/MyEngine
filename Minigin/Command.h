@@ -1,19 +1,20 @@
 #pragma once
 
-
-class Command
+namespace cem
 {
+	class Command
+	{
 
-public:
-	Command();
-	~Command();
+	public:
+		Command();
+		~Command();
 
-	void AddCallBack(std::function<void()> functionCallBack);
-	void Execute();
+		void AddCallBack(std::function<void()> functionCallBack);
+		void Execute();
 
 
-private:
-	std::vector<std::function<void()>> m_CallBacks;
+	private:
+		std::vector<std::function<void()>> m_CallBacks;
 
-};
-
+	};
+}

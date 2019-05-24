@@ -2,7 +2,8 @@
 
 struct SDL_Window;
 
-
+namespace cem
+{
 	class Minigin
 	{
 		const int msPerFrame = 16; //16 for 60 fps, 33 for 30 fps
@@ -23,3 +24,4 @@ struct SDL_Window;
 
 		GameState m_GameState;
 	};
+}

@@ -1,16 +1,18 @@
 #pragma once
 #include "State.h"
 
-class DigDugStateMove final : public State
+namespace cem
 {
-public:
-	DigDugStateMove();
-	virtual ~DigDugStateMove();
+	class DigDugStateMove final : public State
+	{
+	public:
+		DigDugStateMove();
+		virtual ~DigDugStateMove();
 
-protected:
-	void Enter() override;
-	void Exit() override;
-	void Update() override;
-	bool CanTransition() override;
-};
-
+	protected:
+		void Enter() override;
+		void Exit() override;
+		void Update() override;
+		bool CanTransition() override;
+	};
+}

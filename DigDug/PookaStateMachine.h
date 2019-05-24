@@ -4,19 +4,22 @@
 #include "PookaStateMove.h"
 #include "PookaStateTeleport.h"
 
-class PookaStateMachine final : public StateMachine
+namespace cem
 {
-public:
-	PookaStateMachine() = default;
+	class PookaStateMachine final : public StateMachine
+	{
+	public:
+		PookaStateMachine() = default;
 
-	void Update() override;
-	virtual void Initialize() override;
-	PookaBlackboard& GetBlackboard();
+		void Update() override;
+		virtual void Initialize() override;
+		PookaBlackboard& GetBlackboard();
 
-private:
-	//add states here
-	PookaStateMove m_Move;
-	PookaStateTeleport m_Teleport;
-	PookaBlackboard m_Blackboard;
-};
+	private:
+		//add states here
+		PookaStateMove m_Move;
+		PookaStateTeleport m_Teleport;
+		PookaBlackboard m_Blackboard;
+	};
 
+}

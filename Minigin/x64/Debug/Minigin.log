@@ -1,16 +1,4 @@
-﻿  CollisionComponent.cpp
-  FPSComponent.cpp
-  GameObject.cpp
-  PhysicsManager.cpp
-  Renderer.cpp
-  ResourceManager.cpp
-  Scene.cpp
-  SceneManager.cpp
-  SpriteComponent.cpp
-  TextDrawComponent.cpp
-  TextureComponent.cpp
-  TransformComponent.cpp
-  Generating Code...
+﻿  InputManager.cpp
   Minigin.vcxproj -> C:\Users\Cem Alagözlü\Desktop\MyEngine\x64\Debug\Minigin.lib
   C:\Users\Cem Alagözlü\Desktop\MyEngine\3rdParty\SDL2\lib\x64\SDL2.dll
   1 File(s) copied

@@ -1,21 +1,24 @@
 #pragma once
 #include "State.h"
 
-class StateMachine
+namespace cem
 {
-public:
-	StateMachine() = default;
-	virtual ~StateMachine() = default;
+	class StateMachine
+	{
+	public:
+		StateMachine() = default;
+		virtual ~StateMachine() = default;
 
 
-	virtual void Update();
-	virtual void Initialize() = 0;
+		virtual void Update();
+		virtual void Initialize() = 0;
 
-protected:
-	void Transit(State* newState);
-	void InitializeState(State* initState);
+	protected:
+		void Transit(State* newState);
+		void InitializeState(State* initState);
 
-private:
-	Blackboard* m_pBlackboard;
-	State* m_pState;
-};
+	private:
+		Blackboard* m_pBlackboard;
+		State* m_pState;
+	};
+}

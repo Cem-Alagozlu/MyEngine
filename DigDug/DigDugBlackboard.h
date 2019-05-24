@@ -1,18 +1,20 @@
 #pragma once
 #include "Blackboard.h"
 #include "Structs.h"
+#include "GameObject.h"
 
-class GameObject;
-class DigDugBlackboard final : public Blackboard
+namespace cem
 {
-public:
-	DigDugBlackboard();
-	~DigDugBlackboard();
+	class DigDugBlackboard final : public Blackboard
+	{
+	public:
+		DigDugBlackboard();
+		~DigDugBlackboard();
 
 
-	Vector2f m_Velocity;
-	bool m_IsDigging;
-	bool m_IsPumping;
-	std::weak_ptr<GameObject> m_pPlayer;
-};
-
+		Vector2f m_Velocity;
+		bool m_IsDigging;
+		bool m_IsPumping;
+		std::weak_ptr<cem::GameObject> m_pPlayer;
+	};
+}

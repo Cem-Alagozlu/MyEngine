@@ -2,17 +2,23 @@
 #include "Blackboard.h"
 #include "Structs.h"
 
-class GameObject;
-class PookaBlackboard final : public Blackboard
+namespace cem
 {
-public:
-	PookaBlackboard();
-	~PookaBlackboard();
+	class GameObject;
+	class PookaBlackboard final : public Blackboard
+	{
+	public:
+		PookaBlackboard();
+		~PookaBlackboard();
 
 
 
-	std::weak_ptr<GameObject> m_pPooka;
-	bool m_IsTeleporting;
-	Vector2f m_Velocity;
-};
+		std::weak_ptr<GameObject> m_pPooka;
+		bool m_IsTeleporting = false;
+		Vector2f m_Velocity;
+		float m_Speed;
+		float m_RandomTeleportTimer;
+		float m_MinTeleportTimer;
+	};
+}
 

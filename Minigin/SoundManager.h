@@ -3,32 +3,35 @@
 #include "SoundStream.h"
 #include "Singleton.h"
 
-
-class SoundManager : public Singleton<SoundManager>
+namespace cem
 {
-public:
-	SoundManager();
 
-	 void InitSoundStreams();
-	 void InitSoundEffects();
+	class SoundManager : public cem::Singleton<SoundManager>
+	{
+	public:
+		SoundManager();
 
-	// SOUND STREAM
-	 void PlaySoundStream(const std::string& name, bool repeat);
-	 void VolumeUpSoundStream();
-	 void VolumeDownSoundStream();
-	 int GetVolumeSoundStream();
+		void InitSoundStreams();
+		void InitSoundEffects();
 
-	// SOUND-EFFECTS
-	 void PlaySoundEffect(const std::string& name, bool repeat, bool isPlaying);
-	 void VolumeUpSoundEffect();
-	 void VolumeDownSoundEffect();
-	 int GetVolumeSoundEffect();
-	 void StopSoundEffect(const std::string& name);
+		// SOUND STREAM
+		void PlaySoundStream(const std::string& name, bool repeat);
+		void VolumeUpSoundStream();
+		void VolumeDownSoundStream();
+		int GetVolumeSoundStream();
 
-	// EXTRA
-	 bool IsPlaying(std::string name);
+		// SOUND-EFFECTS
+		void PlaySoundEffect(const std::string& name, bool repeat, bool isPlaying);
+		void VolumeUpSoundEffect();
+		void VolumeDownSoundEffect();
+		int GetVolumeSoundEffect();
+		void StopSoundEffect(const std::string& name);
 
-private:
-	 std::map<std::string, SoundStream> m_SoundStreamMap;
-	 std::map<std::string, SoundEffect> m_SoundEffectMap;
-};
+		// EXTRA
+		bool IsPlaying(std::string name);
+
+	private:
+		std::map<std::string, SoundStream> m_SoundStreamMap;
+		std::map<std::string, SoundEffect> m_SoundEffectMap;
+	};
+}

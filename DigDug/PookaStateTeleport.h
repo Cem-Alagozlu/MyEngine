@@ -1,16 +1,19 @@
 #pragma once
 #include "State.h"
 
-class PookaStateTeleport final : public State
+namespace cem
 {
-public:
-	PookaStateTeleport();
-	virtual ~PookaStateTeleport();
+	class PookaStateTeleport final : public State
+	{
+	public:
+		PookaStateTeleport();
+		virtual ~PookaStateTeleport();
 
-protected:
-	void Enter() override;
-	void Exit() override;
-	void Update() override;
-	bool CanTransition() override;
-};
+	protected:
+		void Enter() override;
+		void Exit() override;
+		void Update() override;
+		bool CanTransition() override;
+	};
+}
 

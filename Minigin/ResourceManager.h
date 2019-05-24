@@ -1,7 +1,9 @@
 #pragma once
 #include "Singleton.h"
 
-class Texture2D;
+namespace cem
+{
+	class Texture2D;
 	class Font;
 	class ResourceManager final : public Singleton<ResourceManager>
 	{
@@ -13,4 +15,4 @@ class Texture2D;
 		SDL_Texture* LoadTexture(const std::string& file) const;
 		std::shared_ptr<Font> LoadFont(const std::string& file, unsigned int size);
 	};
-
+}

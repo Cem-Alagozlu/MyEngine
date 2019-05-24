@@ -2,16 +2,19 @@
 #include "GameObject.h"
 #include "TextureComponent.h"
 
-class Tunnel final : public GameObject
+namespace cem
 {
-public:
-	Tunnel() = default;
-	~Tunnel() = default;
+	class Tunnel final : public GameObject
+	{
+	public:
+		Tunnel() = default;
+		~Tunnel() = default;
 
-	void Initialize();
+		void Initialize();
 
-protected:
-	virtual void Update(float deltaTime) override;
-	virtual void Draw() const override;
+	protected:
+		virtual void Update(float deltaTime) override;
+		virtual void Draw() const override;
 
-};
+	};
+}

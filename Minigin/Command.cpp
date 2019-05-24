@@ -1,25 +1,27 @@
 #include "MiniginPCH.h"
 #include "Command.h"
 
-
-Command::Command()
+namespace cem
 {
-}
-
-
-Command::~Command()
-{
-}
-
-void Command::AddCallBack(std::function<void()> functionCallBack)
-{
-	m_CallBacks.push_back(functionCallBack);
-}
-
-void Command::Execute()
-{
-	for (size_t i = 0; i < m_CallBacks.size(); i++)
+	Command::Command()
 	{
-		(m_CallBacks[i])();
+	}
+
+
+	Command::~Command()
+	{
+	}
+
+	void Command::AddCallBack(std::function<void()> functionCallBack)
+	{
+		m_CallBacks.push_back(functionCallBack);
+	}
+
+	void Command::Execute()
+	{
+		for (size_t i = 0; i < m_CallBacks.size(); i++)
+		{
+			(m_CallBacks[i])();
+		}
 	}
 }

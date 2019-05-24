@@ -1,63 +1,67 @@
 #include "MiniginPCH.h"
 #include "SoundStream.h"
 
-SoundStream::SoundStream(std::string path)
-	: m_pMixMusic{std::shared_ptr<Mix_Music>(Mix_LoadMUS(path.c_str()), [](Mix_Music* track) { Mix_FreeMusic(track); })}
+namespace cem
 {
-	if (m_pMixMusic == nullptr)
-	{
-		std::string errorMsg = "SoundStream: Failed to load " + path + ",\nSDL_mixer Error: " + Mix_GetError();
-		//std::cerr << errorMsg;
 
-		throw std::runtime_error(errorMsg);
+	SoundStream::SoundStream(std::string path)
+		: m_pMixMusic{std::shared_ptr<Mix_Music>(Mix_LoadMUS(path.c_str()), [](Mix_Music* track) { Mix_FreeMusic(track); })}
+	{
+		if (m_pMixMusic == nullptr)
+		{
+			std::string errorMsg = "SoundStream: Failed to load " + path + ",\nSDL_mixer Error: " + Mix_GetError();
+			//std::cerr << errorMsg;
+
+			throw std::runtime_error(errorMsg);
+		}
+
+		
 	}
 
-	
-}
-
-SoundStream::~SoundStream()
-{
-}
-
-bool SoundStream::IsLoaded() const
-{
-	return m_pMixMusic != nullptr;
-}
-
-void SoundStream::Play(bool repeat) const
-{
-	if (m_pMixMusic != nullptr)
+	SoundStream::~SoundStream()
 	{
-		Mix_PlayMusic(m_pMixMusic.get(), repeat ? -1 : 1);
 	}
-}
 
-void SoundStream::Stop()
-{
-	Mix_HaltMusic();
-}
+	bool SoundStream::IsLoaded() const
+	{
+		return m_pMixMusic != nullptr;
+	}
 
-void SoundStream::Pause()
-{
-	Mix_PauseMusic();
-}
+	void SoundStream::Play(bool repeat) const
+	{
+		if (m_pMixMusic != nullptr)
+		{
+			Mix_PlayMusic(m_pMixMusic.get(), repeat ? -1 : 1);
+		}
+	}
 
-void SoundStream::Resume()
-{
-	Mix_ResumeMusic();
-}
+	void SoundStream::Stop()
+	{
+		Mix_HaltMusic();
+	}
 
-int SoundStream::GetVolume()
-{
-	return Mix_VolumeMusic(-1);
-}
+	void SoundStream::Pause()
+	{
+		Mix_PauseMusic();
+	}
 
-bool SoundStream::IsPlaying()
-{
-	return Mix_PlayingMusic() == 0 ? false : true;
-}
+	void SoundStream::Resume()
+	{
+		Mix_ResumeMusic();
+	}
 
-void SoundStream::SetVolume(int value)
-{
-	Mix_VolumeMusic(value);
+	int SoundStream::GetVolume()
+	{
+		return Mix_VolumeMusic(-1);
+	}
+
+	bool SoundStream::IsPlaying()
+	{
+		return Mix_PlayingMusic() == 0 ? false : true;
+	}
+
+	void SoundStream::SetVolume(int value)
+	{
+		Mix_VolumeMusic(value);
+	}
 }

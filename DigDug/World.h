@@ -5,53 +5,55 @@
 #include "Player.h"
 #include <array>
 
-class Scene;
-
-struct NeighbouringTiles
+namespace cem
 {
-	std::array<std::shared_ptr<Tunnel>, 4> tunnels;
+	class Scene;
 
-	enum Direction
+	struct NeighbouringTiles
 	{
-		left,
-		right,
-		up,
-		down
+		std::array<std::shared_ptr<Tunnel>, 4> tunnels;
+
+		enum Direction
+		{
+			left,
+			right,
+			up,
+			down
+		};
+
+		std::shared_ptr<Tunnel> operator[](Direction dir)
+		{
+			return tunnels[dir];
+		}
+
+		void Set(Direction dir, std::shared_ptr<Tunnel> pTunnel)
+		{
+			tunnels[dir] = pTunnel;
+		}
+
 	};
 
-	std::shared_ptr<Tunnel> operator[](Direction dir)
+	class World final : public GameObject
 	{
-		return tunnels[dir];
-	}
+	public:
 
-	void Set(Direction dir, std::shared_ptr<Tunnel> pTunnel)
-	{
-		tunnels[dir] = pTunnel;
-	}
+		World();
+		~World();
 
-};
-
-class World final : public GameObject
-{
-public:
-
-	World();
-	~World();
-
-	void Initialize(Scene& scene);
-	void OnOverlap(std::shared_ptr<CollisionComponent> playerComponent, std::shared_ptr<CollisionComponent> otherComponent);
-	void SetPlayer(std::shared_ptr<Player> player);
-	NeighbouringTiles GetNeighbours(std::shared_ptr<Tunnel> tunnel);
-	Vector2f GetTarget(std::shared_ptr<Player> player, std::shared_ptr<GameObject> enemy);
+		void Initialize(Scene& scene);
+		void OnOverlap(std::shared_ptr<CollisionComponent> playerComponent, std::shared_ptr<CollisionComponent> otherComponent);
+		void SetPlayer(std::shared_ptr<Player> player);
+		NeighbouringTiles GetNeighbours(std::shared_ptr<Tunnel> tunnel);
+		Vector2f GetTarget(std::shared_ptr<Player> player, std::shared_ptr<GameObject> enemy);
 
 
-protected:
-	virtual void Update(float deltaTime) override;
-	virtual void Draw() const override;
+	protected:
+		virtual void Update(float deltaTime) override;
+		virtual void Draw() const override;
 
-private:
-	const float m_CellDistance;
-	std::vector<std::shared_ptr<Tunnel>> m_pTunnels;
-	std::shared_ptr<Player> m_pPlayer;
-};
-
+	private:
+		const float m_CellDistance;
+		std::vector<std::shared_ptr<Tunnel>> m_pTunnels;
+		std::shared_ptr<Player> m_pPlayer;
+	};
+}

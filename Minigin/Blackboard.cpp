@@ -1,12 +1,14 @@
 #include "MiniginPCH.h"
 #include "Blackboard.h"
 
-
-Blackboard::Blackboard()
+namespace cem
 {
-}
+	Blackboard::Blackboard()
+	{
+	}
 
 
-Blackboard::~Blackboard()
-{
+	Blackboard::~Blackboard()
+	{
+	}
 }

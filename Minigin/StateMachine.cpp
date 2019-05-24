@@ -1,28 +1,31 @@
 #include "MiniginPCH.h"
 #include "StateMachine.h"
 
-void StateMachine::Update()
+namespace cem
 {
-	m_pState->Update();
-	for (State* transitionState : m_pState->GetTransionStates())
+	void StateMachine::Update()
 	{
-		if (transitionState->CanTransition())
+		m_pState->Update();
+		for (State* transitionState : m_pState->GetTransionStates())
 		{
-			Transit(transitionState);
-			break;
+			if (transitionState->CanTransition())
+			{
+				Transit(transitionState);
+				break;
+			}
 		}
 	}
-}
 
-void StateMachine::Transit(State * newState)
-{
-	m_pState->Exit();
-	m_pState = newState;
-	m_pState->Enter();
-}
+	void StateMachine::Transit(State * newState)
+	{
+		m_pState->Exit();
+		m_pState = newState;
+		m_pState->Enter();
+	}
 
-void StateMachine::InitializeState(State* initState)
-{
-	m_pState = initState;
-	m_pState->Enter();
+	void StateMachine::InitializeState(State* initState)
+	{
+		m_pState = initState;
+		m_pState->Enter();
+	}
 }

@@ -3,6 +3,8 @@
 #include "BaseComponent.h"
 #include "TransformComponent.h"
 
+namespace cem
+{
 	class GameObject : public std::enable_shared_from_this<GameObject>
 	{
 	public:
@@ -36,5 +38,6 @@
 
 	private:
 		std::vector<std::shared_ptr<BaseComponent>> m_pComponents;
-	
+
 	};
+}

@@ -1,12 +1,14 @@
 #include "DigDugPCH.h"
 #include "PookaBlackboard.h"
 
-
-PookaBlackboard::PookaBlackboard()
+namespace cem
 {
-}
+	PookaBlackboard::PookaBlackboard()
+	{
+	}
 
 
-PookaBlackboard::~PookaBlackboard()
-{
+	PookaBlackboard::~PookaBlackboard()
+	{
+	}
 }

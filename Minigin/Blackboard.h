@@ -1,8 +1,11 @@
 #pragma once
-class Blackboard
+namespace cem
 {
-public:
-	Blackboard();
-	~Blackboard();
-};
+	class Blackboard
+	{
+	public:
+		Blackboard();
+		~Blackboard();
+	};
+}
 

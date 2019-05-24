@@ -1,12 +1,14 @@
 #include "DigDugPCH.h"
 #include "DigDugBlackboard.h"
 
-
-DigDugBlackboard::DigDugBlackboard()
+namespace cem
 {
-}
+	DigDugBlackboard::DigDugBlackboard()
+	{
+	}
 
 
-DigDugBlackboard::~DigDugBlackboard()
-{
+	DigDugBlackboard::~DigDugBlackboard()
+	{
+	}
 }

@@ -3,42 +3,45 @@
 #include "Command.h"
 #include "InputManager.h"
 
-class CommandManager final : public Singleton<CommandManager>
+namespace cem
 {
-public:
-	struct myButtonStruct
+	class CommandManager final : public Singleton<CommandManager>
 	{
-		ControllerButton controllerButton;
-		InputTriggerState inputTriggerState;
+	public:
+		struct myButtonStruct
+		{
+			ControllerButton controllerButton;
+			InputTriggerState inputTriggerState;
 
-		bool operator <(const myButtonStruct &b) const;
+			bool operator <(const myButtonStruct &b) const;
+		};
+
+		enum class InputCommands
+		{
+			moveUp,
+			moveDown,
+			moveLeft,
+			moveRight,
+			increment,
+			decrement,
+			pump,
+			select
+
+		};
+
+
+
+		CommandManager();
+		~CommandManager();
+
+		void InsertCommands();
+		void Update();
+		void AddCallBack(std::function<void()> callBack, InputCommands inputCommands);
+
+
+	private:
+		std::map<InputCommands, Command> m_Commands;
+		std::map<myButtonStruct, InputCommands> m_ButtonInputCommands;
 	};
-
-	enum class InputCommands
-	{
-		moveUp,
-		moveDown,
-		moveLeft,
-		moveRight,
-		increment,
-		decrement,
-		pump,
-		select
-
-	};
-
-
-
-	CommandManager();
-	~CommandManager();
-
-	void InsertCommands();
-	void Update();
-	void AddCallBack(std::function<void()> callBack, InputCommands inputCommands);
-
-
-private:
-	std::map<InputCommands, Command> m_Commands;
-	std::map<myButtonStruct, InputCommands> m_ButtonInputCommands;
-};
+}
 

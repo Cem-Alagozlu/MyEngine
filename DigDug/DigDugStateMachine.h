@@ -6,20 +6,24 @@
 #include "DigDugStatePump.h"
 #include "DigDugStateDig.h"
 
-class DigDugStateMachine final : public StateMachine
+namespace cem
 {
-public:
-	DigDugStateMachine() = default;
 
-	void Update() override;
-	virtual void Initialize() override;
-	DigDugBlackboard& GetBlackboard();
+	class DigDugStateMachine final : public StateMachine
+	{
+	public:
+		DigDugStateMachine() = default;
 
-private:
-	DigDugStateIdle m_Idle;
-	DigDugStateMove m_Move;
-	DigDugStatePump m_Pump;
-	DigDugStateDig m_Dig;
-	DigDugBlackboard m_Blackboard;
-};
+		void Update() override;
+		virtual void Initialize() override;
+		DigDugBlackboard& GetBlackboard();
+
+	private:
+		DigDugStateIdle m_Idle;
+		DigDugStateMove m_Move;
+		DigDugStatePump m_Pump;
+		DigDugStateDig m_Dig;
+		DigDugBlackboard m_Blackboard;
+	};
+}
 

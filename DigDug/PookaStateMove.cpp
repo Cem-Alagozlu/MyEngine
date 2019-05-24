@@ -1,43 +1,63 @@
 #include "DigDugPCH.h"
 #include "PookaStateMove.h"
-#include "Timing.h"
+#include "SpriteComponent.h"
 #include "PookaBlackboard.h"
+#include "Pooka.h"
+#include "Timing.h"
 
-
-PookaStateMove::PookaStateMove()
+namespace cem
 {
-}
-
-
-PookaStateMove::~PookaStateMove()
-{
-}
-
-void PookaStateMove::Enter()
-{
-}
-
-void PookaStateMove::Exit()
-{
-}
-
-void PookaStateMove::Update()
-{
-	//generate rand//
-	//bool check, change if ; 
-	// tunnel check weg
-
-	float teleportTimer = rand() % 15 + 10;
-
-	teleportTimer -= Timing::GetInstance().GetDeltaTime();
-
-	if (teleportTimer >= 0.0f)
+	PookaStateMove::PookaStateMove()
 	{
-		GetBlackboard<PookaBlackboard>()->m_IsTeleporting = true;
 	}
-}
 
-bool PookaStateMove::CanTransition()
-{
-	return true;
+
+	PookaStateMove::~PookaStateMove()
+	{
+	}
+
+	void PookaStateMove::Enter()
+	{
+
+		std::shared_ptr<GameObject> pooka = GetBlackboard<PookaBlackboard>()->m_pPooka.lock();
+		GetBlackboard<PookaBlackboard>()->m_Speed = 2.0f;
+
+		if (pooka)
+		{
+			GetBlackboard<PookaBlackboard>()->m_RandomTeleportTimer = float(rand() % 3);
+			std::dynamic_pointer_cast<Pooka>(pooka)->SetSpritesInvisible();
+			std::dynamic_pointer_cast<Pooka>(pooka)->GetPookaSprites(Pooka::PookaSprites::walking)->SetVisibility(true);
+		}
+	}
+
+	void PookaStateMove::Exit()
+	{
+		std::shared_ptr<GameObject> pooka = GetBlackboard<PookaBlackboard>()->m_pPooka.lock();
+
+		if (pooka)
+		{
+			std::dynamic_pointer_cast<Pooka>(pooka)->SetSpritesInvisible();
+		}
+	}
+
+	void PookaStateMove::Update()
+	{
+		float& teleportTimer = GetBlackboard<PookaBlackboard>()->m_RandomTeleportTimer;
+
+		teleportTimer -= Timing::GetInstance().GetDeltaTime();
+
+		if (teleportTimer <= 0.0f)
+		{
+			GetBlackboard<PookaBlackboard>()->m_IsTeleporting = true;
+		}
+	}
+
+	bool PookaStateMove::CanTransition()
+	{
+		if (!GetBlackboard<PookaBlackboard>()->m_IsTeleporting)
+		{
+			return true;
+		}
+		return false;
+	}
 }

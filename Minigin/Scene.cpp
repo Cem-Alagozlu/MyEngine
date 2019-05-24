@@ -3,44 +3,46 @@
 #include "GameObject.h"
 #include "Timing.h"
 
-//std::move -> efficient transfer -> ref cppreference.com
-
-Scene::Scene(const std::string& name)
-	:m_SceneName{std::move(name)}
+namespace cem
 {
-}
 
-void Scene::AddChild(std::shared_ptr<GameObject> gameObject)
-{
-	m_Objects.push_back(gameObject);
-}
-
-void Scene::RootUpdate()
-{
-	auto deltaTime = Timing::GetInstance().GetDeltaTime();
-
-	Update();
-	for (auto pObject : m_Objects)
+	Scene::Scene(const std::string& name)
+		:m_SceneName{ std::move(name) }
 	{
-		pObject->Update(deltaTime);
 	}
-}
 
-void Scene::RootDraw()
-{
-	Draw();
-	for (auto pObject : m_Objects)
+	void Scene::AddChild(std::shared_ptr<GameObject> gameObject)
 	{
-		pObject->Draw();
+		m_Objects.push_back(gameObject);
 	}
-}
 
-void Scene::RootSceneActivated()
-{
-	SceneActivated();
-}
+	void Scene::RootUpdate()
+	{
+		auto deltaTime = Timing::GetInstance().GetDeltaTime();
 
-void Scene::RootSceneDeactivated()
-{
-	SceneDeactivated();
+		Update();
+		for (auto pObject : m_Objects)
+		{
+			pObject->Update(deltaTime);
+		}
+	}
+
+	void Scene::RootDraw()
+	{
+		Draw();
+		for (auto pObject : m_Objects)
+		{
+			pObject->Draw();
+		}
+	}
+
+	void Scene::RootSceneActivated()
+	{
+		SceneActivated();
+	}
+
+	void Scene::RootSceneDeactivated()
+	{
+		SceneDeactivated();
+	}
 }

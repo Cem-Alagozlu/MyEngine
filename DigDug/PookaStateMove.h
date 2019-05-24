@@ -1,17 +1,18 @@
 #pragma once
 #include "State.h"
 
-
-class PookaStateMove final : public State
+namespace cem
 {
-public:
-	PookaStateMove();
-	virtual ~PookaStateMove();
+	class PookaStateMove final : public State
+	{
+	public:
+		PookaStateMove();
+		virtual ~PookaStateMove();
 
-protected:
-	void Enter() override;
-	void Exit() override;
-	void Update() override;
-	bool CanTransition() override;
-};
-
+	protected:
+		void Enter() override;
+		void Exit() override;
+		void Update() override;
+		bool CanTransition() override;
+	};
+}

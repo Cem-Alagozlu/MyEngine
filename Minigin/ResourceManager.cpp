@@ -3,39 +3,42 @@
 #include "Renderer.h"
 #include "Font.h"
 
-void ResourceManager::Init()
+namespace cem
 {
-
-	// load support for png and jpg, this takes a while!
-
-	if ((IMG_Init(IMG_INIT_PNG) & IMG_INIT_PNG) != IMG_INIT_PNG) 
+	void ResourceManager::Init()
 	{
-		throw std::runtime_error(std::string("Failed to load support for png's: ") + SDL_GetError());
+
+		// load support for png and jpg, this takes a while!
+
+		if ((IMG_Init(IMG_INIT_PNG) & IMG_INIT_PNG) != IMG_INIT_PNG)
+		{
+			throw std::runtime_error(std::string("Failed to load support for png's: ") + SDL_GetError());
+		}
+
+		if ((IMG_Init(IMG_INIT_JPG) & IMG_INIT_JPG) != IMG_INIT_JPG)
+		{
+			throw std::runtime_error(std::string("Failed to load support for jpg's: ") + SDL_GetError());
+		}
+
+		if (TTF_Init() != 0)
+		{
+			throw std::runtime_error(std::string("Failed to load support for fonts: ") + SDL_GetError());
+		}
 	}
 
-	if ((IMG_Init(IMG_INIT_JPG) & IMG_INIT_JPG) != IMG_INIT_JPG) 
+	SDL_Texture* ResourceManager::LoadTexture(const std::string& file) const
 	{
-		throw std::runtime_error(std::string("Failed to load support for jpg's: ") + SDL_GetError());
+		std::string fullPath = file;
+		SDL_Texture *texture = IMG_LoadTexture(Renderer::GetInstance().GetSDLRenderer(), fullPath.c_str());
+		if (texture == nullptr)
+		{
+			throw std::runtime_error(std::string("Failed to load texture: ") + SDL_GetError());
+		}
+		return texture;
 	}
 
-	if (TTF_Init() != 0) 
+	std::shared_ptr<Font> ResourceManager::LoadFont(const std::string& file, unsigned int size)
 	{
-		throw std::runtime_error(std::string("Failed to load support for fonts: ") + SDL_GetError());
+		return std::make_shared<Font>(file, size);
 	}
-}
-
-SDL_Texture* ResourceManager::LoadTexture(const std::string& file) const
-{
-	std::string fullPath = file;
-	SDL_Texture *texture = IMG_LoadTexture(Renderer::GetInstance().GetSDLRenderer(), fullPath.c_str());
-	if (texture == nullptr) 
-	{
-		throw std::runtime_error(std::string("Failed to load texture: ") + SDL_GetError());
-	}
-	return texture;
-}
-
-std::shared_ptr<Font> ResourceManager::LoadFont(const std::string& file, unsigned int size)
-{
-	return std::make_shared<Font>(file, size);
 }

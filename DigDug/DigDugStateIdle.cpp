@@ -4,42 +4,46 @@
 #include "Player.h"
 #include "DigDugBlackboard.h"
 
-DigDugStateIdle::~DigDugStateIdle()
+namespace cem
 {
-}
 
-void DigDugStateIdle::Enter()
-{
-	std::shared_ptr<GameObject> player = GetBlackboard<DigDugBlackboard>()->m_pPlayer.lock();
-
-	if (player)
+	DigDugStateIdle::~DigDugStateIdle()
 	{
-		auto sprite = player->GetComponent<SpriteComponent>();
-		sprite->Lock();
 	}
-}
 
-void DigDugStateIdle::Exit()
-{
-	std::shared_ptr<GameObject> player = GetBlackboard<DigDugBlackboard>()->m_pPlayer.lock();
-
-	if (player)
+	void DigDugStateIdle::Enter()
 	{
-		auto sprite = player->GetComponent<SpriteComponent>();
-		sprite->Unlock();
+		std::shared_ptr<GameObject> player = GetBlackboard<DigDugBlackboard>()->m_pPlayer.lock();
+
+		if (player)
+		{
+			auto sprite = player->GetComponent<SpriteComponent>();
+			sprite->Lock();
+		}
 	}
-}
 
-void DigDugStateIdle::Update()
-{
-}
-
-bool DigDugStateIdle::CanTransition()
-{
-	Vector2f velocity = GetBlackboard<DigDugBlackboard>()->m_Velocity;
-	if (velocity.x == 0 && velocity.y == 0)
+	void DigDugStateIdle::Exit()
 	{
-		return true;
+		std::shared_ptr<GameObject> player = GetBlackboard<DigDugBlackboard>()->m_pPlayer.lock();
+
+		if (player)
+		{
+			auto sprite = player->GetComponent<SpriteComponent>();
+			sprite->Unlock();
+		}
 	}
-	return false;
+
+	void DigDugStateIdle::Update()
+	{
+	}
+
+	bool DigDugStateIdle::CanTransition()
+	{
+		Vector2f velocity = GetBlackboard<DigDugBlackboard>()->m_Velocity;
+		if (velocity.x == 0 && velocity.y == 0)
+		{
+			return true;
+		}
+		return false;
+	}
 }

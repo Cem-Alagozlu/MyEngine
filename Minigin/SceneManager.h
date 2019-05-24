@@ -1,12 +1,14 @@
 #pragma once
 #include "Singleton.h"
 
+namespace cem
+{
 	class Scene;
 	class SceneManager final : public Singleton<SceneManager>
 	{
 	public:
 		void CreateScene(std::shared_ptr<Scene> pScene);
-	
+
 		void Update();
 		void Draw();
 
@@ -16,3 +18,4 @@
 		std::vector<std::shared_ptr<Scene>> m_Scenes;
 		std::shared_ptr<Scene> m_pActiveScene, m_pNewActiveScene;
 	};
+}

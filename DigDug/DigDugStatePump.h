@@ -1,17 +1,20 @@
 #pragma once
 #include "State.h"
-
-class DigDugStatePump final : public State
+namespace cem
 {
-public:
-	DigDugStatePump() = default;
-	~DigDugStatePump();
 
-protected:
-	void Enter() override;
-	void Exit() override;
-	void Update() override;
-	bool CanTransition() override;
+	class DigDugStatePump final : public State
+	{
+	public:
+		DigDugStatePump() = default;
+		~DigDugStatePump();
 
-};
+	protected:
+		void Enter() override;
+		void Exit() override;
+		void Update() override;
+		bool CanTransition() override;
+
+	};
+}
 

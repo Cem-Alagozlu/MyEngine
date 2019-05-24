@@ -1,5 +1,8 @@
 #pragma once
-class Font
+
+namespace cem
+{
+	class Font
 	{
 	public:
 		TTF_Font* GetFont() const;
@@ -13,4 +16,5 @@ class Font
 	private:
 		TTF_Font* mFont;
 		unsigned int mSize;
-};
+	};
+}

@@ -2,31 +2,33 @@
 #include "DigDugStatePump.h"
 #include "DigDugBlackboard.h"
 
-
-DigDugStatePump::~DigDugStatePump()
+namespace cem
 {
-}
-
-void DigDugStatePump::Enter()
-{
-}
-
-void DigDugStatePump::Exit()
-{
-}
-
-void DigDugStatePump::Update()
-{
-}
-
-bool DigDugStatePump::CanTransition()
-{
-	bool isPumping = GetBlackboard<DigDugBlackboard>()->m_IsPumping;
-
-	if (isPumping)
+	DigDugStatePump::~DigDugStatePump()
 	{
-		return true;
 	}
 
-	return false;
+	void DigDugStatePump::Enter()
+	{
+	}
+
+	void DigDugStatePump::Exit()
+	{
+	}
+
+	void DigDugStatePump::Update()
+	{
+	}
+
+	bool DigDugStatePump::CanTransition()
+	{
+		bool isPumping = GetBlackboard<DigDugBlackboard>()->m_IsPumping;
+
+		if (isPumping)
+		{
+			return true;
+		}
+
+		return false;
+	}
 }
