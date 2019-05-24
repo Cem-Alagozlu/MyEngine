@@ -25,7 +25,7 @@ namespace cem
 		void SelectMenu();
 	private:
 		MenuScene& m_ManagerScene;
-		std::shared_ptr<cem::GameObject> m_pSelector, m_pBgIMG, m_pBgTxt, m_pSprite;
+		std::shared_ptr<GameObject> m_pSelector, m_pBgIMG, m_pBgTxt, m_pSprite;
 		Vector2f m_SelectorPos, m_ScaleAway;
 		int m_Index;
 	};

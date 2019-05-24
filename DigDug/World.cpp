@@ -23,6 +23,7 @@ namespace cem
 	{
 		AddComponent(std::make_shared<TransformComponent>());
 		AddComponent(std::make_shared<TextureComponent>("../Resources/Level/bgLevel.png"));
+
 		for (int i = 0; i < 20; i++)
 		{
 			for (int j = 0; j < 14; j++)
@@ -167,6 +168,11 @@ namespace cem
 			return player->GetComponent<TransformComponent>()->GetPosition();
 		}
 		return currClosestTunnel->GetComponent<TransformComponent>()->GetPosition();
+	}
+
+	std::vector<std::shared_ptr<Tunnel>> World::GetTunnels()
+	{
+		return m_pTunnels;
 	}
 
 

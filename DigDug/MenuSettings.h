@@ -23,7 +23,7 @@ namespace cem
 
 	private:
 		MenuScene& m_ManagerScene;
-		std::shared_ptr<cem::GameObject> m_pSelector, m_pBgSettings, m_pMusicText;
+		std::shared_ptr<GameObject> m_pSelector, m_pBgSettings, m_pMusicText, m_pSoundEffectText;
 		Vector2f m_SelectorPos, m_ScaleAway, m_ScaleNormal;
 		int m_Index;
 		bool m_IsBack;

@@ -17,6 +17,8 @@ namespace cem
 
 		if (player)
 		{
+			std::dynamic_pointer_cast<Player>(player)->SetSpritesInvisible();
+			std::dynamic_pointer_cast<Player>(player)->GetPlayerSprites(Player::PlayerSprites::walking)->SetVisibility(true);
 			auto sprite = player->GetComponent<SpriteComponent>();
 			sprite->Lock();
 		}
@@ -28,6 +30,7 @@ namespace cem
 
 		if (player)
 		{
+			std::dynamic_pointer_cast<Player>(player)->SetSpritesInvisible();
 			auto sprite = player->GetComponent<SpriteComponent>();
 			sprite->Unlock();
 		}
@@ -35,12 +38,17 @@ namespace cem
 
 	void DigDugStateIdle::Update()
 	{
+		std::cout << "idle\n";
 	}
 
 	bool DigDugStateIdle::CanTransition()
 	{
-		Vector2f velocity = GetBlackboard<DigDugBlackboard>()->m_Velocity;
-		if (velocity.x == 0 && velocity.y == 0)
+		auto blackboard = GetBlackboard<DigDugBlackboard>();
+		Vector2f velocity = blackboard->m_Velocity;
+		bool isPumping = blackboard->m_IsPumping;
+		bool isDigging = blackboard->m_IsDigging;
+
+		if (velocity.x == 0 && velocity.y == 0 &&!isDigging && !isPumping)
 		{
 			return true;
 		}

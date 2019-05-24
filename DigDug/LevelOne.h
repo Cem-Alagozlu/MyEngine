@@ -3,6 +3,8 @@
 #include "Player.h"
 #include "World.h"
 #include "Pooka.h"
+#include "PlayerHUD.h"
+#include "Fygar.h"
 
 namespace cem
 {
@@ -25,6 +27,10 @@ namespace cem
 	private:
 		std::shared_ptr<Player> m_pPlayer;
 		std::shared_ptr<World> m_pWorld;
-		std::shared_ptr<Pooka> m_pPooka;
+		std::vector<std::shared_ptr<Pooka>> m_pPookas;
+		std::shared_ptr<Fygar> m_pFygar;
+		std::shared_ptr<PlayerHUD> m_pPlayerHUD;
+
+		void LevelSetup();
 	};
 }

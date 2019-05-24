@@ -46,6 +46,7 @@ namespace cem
 		NeighbouringTiles GetNeighbours(std::shared_ptr<Tunnel> tunnel);
 		Vector2f GetTarget(std::shared_ptr<Player> player, std::shared_ptr<GameObject> enemy);
 
+		std::vector<std::shared_ptr<Tunnel>> GetTunnels();
 
 	protected:
 		virtual void Update(float deltaTime) override;

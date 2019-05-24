@@ -26,9 +26,11 @@ namespace cem
 		void VolumeDownSoundEffect();
 		int GetVolumeSoundEffect();
 		void StopSoundEffect(const std::string& name);
+		void StopMusic(const std::string& name);
 
 		// EXTRA
 		bool IsPlaying(std::string name);
+		void StopAll();
 
 	private:
 		std::map<std::string, SoundStream> m_SoundStreamMap;

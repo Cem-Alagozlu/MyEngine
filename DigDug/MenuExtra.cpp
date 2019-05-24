@@ -3,6 +3,7 @@
 #include "CommandManager.h"
 #include "MenuScene.h"
 #include "TextureComponent.h"
+#include "SoundManager.h"
 
 namespace cem
 {
@@ -171,6 +172,7 @@ namespace cem
 
 			std::cout << "Index : " << m_Index << std::endl;
 		}
+	
 	}
 
 	void MenuExtra::SelectMenu()

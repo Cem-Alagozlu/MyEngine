@@ -31,12 +31,19 @@ namespace cem
 
 	void DigDugStateDig::Exit()
 	{
+		std::shared_ptr<GameObject> player = GetBlackboard<DigDugBlackboard>()->m_pPlayer.lock();
+
+		if (player)
+		{
+			std::dynamic_pointer_cast<Player>(player)->SetSpritesInvisible();
+		}
 	}
 
 	void DigDugStateDig::Update()
 	{
-		Vector2f velocity = GetBlackboard<DigDugBlackboard>()->m_Velocity;
-		std::shared_ptr<GameObject> player = GetBlackboard<DigDugBlackboard>()->m_pPlayer.lock();
+		auto digdugBlackboard = GetBlackboard<DigDugBlackboard>();
+		Vector2f velocity = digdugBlackboard->m_Velocity;
+		std::shared_ptr<GameObject> player = digdugBlackboard->m_pPlayer.lock();
 
 
 		if (player)
@@ -47,20 +54,23 @@ namespace cem
 				sprite->SetAngle(0.0);
 				sprite->FlipTexture(SDL_FLIP_HORIZONTAL);
 			}
-			else if (velocity.x > 0.0f)
+			 if (velocity.x > 0.0f)
 			{
 				sprite->SetAngle(0.0);
 				sprite->FlipTexture(SDL_FLIP_NONE);
+
 			}
-			else if (velocity.y < 0.0f)
+			 if (velocity.y < 0.0f)
 			{
 				sprite->FlipTexture(SDL_FLIP_VERTICAL);
 				sprite->SetAngle(-90.0);
+				
 			}
-			else if (velocity.y > 0.0f)
+			 if (velocity.y > 0.0f)
 			{
 				sprite->FlipTexture(SDL_FLIP_VERTICAL);
 				sprite->SetAngle(90.0);
+				
 			}
 
 		}
@@ -69,9 +79,12 @@ namespace cem
 
 	bool DigDugStateDig::CanTransition()
 	{
-		bool isDigging = GetBlackboard<DigDugBlackboard>()->m_IsDigging;
+		auto blackboard = GetBlackboard<DigDugBlackboard>();
+		Vector2f velocity = blackboard->m_Velocity;
+		bool isDigging = blackboard->m_IsDigging;
+		bool isPumping = blackboard->m_IsPumping;
 
-		if (isDigging)
+		if (isDigging && !isPumping && !(velocity.x == 0) || !(velocity.y == 0))
 		{
 			return true;
 		}

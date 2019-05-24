@@ -6,6 +6,7 @@
 #include "Font.h"
 #include "TextDrawComponent.h"
 #include "ResourceManager.h"
+#include "SoundManager.h"
 
 namespace cem
 {
@@ -17,7 +18,7 @@ namespace cem
 		m_SelectorPos = Vector2f{ 84.0f,330.0f };
 		m_ScaleAway = Vector2f{ 0.0f,0.0f };
 		m_ScaleNormal = Vector2f{ 1.0f,1.0f };
-		auto font = ResourceManager::GetInstance().LoadFont("../Resources/Font/font00.ttf", 10);
+		auto font = ResourceManager::GetInstance().LoadFont("../Resources/Font/font00.ttf", 25);
 
 		//background settings
 		m_pBgSettings = std::make_shared<GameObject>();
@@ -36,8 +37,18 @@ namespace cem
 		//Music Text
 		m_pMusicText = std::make_shared<GameObject>();
 		m_pMusicText->AddComponent(std::make_shared<TransformComponent>());
-		m_pMusicText->AddComponent(std::make_shared<TextDrawComponent>("test", font));
+		m_pMusicText->GetComponent<TransformComponent>()->SetPosition(Vector2f{ 160.0f,330.0f });
+		m_pMusicText->AddComponent(std::make_shared<TextDrawComponent>("0", font));
+		m_pMusicText->GetComponent<TransformComponent>()->SetScale(m_ScaleAway);
 		m_ManagerScene.AddChild(m_pMusicText);
+
+		//SFX Text
+		m_pSoundEffectText = std::make_shared<GameObject>();
+		m_pSoundEffectText->AddComponent(std::make_shared<TransformComponent>());
+		m_pSoundEffectText->GetComponent<TransformComponent>()->SetPosition(Vector2f{ 160.0f,520.0f });
+		m_pSoundEffectText->AddComponent(std::make_shared<TextDrawComponent>("0", font));
+		m_pSoundEffectText->GetComponent<TransformComponent>()->SetScale(m_ScaleAway);
+		m_ManagerScene.AddChild(m_pSoundEffectText);
 
 		CommandManager::GetInstance().AddCallBack(std::bind(&MenuSettings::MoveDown, this), CommandManager::InputCommands::increment);
 		CommandManager::GetInstance().AddCallBack(std::bind(&MenuSettings::MoveUp, this), CommandManager::InputCommands::decrement);
@@ -56,7 +67,8 @@ namespace cem
 	{
 		m_pBgSettings->GetComponent<TransformComponent>()->SetScale(m_ScaleNormal);
 		m_pSelector->GetComponent<TransformComponent>()->SetScale(m_ScaleNormal);
-
+		m_pMusicText->GetComponent<TransformComponent>()->SetScale(m_ScaleNormal);
+		m_pSoundEffectText->GetComponent<TransformComponent>()->SetScale(m_ScaleNormal);
 
 		switch (m_Index)
 		{
@@ -85,6 +97,9 @@ namespace cem
 			SetImagesBack();
 			m_IsBack = false;
 		}
+
+		m_pMusicText->GetComponent<TextDrawComponent>()->SetText(std::to_string(SoundManager::GetInstance().GetVolumeSoundStream()));
+		m_pSoundEffectText->GetComponent<TextDrawComponent>()->SetText(std::to_string(SoundManager::GetInstance().GetVolumeSoundEffect()));
 	}
 
 	void MenuSettings::MoveUp()
@@ -120,16 +135,16 @@ namespace cem
 			switch (m_Index)
 			{
 			case 0:
-				std::cout << "VOLUME MUSIC + \n";
+				SoundManager::GetInstance().VolumeUpSoundStream();
 				break;
 			case 1:
-				std::cout << "VOLUME MUSIC - \n";
+				SoundManager::GetInstance().VolumeDownSoundStream();
 				break;
 			case 2:
-				std::cout << "VOLUME SFX + \n";
+				SoundManager::GetInstance().VolumeUpSoundEffect();
 				break;
 			case 3:
-				std::cout << "VOLUME SFX - \n";
+				SoundManager::GetInstance().VolumeDownSoundEffect();
 				break;
 			case 4:
 				m_IsBack = true;
@@ -142,5 +157,7 @@ namespace cem
 	{
 		m_pSelector->GetComponent<TransformComponent>()->SetScale(m_ScaleAway);
 		m_pBgSettings->GetComponent<TransformComponent>()->SetScale(m_ScaleAway);
+		m_pMusicText->GetComponent<TransformComponent>()->SetScale(m_ScaleAway);
+		m_pSoundEffectText->GetComponent<TransformComponent>()->SetScale(m_ScaleAway);
 	}
 }

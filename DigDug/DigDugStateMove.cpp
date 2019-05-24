@@ -42,8 +42,10 @@ namespace cem
 
 	void DigDugStateMove::Update()
 	{
-		Vector2f velocity = GetBlackboard<DigDugBlackboard>()->m_Velocity;
-		std::shared_ptr<GameObject> player = GetBlackboard<DigDugBlackboard>()->m_pPlayer.lock();
+		auto digdugBlackboard = GetBlackboard<DigDugBlackboard>();
+		Vector2f velocity = digdugBlackboard->m_Velocity;
+		std::cout << "moving\n";
+		std::shared_ptr<GameObject> player = digdugBlackboard->m_pPlayer.lock();
 
 		if (player)
 		{
@@ -70,10 +72,6 @@ namespace cem
 			}
 
 		}
-
-
-
-
 	}
 
 	bool DigDugStateMove::CanTransition()

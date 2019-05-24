@@ -4,6 +4,8 @@
 #include "MenuQuit.h"
 #include "MenuExtra.h"
 #include "MenuSettings.h"
+#include "SoundManager.h"
+
 namespace cem
 {
 
@@ -17,7 +19,7 @@ namespace cem
 		SetMenuState(MenuState::menuMain);
 
 
-		//SoundManager::GetInstance().PlaySoundStream("Menu", true);
+		SoundManager::GetInstance().PlaySoundStream("Menu", true);
 	}
 
 	void MenuScene::SetMenuState(MenuState state)

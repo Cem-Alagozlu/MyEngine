@@ -13,13 +13,14 @@ namespace cem
 	void SoundManager::InitSoundStreams()
 	{
 		m_SoundStreamMap.insert(std::pair<std::string, SoundStream>("Menu", SoundStream{ "../Resources/Sound/Music/Menu.mp3" }));
-		m_SoundStreamMap.begin()->second.SetVolume(40);
+		m_SoundStreamMap.begin()->second.SetVolume(35);
 	}
 
 	void SoundManager::InitSoundEffects()
 	{
-		m_SoundEffectMap.insert(std::pair<std::string, SoundEffect>("Intro", SoundEffect{ "../Resources/Sound/Sound_Effects/Intro.mp3" }));
-		m_SoundEffectMap.begin()->second.SetVolume(40);
+		m_SoundEffectMap.insert(std::pair<std::string, SoundEffect>("Confirm", SoundEffect{ "../Resources/Sound/Sound_Effects/MenuConfirm.mp3" }));
+		m_SoundEffectMap.insert(std::pair<std::string, SoundEffect>("Move", SoundEffect{ "../Resources/Sound/Sound_Effects/MenuMove.mp3" }));
+		m_SoundEffectMap.begin()->second.SetVolume(30);
 	}
 
 	void SoundManager::PlaySoundStream(const std::string& name, bool repeat)
@@ -89,6 +90,11 @@ namespace cem
 		m_SoundEffectMap.find(name)->second.Stop();
 	}
 
+	void SoundManager::StopMusic(const std::string& name)
+	{
+		m_SoundStreamMap.find(name)->second.Stop();
+	}
+
 
 	void SoundManager::VolumeUpSoundStream()
 	{
@@ -128,5 +134,12 @@ namespace cem
 			}
 		}
 		return false;
+	}
+
+	void SoundManager::StopAll()
+	{
+		StopSoundEffect("Confirm");
+		StopSoundEffect("Move");
+		StopMusic("Menu");
 	}
 }

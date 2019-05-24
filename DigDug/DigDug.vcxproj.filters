@@ -31,6 +31,15 @@
     <Filter Include="Menu">
       <UniqueIdentifier>{439dcd01-0985-4e06-9445-276980703b3f}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Characters\Fygar">
+      <UniqueIdentifier>{52e89010-bcf7-4a46-9bf5-a48ff8f4d00a}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Characters\Fygar\Player">
+      <UniqueIdentifier>{d2ade5ed-e318-4209-8025-952aa8c7a043}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Characters\Fygar\StateMachine">
+      <UniqueIdentifier>{dba055a0-592c-4349-99da-39efd9c8336f}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="MenuScene.h">
@@ -102,6 +111,25 @@
     <ClInclude Include="PookaStateTeleport.h">
       <Filter>Characters\Pooka\StateMachine</Filter>
     </ClInclude>
+    <ClInclude Include="PlayerData.h">
+      <Filter>Characters\DigDug\Player</Filter>
+    </ClInclude>
+    <ClInclude Include="PlayerHUD.h">
+      <Filter>Characters\DigDug\Player</Filter>
+    </ClInclude>
+    <ClInclude Include="Fygar.h">
+      <Filter>Characters\Fygar\Player</Filter>
+    </ClInclude>
+    <ClInclude Include="FygarStateMachine.h">
+      <Filter>Characters\Fygar\StateMachine</Filter>
+    </ClInclude>
+    <ClInclude Include="FygarBlackboard.h">
+      <Filter>Characters\Fygar\StateMachine</Filter>
+    </ClInclude>
+    <ClInclude Include="FygarStateMove.h">
+      <Filter>Characters\Fygar\StateMachine</Filter>
+    </ClInclude>
+    <ClInclude Include="FygarStateTeleport.h" />
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="MenuExtra.cpp">
@@ -173,5 +201,24 @@
     <ClCompile Include="PookaStateTeleport.cpp">
       <Filter>Characters\Pooka\StateMachine</Filter>
     </ClCompile>
+    <ClCompile Include="PlayerData.cpp">
+      <Filter>Characters\DigDug\Player</Filter>
+    </ClCompile>
+    <ClCompile Include="PlayerHUD.cpp">
+      <Filter>Characters\DigDug\Player</Filter>
+    </ClCompile>
+    <ClCompile Include="Fygar.cpp">
+      <Filter>Characters\Fygar\Player</Filter>
+    </ClCompile>
+    <ClCompile Include="FygarStateMachine.cpp">
+      <Filter>Characters\Fygar\StateMachine</Filter>
+    </ClCompile>
+    <ClCompile Include="FygarBlackboard.cpp">
+      <Filter>Characters\Fygar\StateMachine</Filter>
+    </ClCompile>
+    <ClCompile Include="FygarStateMove.cpp">
+      <Filter>Characters\Fygar\StateMachine</Filter>
+    </ClCompile>
+    <ClCompile Include="FygarStateTeleport.cpp" />
   </ItemGroup>
 </Project>

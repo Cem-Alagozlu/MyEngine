@@ -13,7 +13,9 @@ namespace cem
 		enum class PlayerSprites : int
 		{
 			walking = 0,
-			digging = 1
+			digging = 1,
+			pumping = 2
+
 		};
 
 		Player();
@@ -31,7 +33,6 @@ namespace cem
 	private:
 		DigDugStateMachine m_DigDug;
 		std::vector<std::shared_ptr<cem::SpriteComponent>> m_pSprites;
-
 
 
 		float m_Speed;

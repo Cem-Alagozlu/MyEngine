@@ -6,6 +6,8 @@
 #include "SoundManager.h"
 #include "CommandManager.h"
 #include "TextureComponent.h"
+#include "LevelOne.h"
+
 namespace cem
 {
 
@@ -54,12 +56,6 @@ namespace cem
 		CommandManager::GetInstance().AddCallBack(std::bind(&MenuMain::SelectMenu, this), CommandManager::InputCommands::select);
 #pragma endregion 
 
-
-		//m_pSprite = std::make_shared<GameObject>();
-		//m_pSprite->AddComponent(std::make_shared<SpriteComponent>("../Resources/walk.png", 0.0f, 0.0f, 5882.0f, 1794.0f, 4, 1, 6));
-		//m_pSprite->AddComponent(std::make_shared<TransformComponent>());
-		//m_pSprite->GetComponent<TransformComponent>()->SetScale(Vector2f{ 0.1f, 0.1f });
-		//m_ManagerScene.AddChild(m_pSprite);
 	}
 
 	void MenuMain::Draw() const
@@ -90,7 +86,6 @@ namespace cem
 		}
 		m_pSelector->GetComponent<TransformComponent>()->SetPosition(m_SelectorPos);
 
-
 	}
 
 	void MenuMain::MoveDown()
@@ -104,6 +99,7 @@ namespace cem
 			}
 			std::cout << "Index : " << m_Index << std::endl;
 		}
+		SoundManager::GetInstance().PlaySoundEffect("Move", false, true);
 	}
 
 
@@ -120,6 +116,7 @@ namespace cem
 
 			std::cout << "Index : " << m_Index << std::endl;
 		}
+		SoundManager::GetInstance().PlaySoundEffect("Move", false, true);
 	}
 
 	void MenuMain::SelectMenu()
@@ -129,7 +126,8 @@ namespace cem
 			switch (m_Index)
 			{
 			case 0:
-				std::cout << "Play Game!\n";
+				//SceneManager::GetInstance().CreateScene(std::make_shared<LevelOne>());
+				//SceneManager::GetInstance().SetActiveGameScene("LevelOne");
 				break;
 			case 1:
 				SetImagesBack();
@@ -145,6 +143,7 @@ namespace cem
 				break;
 			}
 		}
+		SoundManager::GetInstance().PlaySoundEffect("Confirm", false, true);
 	}
 
 	void MenuMain::SetImagesBack()

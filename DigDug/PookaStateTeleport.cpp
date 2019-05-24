@@ -18,7 +18,7 @@ namespace cem
 
 	void PookaStateTeleport::Enter()
 	{
-		GetBlackboard<PookaBlackboard>()->m_MinTeleportTimer = 5.0f;
+		GetBlackboard<PookaBlackboard>()->m_MinTeleportTimer = 3.0f;
 		GetBlackboard<PookaBlackboard>()->m_Speed = 3.5f;
 		std::shared_ptr<GameObject> pooka = GetBlackboard<PookaBlackboard>()->m_pPooka.lock();
 

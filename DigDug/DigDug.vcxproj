@@ -26,6 +26,11 @@
     <ClInclude Include="DigDugStateMachine.h" />
     <ClInclude Include="DigDugStateMove.h" />
     <ClInclude Include="DigDugStatePump.h" />
+    <ClInclude Include="Fygar.h" />
+    <ClInclude Include="FygarBlackboard.h" />
+    <ClInclude Include="FygarStateMachine.h" />
+    <ClInclude Include="FygarStateMove.h" />
+    <ClInclude Include="FygarStateTeleport.h" />
     <ClInclude Include="IMenu.h" />
     <ClInclude Include="LevelOne.h" />
     <ClInclude Include="MenuExtra.h" />
@@ -35,6 +40,8 @@
     <ClInclude Include="MenuSettings.h" />
     <ClInclude Include="Minigin.h" />
     <ClInclude Include="Player.h" />
+    <ClInclude Include="PlayerData.h" />
+    <ClInclude Include="PlayerHUD.h" />
     <ClInclude Include="Pooka.h" />
     <ClInclude Include="PookaBlackboard.h" />
     <ClInclude Include="PookaStateMachine.h" />
@@ -56,6 +63,11 @@
     <ClCompile Include="DigDugStateMachine.cpp" />
     <ClCompile Include="DigDugStateMove.cpp" />
     <ClCompile Include="DigDugStatePump.cpp" />
+    <ClCompile Include="Fygar.cpp" />
+    <ClCompile Include="FygarBlackboard.cpp" />
+    <ClCompile Include="FygarStateMachine.cpp" />
+    <ClCompile Include="FygarStateMove.cpp" />
+    <ClCompile Include="FygarStateTeleport.cpp" />
     <ClCompile Include="LevelOne.cpp" />
     <ClCompile Include="Main.cpp" />
     <ClCompile Include="MenuExtra.cpp" />
@@ -65,6 +77,8 @@
     <ClCompile Include="MenuSettings.cpp" />
     <ClCompile Include="Minigin.cpp" />
     <ClCompile Include="Player.cpp" />
+    <ClCompile Include="PlayerData.cpp" />
+    <ClCompile Include="PlayerHUD.cpp" />
     <ClCompile Include="Pooka.cpp" />
     <ClCompile Include="PookaBlackboard.cpp" />
     <ClCompile Include="PookaStateMachine.cpp" />

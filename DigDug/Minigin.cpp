@@ -12,6 +12,7 @@
 #include "Timing.h"
 #include "ResourceManager.h"
 #include "LevelOne.h"
+#include "PlayerData.h"
 
 namespace cem
 {
@@ -50,9 +51,6 @@ namespace cem
 
 	void Minigin::LoadGame() const
 	{
-		//SceneManager::GetInstance().CreateScene(std::make_shared<MenuScene>());
-		//SceneManager::GetInstance().SetActiveGameScene("MenuScene");
-
 		SceneManager::GetInstance().CreateScene(std::make_shared<LevelOne>());
 		SceneManager::GetInstance().SetActiveGameScene("LevelOne");
 	}
@@ -73,6 +71,7 @@ namespace cem
 		LoadGame();
 
 		{
+			auto& playerData = PlayerData::GetInstance();
 			auto& time = Timing::GetInstance();
 			auto& renderer = Renderer::GetInstance();
 			auto& sceneManager = SceneManager::GetInstance();
@@ -82,9 +81,11 @@ namespace cem
 
 			bool doContinue = true;
 			time.Initialize();
-
+			playerData.Initialize();
+			
 			while (doContinue)
 			{
+			
 				time.Update();
 				doContinue = input.ProcessInput();
 				commandManager.Update();

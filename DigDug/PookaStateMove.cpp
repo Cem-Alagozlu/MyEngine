@@ -24,7 +24,7 @@ namespace cem
 
 		if (pooka)
 		{
-			GetBlackboard<PookaBlackboard>()->m_RandomTeleportTimer = float(rand() % 3);
+			GetBlackboard<PookaBlackboard>()->m_RandomTeleportTimer = float(rand() % 15 + 10);
 			std::dynamic_pointer_cast<Pooka>(pooka)->SetSpritesInvisible();
 			std::dynamic_pointer_cast<Pooka>(pooka)->GetPookaSprites(Pooka::PookaSprites::walking)->SetVisibility(true);
 		}

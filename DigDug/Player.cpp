@@ -5,6 +5,8 @@
 #include "Timing.h"
 #include "CollisionComponent.h"
 #include "Tunnel.h"
+#include "PlayerHUD.h"
+#include "PlayerData.h"
 
 namespace cem
 {
@@ -30,11 +32,13 @@ namespace cem
 		AddComponent(std::make_shared<TransformComponent>());
 
 		auto spriteWalking = std::make_shared<SpriteComponent>("../Resources/Character/DigDug/Walk.png", 0.0f, 0.0f, 27.0f, 14.0f, 2, 1, 8);
-		auto spriteDigging = std::make_shared<SpriteComponent>("../Resources/Character/DigDug/Dig.png", 0.0f, 0.0f, 29.0f, 14.0f, 2, 1, 6);
-		auto playerCollision = std::make_shared<CollisionComponent>(CollisionComponent::CollisionType::Dynamic, Rectf(3.0f, 3.0f, 12.0f, 12.0f));
+		auto spriteDigging = std::make_shared<SpriteComponent>("../Resources/Character/DigDug/Dig.png", 0.0f, 0.0f, 29.0f, 14.0f, 2, 1, 8);
+		auto spritePumping = std::make_shared<SpriteComponent>("../Resources/Character/DigDug/Pump.png", 0.0f, 0.0f, 80.0f, 15.0f, 2, 1, 8);
+		auto playerCollision = std::make_shared<CollisionComponent>(CollisionComponent::CollisionType::Dynamic, Rectf(0.0f, 0.0f, 12.0f, 12.0f));
 
 		m_pSprites.push_back(spriteWalking);
 		m_pSprites.push_back(spriteDigging);
+		m_pSprites.push_back(spritePumping);
 		SetSpritesInvisible();
 		m_pSprites[static_cast<int>(PlayerSprites::walking)]->SetVisibility(true);
 
@@ -43,6 +47,7 @@ namespace cem
 
 		AddComponent(spriteWalking);
 		AddComponent(spriteDigging);
+		AddComponent(spritePumping);
 		AddComponent(playerCollision);
 
 		GetComponent<CollisionComponent>()->AddCallBack(std::bind(&Player::OnOverlap, this, std::placeholders::_1, std::placeholders::_2));
@@ -50,6 +55,9 @@ namespace cem
 
 		m_DigDug.GetBlackboard().m_pPlayer = weak_from_this();
 		m_DigDug.Initialize();
+
+		PlayerData::GetInstance().SetLives(3);
+		PlayerData::GetInstance().SetScore(100);
 	}
 
 	void Player::OnOverlap(std::shared_ptr<CollisionComponent> playerCollision, std::shared_ptr<CollisionComponent> otherCollision)
@@ -57,15 +65,13 @@ namespace cem
 
 		if (std::shared_ptr<Tunnel> tunnel = std::dynamic_pointer_cast<Tunnel>(otherCollision->GetGameObject()))
 		{
-			m_DigDug.GetBlackboard().m_IsDigging = true;
-			tunnel->GetComponent<TextureComponent>()->SetVisibility(true);
+			if (!tunnel->GetComponent<TextureComponent>()->GetVisibility())
+			{
+				m_DigDug.GetBlackboard().m_IsDigging = true;
+				tunnel->GetComponent<TextureComponent>()->SetVisibility(true);
+			}
+	
 		}
-		else
-		{
-			m_DigDug.GetBlackboard().m_IsDigging = false;
-		}
-
-
 	}
 
 	std::shared_ptr<SpriteComponent> Player::GetPlayerSprites(PlayerSprites playerSprites)
@@ -82,9 +88,33 @@ namespace cem
 		Vector2f currPos = GetComponent<TransformComponent>()->GetPosition();
 		Vector2f velocity = m_DigDug.GetBlackboard().m_Velocity;
 
+
+		if (currPos.x > 422.0f)
+		{
+			currPos.x = 422.0f;
+		}
+
+		if (currPos.x < 0.0f)
+		{
+			currPos.x = 0.0f;
+		}
+
+		if (currPos.y <= 25.0f)
+		{
+			currPos.y = 25.0f;
+		}
+		if (currPos.y >= 666.6f)
+		{
+			currPos.y = 666.6f;
+		}
+
+
 		GetComponent<TransformComponent>()->SetPosition(velocity + currPos);
+		m_DigDug.GetBlackboard().m_IsDigging = false;
 		m_DigDug.GetBlackboard().m_Velocity = Vector2f{ 0,0 };
 		m_IsButtonPressed = false;
+
+
 	}
 
 	void Player::Draw() const
@@ -138,36 +168,6 @@ namespace cem
 
 	void Player::Pump()
 	{
-		m_ElapsedSec = 0.0f;
-
-
-		if (m_ElapsedSec >= 1.0f)
-		{
-			if (--m_Pump > 0)
-			{
-				m_DigDug.GetBlackboard().m_IsPumping = false;
-			}
-			m_ElapsedSec = 0.0f;
-		}
-
 		m_DigDug.GetBlackboard().m_IsPumping = true;
-		++m_Pump;
-
-
-		switch (m_Pump)
-		{
-		case 0:
-			std::cout << "THREW THE PUMP\n";
-			break;
-		case 1:
-			std::cout << "Pump phase 01\n";
-			break;
-		case 2:
-			std::cout << "Pump phase 02\n";
-			break;
-		case 3:
-			std::cout << "Pump phase 02\n";
-			break;
-		}
 	}
 }
