@@ -19,7 +19,7 @@ namespace cem
 		SetMenuState(MenuState::menuMain);
 
 
-		SoundManager::GetInstance().PlaySoundStream("Menu", true);
+		//SoundManager::GetInstance().PlaySoundStream("Menu", true);
 	}
 
 	void MenuScene::SetMenuState(MenuState state)

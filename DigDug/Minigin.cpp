@@ -14,6 +14,7 @@
 #include "LevelOne.h"
 #include "PlayerData.h"
 #include "Achievements.h"
+#include "ThreadManager.h"
 
 namespace cem
 {
@@ -73,6 +74,7 @@ namespace cem
 
 		{
 			auto& playerData = PlayerData::GetInstance();
+			auto& threadManager = ThreadManager::GetInstance();
 			auto& time = Timing::GetInstance();
 			auto& renderer = Renderer::GetInstance();
 			auto& sceneManager = SceneManager::GetInstance();
@@ -93,6 +95,7 @@ namespace cem
 					commandManager.Update();
 					physicsManager.Update();
 					sceneManager.Update();
+					threadManager.GetEnemyThread().Wait();
 					renderer.Draw();
 	
 			}

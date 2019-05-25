@@ -117,10 +117,6 @@ namespace cem
 		{
 			neighbourTiles.Set(NeighbouringTiles::left, *itLeft);
 		}
-
-		//pos asignen
-		//update van enemy naar targetpos
-		// if on target pos, check opnieuw, ( welke tile next is )
 		return neighbourTiles;
 	}
 

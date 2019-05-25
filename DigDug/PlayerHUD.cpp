@@ -38,6 +38,17 @@ namespace cem
 			m_pLivesIMG.push_back(lifeIMG);
 		}
 
+		//ACHIEVMENTS
+		//for (int i = 0; i < m_TotalAchievements; i++)
+		//{
+		//	auto achievements = std::make_shared<GameObject>();
+		//	achievements->AddComponent(std::make_shared<TransformComponent>());
+		//	std::stringstream str;
+		//	str << "../Resources/Environment/Achievements/img (" << i + 1 << ")" << ".png";
+		//	achievements->AddComponent(std::make_shared<TextureComponent>(str.str()));
+		//	m_pAchievments.push_back(achievements);
+		//}
+
 		m_pGameOverIMG = std::make_shared<GameObject>();
 		m_pGameOverIMG->AddComponent(std::make_shared<TransformComponent>());
 		m_pGameOverIMG->AddComponent(std::make_shared<TextureComponent>("../Resources/Environment/gameOver.png"));

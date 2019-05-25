@@ -139,7 +139,7 @@ namespace cem
 				break;
 			}
 		}
-		SoundManager::GetInstance().PlaySoundEffect("Confirm", false, true);
+		//SoundManager::GetInstance().PlaySoundEffect("Confirm", false, true);
 	}
 
 	void MenuMain::SetImagesBack()

@@ -218,6 +218,8 @@ xcopy "$(SolutionDir)3rdParty\SDL2_ttf\lib\x64\*.dll" "$(OutputPath)" /R /Y</Com
     <ClInclude Include="Structs.h" />
     <ClInclude Include="TextDrawComponent.h" />
     <ClInclude Include="TextureComponent.h" />
+    <ClInclude Include="Thread.h" />
+    <ClInclude Include="ThreadManager.h" />
     <ClInclude Include="Timing.h" />
     <ClInclude Include="TransformComponent.h" />
   </ItemGroup>
@@ -251,6 +253,8 @@ xcopy "$(SolutionDir)3rdParty\SDL2_ttf\lib\x64\*.dll" "$(OutputPath)" /R /Y</Com
     <ClCompile Include="StateMachine.cpp" />
     <ClCompile Include="TextDrawComponent.cpp" />
     <ClCompile Include="TextureComponent.cpp" />
+    <ClCompile Include="Thread.cpp" />
+    <ClCompile Include="ThreadManager.cpp" />
     <ClCompile Include="Timing.cpp" />
     <ClCompile Include="TransformComponent.cpp" />
   </ItemGroup>

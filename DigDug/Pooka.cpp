@@ -3,6 +3,7 @@
 #include "Tunnel.h"
 #include "Timing.h"
 #include "PlayerData.h"
+#include "ThreadManager.h"
 
 namespace cem
 {
@@ -81,16 +82,22 @@ namespace cem
 	void Pooka::Update(float deltaTime)
 	{
 		GameObject::Update(deltaTime);
-		m_Pooka.Update();
+		
 
-		Vector2f currPos = GetComponent<TransformComponent>()->GetPosition();
-		Vector2f normalizeVec{};
+		ThreadManager::GetInstance().GetEnemyThread().AddTask([this]()
+		{
+			m_Pooka.Update();
+			Vector2f currPos = GetComponent<TransformComponent>()->GetPosition();
+			Vector2f normalizeVec{};
 
-		m_TargetPos = m_pWorld.lock()->GetTarget(m_pPlayer.lock(), shared_from_this());
-		normalizeVec = m_TargetPos - currPos;
-		Normalize(normalizeVec);
-		normalizeVec = normalizeVec * Timing::GetInstance().GetDeltaTime() * m_Pooka.GetBlackboard().m_Speed;
-		GetComponent<TransformComponent>()->SetPosition(normalizeVec + currPos);
+			m_TargetPos = m_pWorld.lock()->GetTarget(m_pPlayer.lock(), shared_from_this());
+			normalizeVec = m_TargetPos - currPos;
+			Normalize(normalizeVec);
+			normalizeVec = normalizeVec * Timing::GetInstance().GetDeltaTime() * m_Pooka.GetBlackboard().m_Speed;
+			GetComponent<TransformComponent>()->SetPosition(normalizeVec + currPos);
+		});
+
+
 
 	}
 
