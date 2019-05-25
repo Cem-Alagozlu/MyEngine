@@ -21,6 +21,7 @@
   <ItemGroup>
     <ClInclude Include="DigDugBlackboard.h" />
     <ClInclude Include="DigDugPCH.h" />
+    <ClInclude Include="DigDugStateDead.h" />
     <ClInclude Include="DigDugStateDig.h" />
     <ClInclude Include="DigDugStateIdle.h" />
     <ClInclude Include="DigDugStateMachine.h" />
@@ -58,6 +59,7 @@
       <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">Create</PrecompiledHeader>
       <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Release|x64'">Create</PrecompiledHeader>
     </ClCompile>
+    <ClCompile Include="DigDugStateDead.cpp" />
     <ClCompile Include="DigDugStateDig.cpp" />
     <ClCompile Include="DigDugStateIdle.cpp" />
     <ClCompile Include="DigDugStateMachine.cpp" />

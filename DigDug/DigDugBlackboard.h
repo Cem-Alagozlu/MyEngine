@@ -8,6 +8,13 @@ namespace cem
 	class DigDugBlackboard final : public Blackboard
 	{
 	public:
+		enum class Direction : int
+		{
+			left = 0,
+			right = 1,
+			up = 2,
+			down = 3
+		};
 
 		DigDugBlackboard();
 		~DigDugBlackboard();
@@ -19,6 +26,9 @@ namespace cem
 		bool m_IsPumpingEnemy;
 		int m_PumpPhase;
 		float m_PumpTimer;
+		Direction m_Direction;
+		bool m_HasDied = false;
+		bool m_GameOver;
 		std::weak_ptr<cem::GameObject> m_pPlayer;
 	};
 }

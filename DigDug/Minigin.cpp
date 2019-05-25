@@ -85,13 +85,14 @@ namespace cem
 			
 			while (doContinue)
 			{
-			
-				time.Update();
-				doContinue = input.ProcessInput();
-				commandManager.Update();
-				physicsManager.Update();
-				sceneManager.Update();
-				renderer.Draw();
+
+					time.Update();
+					doContinue = input.ProcessInput();
+					commandManager.Update();
+					physicsManager.Update();
+					sceneManager.Update();
+					renderer.Draw();
+	
 			}
 		}
 

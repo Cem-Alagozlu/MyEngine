@@ -40,11 +40,14 @@ namespace cem
 			m_pLivesIMG.push_back(lifeIMG);
 		}
 
-
+		m_pGameOverIMG = std::make_shared<GameObject>();
+		m_pGameOverIMG->AddComponent(std::make_shared<TransformComponent>());
+		m_pGameOverIMG->AddComponent(std::make_shared<TextureComponent>("../Resources/Environment/gameOver.png"));
 	}
 
 	void PlayerHUD::Update(float deltaTime)
 	{
+		m_TotalLives = PlayerData::GetInstance().GetLives();
 		for (int i = 0; i < m_TotalLives; i++)
 		{
 			m_pLivesIMG[i]->GetComponent<TransformComponent>()->SetPosition(Vector2f{ 453.0f + (i * 30.0f),655.0f });
@@ -62,5 +65,10 @@ namespace cem
 		}
 	
 		m_pScoreTXT->Draw();
+
+		if (PlayerData::GetInstance().GetGameOver())
+		{
+			m_pGameOverIMG->Draw();
+		}
 	}
 }

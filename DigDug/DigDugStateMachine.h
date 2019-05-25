@@ -5,6 +5,7 @@
 #include "DigDugBlackboard.h"
 #include "DigDugStatePump.h"
 #include "DigDugStateDig.h"
+#include "DigDugStateDead.h"
 
 namespace cem
 {
@@ -23,6 +24,7 @@ namespace cem
 		DigDugStateMove m_Move;
 		DigDugStatePump m_Pump;
 		DigDugStateDig m_Dig;
+		DigDugStateDead m_Dead;
 		DigDugBlackboard m_Blackboard;
 	};
 }

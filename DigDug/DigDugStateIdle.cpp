@@ -47,8 +47,8 @@ namespace cem
 		Vector2f velocity = blackboard->m_Velocity;
 		bool isPumping = blackboard->m_IsPumping;
 		bool isDigging = blackboard->m_IsDigging;
-
-		if (velocity.x == 0 && velocity.y == 0 &&!isDigging && !isPumping)
+		bool isDead = blackboard->m_HasDied;
+		if (velocity.x == 0 && velocity.y == 0 &&!isDigging && !isPumping &&!isDead)
 		{
 			return true;
 		}

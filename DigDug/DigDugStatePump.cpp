@@ -38,33 +38,35 @@ namespace cem
 	void DigDugStatePump::Update()
 	{
 		auto digdugBlackboard = GetBlackboard<DigDugBlackboard>();
-		Vector2f velocity = digdugBlackboard->m_Velocity;
 		std::shared_ptr<GameObject> player = digdugBlackboard->m_pPlayer.lock();
+
 		digdugBlackboard->m_PumpTimer -= Timing::GetInstance().GetDeltaTime();
 
-
+		
 		if (player)
 		{
-			auto sprite = player->GetComponent<SpriteComponent>();
-			if (velocity.x < 0.0f)
+			auto sprite = std::dynamic_pointer_cast<Player>(player)->GetPlayerSprites(Player::PlayerSprites::pumping);
+			auto currPos = player->GetComponent<TransformComponent>()->GetPosition();
+			Vector2f newPos = currPos;
+
+			switch (digdugBlackboard->m_Direction)
 			{
-				sprite->SetAngle(0.0);
-				sprite->FlipTexture(SDL_FLIP_HORIZONTAL);
-			}
-			else if (velocity.x > 0.0f)
-			{
+			case DigDugBlackboard::Direction::left:
 				sprite->SetAngle(0.0);
 				sprite->FlipTexture(SDL_FLIP_NONE);
-			}
-			else if (velocity.y < 0.0f)
-			{
+				break;
+			case DigDugBlackboard::Direction::right:
+				sprite->SetAngle(180.0f);
 				sprite->FlipTexture(SDL_FLIP_VERTICAL);
-				sprite->SetAngle(-90.0);
-			}
-			else if (velocity.y > 0.0f)
-			{
+				break;
+			case DigDugBlackboard::Direction::up:
 				sprite->FlipTexture(SDL_FLIP_VERTICAL);
 				sprite->SetAngle(90.0);
+				break;
+			case DigDugBlackboard::Direction::down:
+				sprite->FlipTexture(SDL_FLIP_VERTICAL);
+				sprite->SetAngle(-90.0);
+				break;
 			}
 
 		}
@@ -76,6 +78,9 @@ namespace cem
 		
 		std::cout << "pumptime: " << digdugBlackboard->m_PumpTimer << std::endl;
 
+
+		GetBlackboard<DigDugBlackboard>()->m_Velocity.x = 0.0f;
+		GetBlackboard<DigDugBlackboard>()->m_Velocity.y = 0.0f;
 	}
 
 	
@@ -83,8 +88,8 @@ namespace cem
 	bool DigDugStatePump::CanTransition()
 	{
 		bool isPumping = GetBlackboard<DigDugBlackboard>()->m_IsPumping;
-
-		if (isPumping)
+		bool isDead = GetBlackboard<DigDugBlackboard>()->m_HasDied;
+		if (isPumping && !isDead)
 		{
 			return true;
 		}

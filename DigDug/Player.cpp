@@ -34,11 +34,13 @@ namespace cem
 		auto spriteWalking = std::make_shared<SpriteComponent>("../Resources/Character/DigDug/Walk.png", 0.0f, 0.0f, 27.0f, 14.0f, 2, 1, 8);
 		auto spriteDigging = std::make_shared<SpriteComponent>("../Resources/Character/DigDug/Dig.png", 0.0f, 0.0f, 29.0f, 14.0f, 2, 1, 8);
 		auto spritePumping = std::make_shared<SpriteComponent>("../Resources/Character/DigDug/Pump.png", 0.0f, 0.0f, 80.0f, 15.0f, 2, 1, 8);
+		auto spriteDead = std::make_shared<SpriteComponent>("../Resources/Character/DigDug/Dead.png", 0.0f, 0.0f, 64.0f, 16.0f, 3, 1, 8);
 		auto playerCollision = std::make_shared<CollisionComponent>(CollisionComponent::CollisionType::Dynamic, Rectf(0.0f, 0.0f, 12.0f, 12.0f));
 
 		m_pSprites.push_back(spriteWalking);
 		m_pSprites.push_back(spriteDigging);
 		m_pSprites.push_back(spritePumping);
+		m_pSprites.push_back(spriteDead);
 		SetSpritesInvisible();
 		m_pSprites[static_cast<int>(PlayerSprites::walking)]->SetVisibility(true);
 
@@ -48,11 +50,12 @@ namespace cem
 		AddComponent(spriteWalking);
 		AddComponent(spriteDigging);
 		AddComponent(spritePumping);
+		AddComponent(spriteDead);
 		AddComponent(playerCollision);
 
 		GetComponent<CollisionComponent>()->AddCallBack(std::bind(&Player::OnOverlap, this, std::placeholders::_1, std::placeholders::_2));
 
-
+		m_DigDug.GetBlackboard().m_IsPumping = false;
 		m_DigDug.GetBlackboard().m_pPlayer = weak_from_this();
 		m_DigDug.Initialize();
 
@@ -81,39 +84,51 @@ namespace cem
 
 	void Player::Update(float deltaTime)
 	{
-		GameObject::Update(deltaTime);
-		m_DigDug.Update();
-		m_ElapsedSec += deltaTime;
-
-		Vector2f currPos = GetComponent<TransformComponent>()->GetPosition();
-		Vector2f velocity = m_DigDug.GetBlackboard().m_Velocity;
-
-
-		if (currPos.x > 422.0f)
+		if (!PlayerData::GetInstance().GetGameOver())
 		{
-			currPos.x = 422.0f;
+
+			GameObject::Update(deltaTime);
+			m_DigDug.Update();
+			m_ElapsedSec += deltaTime;
+
+			Vector2f currPos = GetComponent<TransformComponent>()->GetPosition();
+			Vector2f velocity = m_DigDug.GetBlackboard().m_Velocity;
+
+
+			if (currPos.x > 422.0f)
+			{
+				currPos.x = 422.0f;
+			}
+
+			if (currPos.x < 0.0f)
+			{
+				currPos.x = 0.0f;
+			}
+
+			if (currPos.y <= 25.0f)
+			{
+				currPos.y = 25.0f;
+			}
+			if (currPos.y >= 666.6f)
+			{
+				currPos.y = 666.6f;
+			}
+
+
+			GetComponent<TransformComponent>()->SetPosition(velocity + currPos);
+			m_DigDug.GetBlackboard().m_IsPumping = false;
+			m_DigDug.GetBlackboard().m_HasDied = false;
+			m_DigDug.GetBlackboard().m_IsDigging = false;
+			m_DigDug.GetBlackboard().m_Velocity = Vector2f{ 0,0 };
+			m_IsButtonPressed = false;
+
+
+			if (PlayerData::GetInstance().GetLives() <= 0)
+			{
+				PlayerData::GetInstance().SetGameOver(true);
+				SetSpritesInvisible();
+			}
 		}
-
-		if (currPos.x < 0.0f)
-		{
-			currPos.x = 0.0f;
-		}
-
-		if (currPos.y <= 25.0f)
-		{
-			currPos.y = 25.0f;
-		}
-		if (currPos.y >= 666.6f)
-		{
-			currPos.y = 666.6f;
-		}
-
-
-		GetComponent<TransformComponent>()->SetPosition(velocity + currPos);
-		m_DigDug.GetBlackboard().m_IsDigging = false;
-		m_DigDug.GetBlackboard().m_Velocity = Vector2f{ 0,0 };
-		m_IsButtonPressed = false;
-
 
 	}
 
@@ -128,6 +143,11 @@ namespace cem
 		{
 			m_pSprites[i]->SetVisibility(false);
 		}
+	}
+
+	bool Player::IsPlayerPumping()
+	{
+		return m_DigDug.GetBlackboard().m_IsPumping;
 	}
 
 	void Player::MoveLeft()

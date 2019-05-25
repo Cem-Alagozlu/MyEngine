@@ -19,12 +19,22 @@ namespace cem
 
 	void PlayerData::SetLives(int life)
 	{
-		m_Lives = life;
+		m_Lives += life;
 	}
 
 	int PlayerData::GetScore()
 	{
 		return m_Score;
+	}
+
+	void PlayerData::SetGameOver(bool endGame)
+	{
+		m_IsGameOver = endGame;
+	}
+
+	bool PlayerData::GetGameOver()
+	{
+		return m_IsGameOver;
 	}
 
 	void PlayerData::SetScore(int score)

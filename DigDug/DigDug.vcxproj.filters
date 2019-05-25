@@ -129,7 +129,12 @@
     <ClInclude Include="FygarStateMove.h">
       <Filter>Characters\Fygar\StateMachine</Filter>
     </ClInclude>
-    <ClInclude Include="FygarStateTeleport.h" />
+    <ClInclude Include="FygarStateTeleport.h">
+      <Filter>Characters\Fygar\StateMachine</Filter>
+    </ClInclude>
+    <ClInclude Include="DigDugStateDead.h">
+      <Filter>Characters\DigDug\StateMachine</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="MenuExtra.cpp">
@@ -219,6 +224,11 @@
     <ClCompile Include="FygarStateMove.cpp">
       <Filter>Characters\Fygar\StateMachine</Filter>
     </ClCompile>
-    <ClCompile Include="FygarStateTeleport.cpp" />
+    <ClCompile Include="FygarStateTeleport.cpp">
+      <Filter>Characters\Fygar\StateMachine</Filter>
+    </ClCompile>
+    <ClCompile Include="DigDugStateDead.cpp">
+      <Filter>Characters\DigDug\StateMachine</Filter>
+    </ClCompile>
   </ItemGroup>
 </Project>

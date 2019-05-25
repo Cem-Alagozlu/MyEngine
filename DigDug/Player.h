@@ -14,7 +14,8 @@ namespace cem
 		{
 			walking = 0,
 			digging = 1,
-			pumping = 2
+			pumping = 2,
+			dead = 3
 
 		};
 
@@ -25,7 +26,7 @@ namespace cem
 		void OnOverlap(std::shared_ptr<CollisionComponent> playerCollision, std::shared_ptr<CollisionComponent> otherCollision);
 		std::shared_ptr<cem::SpriteComponent> GetPlayerSprites(PlayerSprites playerSprites);
 		void SetSpritesInvisible();
-
+		bool IsPlayerPumping();
 	protected:
 		virtual void Update(float deltaTime) override;
 		void Draw() const;

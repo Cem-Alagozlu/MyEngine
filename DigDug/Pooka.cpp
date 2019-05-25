@@ -2,6 +2,7 @@
 #include "Pooka.h"
 #include "Tunnel.h"
 #include "Timing.h"
+#include "PlayerData.h"
 
 namespace cem
 {
@@ -46,6 +47,20 @@ namespace cem
 	void Pooka::OnOverlap(std::shared_ptr<CollisionComponent> pookaCollision, std::shared_ptr<CollisionComponent> otherCollision)
 	{
 		std::shared_ptr<Tunnel> tunnel = std::dynamic_pointer_cast<Tunnel>(otherCollision->GetGameObject());
+
+		if (std::shared_ptr<Player> player = std::dynamic_pointer_cast<Player>(otherCollision->GetGameObject()))
+		{
+			if (player->IsPlayerPumping())
+			{
+				std::cout << "ye boi\n";
+			}
+			else
+			{
+				PlayerData::GetInstance().SetLives(-1);
+				player->GetComponent<TransformComponent>()->SetPosition(Vector2f{ 0.0f,0.0f });
+			}
+		}
+
 	}
 
 
@@ -61,6 +76,7 @@ namespace cem
 			m_pSprites[i]->SetVisibility(false);
 		}
 	}
+
 
 	void Pooka::Update(float deltaTime)
 	{

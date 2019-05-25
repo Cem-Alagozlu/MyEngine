@@ -15,9 +15,13 @@ namespace cem
 		void SetScore(int score);
 		int GetScore();
 
+		void SetGameOver(bool endGame);
+		bool GetGameOver();
+
 	private:
 		int m_Lives;
 		int m_Score;
+		bool m_IsGameOver;
 	};
 }
 

@@ -27,6 +27,8 @@ namespace cem
 
 		void SetSpritesInvisible();
 
+
+
 	protected:
 		virtual void Update(float deltaTime) override;
 		void Draw() const;

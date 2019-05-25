@@ -11,14 +11,16 @@ namespace cem
 
 		void Initialize();
 
+
 	protected:
 		virtual void Update(float deltaTime) override;
 		void Draw() const;
 
 	private:
 		std::vector<std::shared_ptr<GameObject>> m_pLivesIMG;
-		std::shared_ptr<GameObject> m_pScoreTXT;
+		std::shared_ptr<GameObject> m_pScoreTXT,m_pGameOverIMG;
 		int m_TotalLives;
+
 	};
 }
 
