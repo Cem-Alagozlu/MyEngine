@@ -8,6 +8,7 @@
 #include "PlayerHUD.h"
 #include "PlayerData.h"
 #include "PickUpFruit.h"
+#include "Achievements.h"
 
 namespace cem
 {
@@ -60,8 +61,8 @@ namespace cem
 		m_DigDug.GetBlackboard().m_pPlayer = weak_from_this();
 		m_DigDug.Initialize();
 
-		PlayerData::GetInstance().SetLives(3);
-		PlayerData::GetInstance().SetScore(100);
+		Achievements::GetInstance().Initialize(std::dynamic_pointer_cast<Player>(shared_from_this()));
+		PlayerData::GetInstance().Initialize();
 	}
 
 	void Player::OnOverlap(std::shared_ptr<CollisionComponent> playerCollision, std::shared_ptr<CollisionComponent> otherCollision)
@@ -72,6 +73,7 @@ namespace cem
 			if (!tunnel->GetComponent<TextureComponent>()->GetVisibility())
 			{
 				m_DigDug.GetBlackboard().m_IsDigging = true;
+				m_pObserver->OnNotify(Events::playerDig);
 				tunnel->GetComponent<TextureComponent>()->SetVisibility(true);
 			}
 		}
@@ -148,6 +150,11 @@ namespace cem
 	bool Player::IsPlayerPumping()
 	{
 		return m_DigDug.GetBlackboard().m_IsPumping;
+	}
+
+	void Player::SetObserver(Observer* pObserver)
+	{
+		m_pObserver = pObserver;
 	}
 
 	void Player::MoveLeft()

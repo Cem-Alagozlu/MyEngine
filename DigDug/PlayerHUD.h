@@ -19,7 +19,6 @@ namespace cem
 	private:
 		std::vector<std::shared_ptr<GameObject>> m_pLivesIMG;
 		std::shared_ptr<GameObject> m_pScoreTXT,m_pGameOverIMG;
-		int m_TotalLives;
 
 	};
 }

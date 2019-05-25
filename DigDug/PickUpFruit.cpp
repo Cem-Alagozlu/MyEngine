@@ -32,7 +32,7 @@ namespace cem
 
 	void PickUpFruit::SetScoreFromFruit()
 	{
-			 PlayerData::GetInstance().SetScore(50 * m_RandomFruitSelector);
+			 PlayerData::GetInstance().AddScore(50 * m_RandomFruitSelector);
 	}
 
 	void PickUpFruit::Respawn()

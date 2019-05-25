@@ -29,7 +29,7 @@ namespace cem
 
 	void DigDugStateDead::Exit()
 	{
-		PlayerData::GetInstance().SetLives(-1);
+		PlayerData::GetInstance().AddLives(-1);
 		std::shared_ptr<GameObject> player = GetBlackboard<DigDugBlackboard>()->m_pPlayer.lock();
 
 		if (player)

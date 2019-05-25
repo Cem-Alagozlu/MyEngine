@@ -138,6 +138,7 @@
     <ClInclude Include="PickUpFruit.h">
       <Filter>Level</Filter>
     </ClInclude>
+    <ClInclude Include="Achievements.h" />
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="MenuExtra.cpp">
@@ -236,5 +237,6 @@
     <ClCompile Include="PickUpFruit.cpp">
       <Filter>Level</Filter>
     </ClCompile>
+    <ClCompile Include="Achievements.cpp" />
   </ItemGroup>
 </Project>

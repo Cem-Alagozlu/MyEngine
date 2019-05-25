@@ -56,7 +56,7 @@ namespace cem
 			}
 			else
 			{
-				PlayerData::GetInstance().SetLives(-1);
+				PlayerData::GetInstance().AddLives(-1);
 				player->GetComponent<TransformComponent>()->SetPosition(Vector2f{ 0.0f,0.0f });
 			}
 		}

@@ -40,16 +40,20 @@ namespace cem
 	{
 		const auto it = find_if(m_Scenes.begin(), m_Scenes.end(), [sceneName](std::shared_ptr<Scene> pScene)
 		{
+
 			return sceneName == pScene->m_SceneName;
+
 		});
 
 		if (it != m_Scenes.end())
 		{
 			m_pNewActiveScene = *it;
+			m_pNewActiveScene->Initialize();
 		}
+
 	}
 
-	std::shared_ptr<Scene> cem::SceneManager::GetActiveScene() const
+	std::shared_ptr<Scene> SceneManager::GetActiveScene() const
 	{
 		return m_pActiveScene;
 	}
@@ -65,7 +69,7 @@ namespace cem
 			if (m_pActiveScene == nullptr && m_pNewActiveScene == nullptr)
 			{
 				m_pNewActiveScene = pScene;
-				m_pNewActiveScene->Initialize();
+				//m_pNewActiveScene->Initialize();
 			}
 		}
 	}

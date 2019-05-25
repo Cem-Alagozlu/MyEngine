@@ -3,6 +3,7 @@
 #include "SpriteComponent.h"
 #include "GameObject.h"
 #include "CollisionComponent.h"
+#include "Observer.h"
 
 
 namespace cem
@@ -10,13 +11,18 @@ namespace cem
 	class Player final : public GameObject
 	{
 	public:
+		enum class Event
+		{
+			dig,
+			dug,
+			died
+		};
 		enum class PlayerSprites : int
 		{
 			walking = 0,
 			digging = 1,
 			pumping = 2,
 			dead = 3
-
 		};
 
 		Player();
@@ -27,6 +33,8 @@ namespace cem
 		std::shared_ptr<SpriteComponent> GetPlayerSprites(PlayerSprites playerSprites);
 		void SetSpritesInvisible();
 		bool IsPlayerPumping();
+
+		void SetObserver(Observer* pObserver);
 	protected:
 		virtual void Update(float deltaTime) override;
 		void Draw() const;
@@ -34,7 +42,7 @@ namespace cem
 	private:
 		DigDugStateMachine m_DigDug;
 		std::vector<std::shared_ptr<cem::SpriteComponent>> m_pSprites;
-
+		Observer* m_pObserver;
 
 		float m_Speed;
 		bool m_IsButtonPressed;

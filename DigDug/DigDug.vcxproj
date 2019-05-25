@@ -19,6 +19,7 @@
     </ProjectConfiguration>
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="Achievements.h" />
     <ClInclude Include="DigDugBlackboard.h" />
     <ClInclude Include="DigDugPCH.h" />
     <ClInclude Include="DigDugStateDead.h" />
@@ -53,6 +54,7 @@
     <ClInclude Include="World.h" />
   </ItemGroup>
   <ItemGroup>
+    <ClCompile Include="Achievements.cpp" />
     <ClCompile Include="DigDugBlackboard.cpp" />
     <ClCompile Include="DigDugPCH.cpp">
       <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">Create</PrecompiledHeader>

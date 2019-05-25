@@ -112,6 +112,12 @@
     <ClInclude Include="PhysicsManager.h">
       <Filter>Framework\Manager</Filter>
     </ClInclude>
+    <ClInclude Include="Observer.h">
+      <Filter>Framework\Helpers</Filter>
+    </ClInclude>
+    <ClInclude Include="Events.h">
+      <Filter>Framework\Helpers</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="TransformComponent.cpp">

@@ -13,6 +13,7 @@
 #include "ResourceManager.h"
 #include "LevelOne.h"
 #include "PlayerData.h"
+#include "Achievements.h"
 
 namespace cem
 {
@@ -51,8 +52,8 @@ namespace cem
 
 	void Minigin::LoadGame() const
 	{
-		SceneManager::GetInstance().CreateScene(std::make_shared<LevelOne>());
-		SceneManager::GetInstance().SetActiveGameScene("LevelOne");
+		SceneManager::GetInstance().CreateScene(std::make_shared<MenuScene>());
+		SceneManager::GetInstance().SetActiveGameScene("MenuScene");
 	}
 
 	void Minigin::Cleanup()
@@ -82,6 +83,7 @@ namespace cem
 			bool doContinue = true;
 			time.Initialize();
 			playerData.Initialize();
+
 			
 			while (doContinue)
 			{

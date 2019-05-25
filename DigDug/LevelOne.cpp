@@ -59,6 +59,7 @@ namespace cem
 
 	void LevelOne::Update()
 	{
+		std::cout << "Level Scene\n";
 	}
 
 	void LevelOne::Draw()

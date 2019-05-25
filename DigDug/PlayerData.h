@@ -9,10 +9,10 @@ namespace cem
 		void Initialize();
 		~PlayerData() = default;
 
-		void SetLives(int life);
+		void AddLives(int life);
 		int GetLives();
 
-		void SetScore(int score);
+		void AddScore(int score);
 		int GetScore();
 
 		void SetGameOver(bool endGame);

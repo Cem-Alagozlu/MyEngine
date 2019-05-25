@@ -17,7 +17,7 @@ namespace cem
 
 
 
-	void PlayerData::SetLives(int life)
+	void PlayerData::AddLives(int life)
 	{
 		m_Lives += life;
 	}
@@ -37,7 +37,7 @@ namespace cem
 		return m_IsGameOver;
 	}
 
-	void PlayerData::SetScore(int score)
+	void PlayerData::AddScore(int score)
 	{
 		m_Score += score;
 	}
