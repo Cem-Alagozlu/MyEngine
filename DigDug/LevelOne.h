@@ -5,6 +5,7 @@
 #include "Pooka.h"
 #include "PlayerHUD.h"
 #include "Fygar.h"
+#include "PickUpFruit.h"
 
 namespace cem
 {
@@ -30,7 +31,7 @@ namespace cem
 		std::vector<std::shared_ptr<Pooka>> m_pPookas;
 		std::shared_ptr<Fygar> m_pFygar;
 		std::shared_ptr<PlayerHUD> m_pPlayerHUD;
-
+		std::shared_ptr<PickUpFruit> m_pFruits;
 		void LevelSetup();
 	};
 }

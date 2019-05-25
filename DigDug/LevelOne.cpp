@@ -21,6 +21,7 @@ namespace cem
 
 		m_pPlayer = std::make_shared<Player>();
 		m_pPlayer->Initialize();
+		m_pPlayer->GetComponent<TransformComponent>()->SetPosition(Vector2f{ 210.0f,285.0f });
 		AddChild(m_pPlayer);
 
 		
@@ -41,12 +42,18 @@ namespace cem
 		m_pFygar->GetComponent<TransformComponent>()->SetPosition(Vector2f{ 250.0f,600.0f });
 		AddChild(m_pFygar);
 
+		m_pFruits = std::make_shared<PickUpFruit>();
+		m_pFruits->Initialize();
+		AddChild(m_pFruits);
+
+
 		m_pPlayerHUD = std::make_shared<PlayerHUD>();
 		m_pPlayerHUD->Initialize();
 		AddChild(m_pPlayerHUD);
 
 		m_pWorld->SetPlayer(m_pPlayer);
 		LevelSetup();
+
 
 	}
 

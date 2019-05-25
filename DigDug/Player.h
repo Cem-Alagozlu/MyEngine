@@ -24,7 +24,7 @@ namespace cem
 
 		void Initialize();
 		void OnOverlap(std::shared_ptr<CollisionComponent> playerCollision, std::shared_ptr<CollisionComponent> otherCollision);
-		std::shared_ptr<cem::SpriteComponent> GetPlayerSprites(PlayerSprites playerSprites);
+		std::shared_ptr<SpriteComponent> GetPlayerSprites(PlayerSprites playerSprites);
 		void SetSpritesInvisible();
 		bool IsPlayerPumping();
 	protected:

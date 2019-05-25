@@ -7,6 +7,7 @@
 #include "Tunnel.h"
 #include "PlayerHUD.h"
 #include "PlayerData.h"
+#include "PickUpFruit.h"
 
 namespace cem
 {
@@ -73,7 +74,6 @@ namespace cem
 				m_DigDug.GetBlackboard().m_IsDigging = true;
 				tunnel->GetComponent<TextureComponent>()->SetVisibility(true);
 			}
-	
 		}
 	}
 
