@@ -138,8 +138,14 @@ namespace cem
 
 	void SoundManager::StopAll()
 	{
-		StopSoundEffect("Confirm");
-		StopSoundEffect("Move");
-		StopMusic("Menu");
+		for (auto sfx : m_SoundEffectMap)
+		{
+			sfx.second.Stop();
+		}
+
+		for (auto music : m_SoundEffectMap)
+		{
+			music.second.Stop();
+		}
 	}
 }
