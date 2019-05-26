@@ -46,6 +46,7 @@ namespace cem
 		Vector2f velocity = blackboard->m_Velocity;
 		bool isPumping = blackboard->m_IsPumping;
 
+
 		if (!isPumping && velocity.x == 0 && velocity.y == 0)
 		{
 			return true;

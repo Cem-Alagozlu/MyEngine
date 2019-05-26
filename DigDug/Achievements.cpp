@@ -1,6 +1,5 @@
 #include "DigDugPCH.h"
 #include "Achievements.h"
-#include "PlayerHUD.h"
 #include "PlayerData.h"
 
 namespace cem
@@ -9,12 +8,13 @@ namespace cem
 	{
 		pPlayer->SetObserver(this);
 	}
+
 	void Achievements::OnNotify(Events event)
 	{
-		auto achievementDig = PlayerData::GetInstance().GetAchievements(PlayerData::PlayerAchievements::digAchievement);
-		auto achievementDug = PlayerData::GetInstance().GetAchievements(PlayerData::PlayerAchievements::dugAchievement);
-		auto achievementDead = PlayerData::GetInstance().GetAchievements(PlayerData::PlayerAchievements::deadAchievement);
-		auto achievementFruity = PlayerData::GetInstance().GetAchievements(PlayerData::PlayerAchievements::fruityAchievement);
+		bool achievementDig = PlayerData::GetInstance().GetAchievements(PlayerData::PlayerAchievements::digAchievement);
+		bool achievementDug = PlayerData::GetInstance().GetAchievements(PlayerData::PlayerAchievements::dugAchievement);
+		bool achievementDead = PlayerData::GetInstance().GetAchievements(PlayerData::PlayerAchievements::deadAchievement);
+		bool achievementFruity = PlayerData::GetInstance().GetAchievements(PlayerData::PlayerAchievements::fruityAchievement);
 
 		switch (event)
 		{
@@ -45,6 +45,8 @@ namespace cem
 			{
 				PlayerData::GetInstance().SetAchievement(PlayerData::PlayerAchievements::fruityAchievement, true);
 			}
+			break;
+		default:
 			break;
 		}
 	}

@@ -41,10 +41,3 @@ namespace cem
 	}
 
 }
-
-//Be careful that you don't achieve the pitfalls associated 
-//with inheritance in your component system (which is designed to avoid those).
-//Consider only using inheritance on components with a strict "is a" relationship, 
-//the FPS component calculates the fps and USES the functionality of a text component 
-//to draw it. It has a completely different purpose than a component that draws text. 
-//You could use two components and have the FPS component set the text of the TextDrawComponent.

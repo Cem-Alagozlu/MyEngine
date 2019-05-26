@@ -108,7 +108,7 @@ namespace cem
 
 	void Fygar::SetSpritesInvisible()
 	{
-		for (int i = 0; i < m_pSprites.size(); i++)
+		for (size_t i = 0; i < m_pSprites.size(); i++)
 		{
 			m_pSprites[i]->SetVisibility(false);
 		}
@@ -116,7 +116,7 @@ namespace cem
 
 	void Fygar::SetTexturesInvisible()
 	{
-		for (int i = 0; i < m_pTextures.size(); i++)
+		for (size_t i = 0; i < m_pTextures.size(); i++)
 		{
 			m_pTextures[i]->SetVisibility(false);
 		}

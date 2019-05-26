@@ -85,7 +85,6 @@ namespace cem
 		auto blackboard = GetBlackboard<DigDugBlackboard>();
 		Vector2f velocity = blackboard->m_Velocity;
 		bool isDigging = blackboard->m_IsDigging;
-		
 
 
 		if (isDigging && !(velocity.x == 0) || isDigging && !(velocity.y == 0))

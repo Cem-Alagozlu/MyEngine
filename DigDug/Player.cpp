@@ -163,7 +163,7 @@ namespace cem
 
 	void Player::SetSpritesInvisible()
 	{
-		for (int i = 0; i < m_pSprites.size(); i++)
+		for (size_t i = 0; i < m_pSprites.size(); i++)
 		{
 			m_pSprites[i]->SetVisibility(false);
 		}

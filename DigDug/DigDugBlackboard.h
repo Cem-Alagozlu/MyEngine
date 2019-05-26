@@ -29,6 +29,6 @@ namespace cem
 		Direction m_Direction;
 		bool m_HasDied = false;
 		bool m_GameOver;
-		std::weak_ptr<cem::GameObject> m_pPlayer;
+		std::weak_ptr<GameObject> m_pPlayer;
 	};
 }

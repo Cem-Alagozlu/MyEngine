@@ -142,7 +142,7 @@ namespace cem
 		std::shared_ptr<Tunnel> currClosestTunnel;
 
 
-		for (int i = 0; i < tiles.tunnels.size(); i++)
+		for (size_t i = 0; i < tiles.tunnels.size(); i++)
 		{
 			if (!tiles.tunnels[i])
 			{

@@ -83,17 +83,17 @@ namespace cem
 		m_pScoreTXT->GetComponent<TextDrawComponent>()->SetText(std::to_string(PlayerData::GetInstance().GetScore()));
 
 
-		for (int i = 0; i < m_pAchievments.size(); i++)
+		for (size_t i = 0; i < m_pAchievments.size(); i++)
 		{
 			m_pAchievments[i]->GetComponent<TransformComponent>()->SetPosition(Vector2f{ 448.0f,200.0f + (i*40) });
 		}
-		for (int i = 0; i < m_pAchievments.size(); i++)
+		for (size_t i = 0; i < m_pAchievments.size(); i++)
 		{
 			m_pAchievemntsOverlay[i]->GetComponent<TransformComponent>()->SetPosition(Vector2f{ 448.0f,200.0f + (i * 40) });
 		}
 
 		//ACHIEVEMENTS
-		for (int i = 0; i < m_pAchievemntsOverlay.size(); i++)
+		for (size_t i = 0; i < m_pAchievemntsOverlay.size(); i++)
 		{
 				if (PlayerData::GetInstance().GetAchievements(static_cast<PlayerData::PlayerAchievements>(i))
 					&& m_pAchievemntsOverlay[i]->GetComponent<TextureComponent>()->GetVisibility())

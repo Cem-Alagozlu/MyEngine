@@ -89,7 +89,8 @@ namespace cem
 		m_AccuSec += deltaTime;
 		if (m_AccuSec > m_FrameTime && m_IsLocked == false)
 		{
-			++m_CurFrame %= m_Cols * m_Rows;
+			++m_CurFrame;
+			m_CurFrame  %= m_Cols * m_Rows;
 			m_AccuSec -= m_FrameTime;
 			UpdateSourceRect();
 		}
