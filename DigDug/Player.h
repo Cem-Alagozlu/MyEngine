@@ -33,8 +33,11 @@ namespace cem
 		std::shared_ptr<SpriteComponent> GetPlayerSprites(PlayerSprites playerSprites);
 		void SetSpritesInvisible();
 		bool IsPlayerPumping();
+		bool IsPlayerPumpingEnemy();
+		void SetEnemyPumped(bool enemyPumped);
 
 		void SetObserver(Observer* pObserver);
+		Observer* GetPlayerObserver();
 	protected:
 		virtual void Update(float deltaTime) override;
 		void Draw() const;

@@ -17,6 +17,7 @@ namespace cem
 		bool m_IsTeleporting = false;
 		Vector2f m_Velocity;
 		float m_Speed;
+		float m_PumpedTimer;
 		float m_RandomTeleportTimer;
 		float m_MinTeleportTimer;
 	};

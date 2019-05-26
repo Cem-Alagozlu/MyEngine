@@ -47,6 +47,14 @@ namespace cem
 		m_pBgTxt->AddComponent(std::make_shared<TransformComponent>());
 		m_pBgTxt->AddComponent(std::make_shared<TextureComponent>("../Resources/Menu/Main/bgMainText.png"));
 		m_ManagerScene.AddChild(m_pBgTxt);
+
+		//GAMEPLAY BUTTONS
+		m_PlayButtonPressed = 0;
+		m_pGameplay = std::make_shared<GameObject>();
+		m_pGameplay->AddComponent(std::make_shared<TransformComponent>());
+		m_pGameplay->AddComponent(std::make_shared<TextureComponent>("../Resources/Menu/Main/bgMainContinue.png"));
+		m_pGameplay->GetComponent<TransformComponent>()->SetScale(m_ScaleAway);
+		m_ManagerScene.AddChild(m_pGameplay);
 #pragma endregion 
 
 
@@ -65,26 +73,34 @@ namespace cem
 
 	void MenuMain::Update()
 	{
-		m_pBgIMG->GetComponent<TransformComponent>()->SetScale(Vector2f{ 1.0f,1.0f });
-		m_pBgTxt->GetComponent<TransformComponent>()->SetScale(Vector2f{ 1.0f,1.0f });
-		m_pSelector->GetComponent<TransformComponent>()->SetScale(Vector2f{ 1.0f,1.0f });
-
-		switch (m_Index)
+		if (m_PlayButtonPressed == 0)
 		{
-		case 0:
-			m_SelectorPos = Vector2f{ 84.0f,295.0f };
-			break;
-		case 1:
-			m_SelectorPos = Vector2f{ 84.0f,376.0f };
-			break;
-		case 2:
-			m_SelectorPos = Vector2f{ 84.0f,457.0f };
-			break;
-		case 3:
-			m_SelectorPos = Vector2f{ 84.0f,538.0f };
-			break;
+			m_pBgIMG->GetComponent<TransformComponent>()->SetScale(Vector2f{ 1.0f,1.0f });
+			m_pBgTxt->GetComponent<TransformComponent>()->SetScale(Vector2f{ 1.0f,1.0f });
+			m_pSelector->GetComponent<TransformComponent>()->SetScale(Vector2f{ 1.0f,1.0f });
+
+			switch (m_Index)
+			{
+			case 0:
+				m_SelectorPos = Vector2f{ 84.0f,295.0f };
+				break;
+			case 1:
+				m_SelectorPos = Vector2f{ 84.0f,376.0f };
+				break;
+			case 2:
+				m_SelectorPos = Vector2f{ 84.0f,457.0f };
+				break;
+			case 3:
+				m_SelectorPos = Vector2f{ 84.0f,538.0f };
+				break;
+			}
+			m_pSelector->GetComponent<TransformComponent>()->SetPosition(m_SelectorPos);
+
 		}
-		m_pSelector->GetComponent<TransformComponent>()->SetPosition(m_SelectorPos);
+		if (m_PlayButtonPressed == 1)
+		{
+			m_pGameplay->GetComponent<TransformComponent>()->SetScale(Vector2f{ 1.0f,1.0f });
+		}
 
 	}
 
@@ -122,8 +138,12 @@ namespace cem
 			switch (m_Index)
 			{
 			case 0:
-				SceneManager::GetInstance().CreateScene(std::make_shared<LevelOne>());
-				SceneManager::GetInstance().SetActiveGameScene("LevelOne");
+				++m_PlayButtonPressed;
+				if (m_PlayButtonPressed == 2)
+				{
+					SceneManager::GetInstance().CreateScene(std::make_shared<LevelOne>());
+					SceneManager::GetInstance().SetActiveGameScene("LevelOne");
+				}
 				break;
 			case 1:
 				SetImagesBack();

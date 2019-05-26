@@ -19,6 +19,7 @@ namespace cem
 		, m_Angle(0.0)
 
 	{
+		m_Offset = Vector2f{ 0.0f,0.0f };
 		m_pTexture = ResourceManager::GetInstance().LoadTexture(texture);
 		m_SrcRect.width = m_SpriteSheetWidth / m_Cols;
 		m_SrcRect.height = m_SpriteSheetHeight / m_Rows;
@@ -73,6 +74,16 @@ namespace cem
 		return m_IsVisible;
 	}
 
+	void SpriteComponent::SetOffset(Vector2f offset)
+	{
+		m_Offset = offset;
+	}
+
+	Vector2f SpriteComponent::GetOffset()
+	{
+		return m_Offset;
+	}
+
 	void SpriteComponent::Update(float deltaTime)
 	{
 		m_AccuSec += deltaTime;
@@ -96,7 +107,7 @@ namespace cem
 		{
 			Vector2f pos = go->GetComponent<TransformComponent>()->GetPosition();
 			Vector2f scale = go->GetComponent<TransformComponent>()->GetScale();
-			Renderer::GetInstance().RenderTexture(m_pTexture, m_SrcRect, pos, scale, m_Angle, m_Flip);
+			Renderer::GetInstance().RenderTexture(m_pTexture, m_SrcRect, pos + m_Offset, scale, m_Angle, m_Flip);
 		}
 	}
 

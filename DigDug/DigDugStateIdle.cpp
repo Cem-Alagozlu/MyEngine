@@ -38,7 +38,6 @@ namespace cem
 
 	void DigDugStateIdle::Update()
 	{
-		std::cout << "idle\n";
 	}
 
 	bool DigDugStateIdle::CanTransition()
@@ -46,9 +45,8 @@ namespace cem
 		auto blackboard = GetBlackboard<DigDugBlackboard>();
 		Vector2f velocity = blackboard->m_Velocity;
 		bool isPumping = blackboard->m_IsPumping;
-		bool isDigging = blackboard->m_IsDigging;
-		bool isDead = blackboard->m_HasDied;
-		if (velocity.x == 0 && velocity.y == 0 &&!isDigging && !isPumping &&!isDead)
+
+		if (!isPumping && velocity.x == 0 && velocity.y == 0)
 		{
 			return true;
 		}

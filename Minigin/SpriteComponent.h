@@ -20,6 +20,9 @@ namespace cem
 		void SetAngle(double angle);
 		void SetVisibility(bool isVisible);
 		bool GetVisibility();
+		void SetOffset(Vector2f offset);
+		Vector2f GetOffset();
+
 
 		SpriteComponent(const SpriteComponent& other) = delete;
 		SpriteComponent(SpriteComponent&& other) noexcept = delete;
@@ -38,7 +41,7 @@ namespace cem
 		int m_CurFrame{};
 		bool m_IsLocked{ false };
 		bool m_IsVisible{ true };
-
+		Vector2f m_Offset;
 		const float m_SpriteSheetLeft;
 		const float m_SpriteSheetTop;
 		const float m_SpriteSheetWidth;

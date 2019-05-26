@@ -141,6 +141,12 @@
     <ClInclude Include="Achievements.h">
       <Filter>Characters\DigDug\Player</Filter>
     </ClInclude>
+    <ClInclude Include="Rock.h">
+      <Filter>Level</Filter>
+    </ClInclude>
+    <ClInclude Include="PookaStatePumped.h">
+      <Filter>Characters\Pooka\StateMachine</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="MenuExtra.cpp">
@@ -241,6 +247,12 @@
     </ClCompile>
     <ClCompile Include="Achievements.cpp">
       <Filter>Characters\DigDug\Player</Filter>
+    </ClCompile>
+    <ClCompile Include="Rock.cpp">
+      <Filter>Level</Filter>
+    </ClCompile>
+    <ClCompile Include="PookaStatePumped.cpp">
+      <Filter>Characters\Pooka\StateMachine</Filter>
     </ClCompile>
   </ItemGroup>
 </Project>

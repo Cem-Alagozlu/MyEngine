@@ -16,10 +16,6 @@ namespace cem
 		int m_TotalDigs = 0;
 		int m_TotalDugs = 0;
 		int m_TotalDeaths = 0;
-
-		bool m_HasPlayerDigAchievement = false;
-		bool m_HasPlayerDugAchievement = false;
-		bool m_HasPlayerDeathAchievement = false;
-
+		int m_TotalFruits = 0;
 	};
 }

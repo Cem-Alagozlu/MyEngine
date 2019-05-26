@@ -9,10 +9,10 @@ namespace cem
 		m_CurrKeyboardInput[SDL_SCANCODE_LEFT] = false;
 		m_CurrKeyboardInput[SDL_SCANCODE_RIGHT] = false;
 		m_CurrKeyboardInput[SDL_SCANCODE_DOWN] = false;
+		m_CurrKeyboardInput[SDL_SCANCODE_Q] = false;
+		m_CurrKeyboardInput[SDL_SCANCODE_B] = false;
 		m_CurrKeyboardInput[SDL_SCANCODE_X] = false;
 		m_CurrKeyboardInput[SDL_SCANCODE_Y] = false;
-		m_CurrKeyboardInput[SDL_SCANCODE_Z] = false;
-		m_CurrKeyboardInput[SDL_SCANCODE_G] = false;
 	}
 
 	bool InputManager::ProcessInput()
@@ -42,20 +42,18 @@ namespace cem
 
 	InputTriggerState InputManager::IsPressed(ControllerButton button) const
 	{
-		//m_CurrentState.Gamepad.wButtons & XINPUT_GAMEPAD_A;
-
 		//return (m_CurrentState.Gamepad.wButtons & static_cast<WORD>(button)) ! = 0:
 
 		switch (button)
 		{
 		case ControllerButton::ButtonA:
-			return GetState(XINPUT_GAMEPAD_A,SDL_SCANCODE_X);
+			return GetState(XINPUT_GAMEPAD_A, SDL_SCANCODE_Q);
 		case ControllerButton::ButtonB:
-			return GetState(XINPUT_GAMEPAD_B, SDL_SCANCODE_Y);
+			return GetState(XINPUT_GAMEPAD_B, SDL_SCANCODE_B);
 		case ControllerButton::ButtonX:
-			return GetState(XINPUT_GAMEPAD_X, SDL_SCANCODE_Z);
+			return GetState(XINPUT_GAMEPAD_X, SDL_SCANCODE_X);
 		case ControllerButton::ButtonY:
-			return GetState(XINPUT_GAMEPAD_Y, SDL_SCANCODE_G);
+			return GetState(XINPUT_GAMEPAD_Y, SDL_SCANCODE_Y);
 		case ControllerButton::ButtonUP:
 			return GetState(XINPUT_GAMEPAD_DPAD_UP,SDL_SCANCODE_UP);
 		case ControllerButton::ButtonDown:

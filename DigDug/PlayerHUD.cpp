@@ -4,6 +4,7 @@
 #include "PlayerData.h"
 #include "ResourceManager.h"
 #include "TextDrawComponent.h"
+#include "Timing.h"
 
 
 namespace cem
@@ -38,16 +39,32 @@ namespace cem
 			m_pLivesIMG.push_back(lifeIMG);
 		}
 
-		//ACHIEVMENTS
-		//for (int i = 0; i < m_TotalAchievements; i++)
-		//{
-		//	auto achievements = std::make_shared<GameObject>();
-		//	achievements->AddComponent(std::make_shared<TransformComponent>());
-		//	std::stringstream str;
-		//	str << "../Resources/Environment/Achievements/img (" << i + 1 << ")" << ".png";
-		//	achievements->AddComponent(std::make_shared<TextureComponent>(str.str()));
-		//	m_pAchievments.push_back(achievements);
-		//}
+		//ACHIEVEMENTS
+		for (int i = 0; i < m_TotalAchievements; i++)
+		{
+			auto achievements = std::make_shared<GameObject>();
+			achievements->AddComponent(std::make_shared<TransformComponent>());
+			std::stringstream str;
+			str << "../Resources/Environment/Achievements/img (" << i + 1 << ")" << ".png";
+			achievements->AddComponent(std::make_shared<TextureComponent>(str.str()));
+			achievements->GetComponent<TransformComponent>()->SetPosition(Vector2f{ 448.0f,200.0f });
+			m_pAchievments.push_back(achievements);
+		}
+
+		for (int i = 0; i < m_TotalAchievements; i++)
+		{
+			auto overlay = std::make_shared<GameObject>();
+			overlay->AddComponent(std::make_shared<TransformComponent>());
+			overlay->AddComponent(std::make_shared<TextureComponent>("../Resources/Environment/Achievements/empty.png"));
+			overlay->GetComponent<TransformComponent>()->SetPosition(Vector2f{ 448.0f,200.0f });
+			m_pAchievemntsOverlay.push_back(overlay);
+		}
+
+		m_HasAchievement = false;
+		m_AchievementTimer = 2.0f;
+		m_pAchievementUnlockedIMG = std::make_shared<GameObject>();
+		m_pAchievementUnlockedIMG->AddComponent(std::make_shared<TransformComponent>());
+		m_pAchievementUnlockedIMG->AddComponent(std::make_shared<TextureComponent>("../Resources/Environment/Achievements/Unlocked.png"));
 
 		m_pGameOverIMG = std::make_shared<GameObject>();
 		m_pGameOverIMG->AddComponent(std::make_shared<TransformComponent>());
@@ -64,6 +81,64 @@ namespace cem
 
 		m_pScoreTXT->Update(deltaTime);
 		m_pScoreTXT->GetComponent<TextDrawComponent>()->SetText(std::to_string(PlayerData::GetInstance().GetScore()));
+
+
+		for (int i = 0; i < m_pAchievments.size(); i++)
+		{
+			m_pAchievments[i]->GetComponent<TransformComponent>()->SetPosition(Vector2f{ 448.0f,200.0f + (i*40) });
+		}
+		for (int i = 0; i < m_pAchievments.size(); i++)
+		{
+			m_pAchievemntsOverlay[i]->GetComponent<TransformComponent>()->SetPosition(Vector2f{ 448.0f,200.0f + (i * 40) });
+		}
+
+		//ACHIEVEMENTS
+		if (PlayerData::GetInstance().GetAchievements(PlayerData::PlayerAchievements::digAchievement)
+			&& m_pAchievemntsOverlay[0]->GetComponent<TextureComponent>()->GetVisibility())
+		{
+			m_HasAchievement = true;
+			m_pAchievemntsOverlay[0]->GetComponent<TextureComponent>()->SetVisibility(false);
+		}
+
+		if (PlayerData::GetInstance().GetAchievements(PlayerData::PlayerAchievements::dugAchievement)
+			&& m_pAchievemntsOverlay[1]->GetComponent<TextureComponent>()->GetVisibility())
+		{
+			m_HasAchievement = true;
+			m_pAchievemntsOverlay[1]->GetComponent<TextureComponent>()->SetVisibility(false);
+		}
+
+		if (PlayerData::GetInstance().GetAchievements(PlayerData::PlayerAchievements::deadAchievement)
+			&& m_pAchievemntsOverlay[2]->GetComponent<TextureComponent>()->GetVisibility())
+		{
+			m_HasAchievement = true;
+			m_pAchievemntsOverlay[2]->GetComponent<TextureComponent>()->SetVisibility(false);
+		}
+
+		if (PlayerData::GetInstance().GetAchievements(PlayerData::PlayerAchievements::fruityAchievement)
+			&& m_pAchievemntsOverlay[3]->GetComponent<TextureComponent>()->GetVisibility())
+		{
+			m_HasAchievement = true;
+			m_pAchievemntsOverlay[3]->GetComponent<TextureComponent>()->SetVisibility(false);
+		}
+
+
+		
+		if (m_HasAchievement)
+		{
+			m_AchievementTimer -= Timing::GetInstance().GetDeltaTime();
+			if (m_AchievementTimer <= 0.0f)
+			{
+				m_HasAchievement = false;
+			}
+		}
+
+
+		if (!m_HasAchievement)
+		{
+			m_AchievementTimer = 2.0f;
+
+		}
+		
 	}
 
 	void PlayerHUD::Draw() const
@@ -74,6 +149,23 @@ namespace cem
 		}
 	
 		m_pScoreTXT->Draw();
+
+
+
+		for (size_t i = 0; i < m_pAchievments.size(); i++)
+		{
+			m_pAchievments[i]->Draw();
+		}
+
+		for (size_t i = 0; i < m_pAchievments.size(); i++)
+		{
+			m_pAchievemntsOverlay[i]->Draw();
+		}
+
+		if (m_HasAchievement)
+		{
+			m_pAchievementUnlockedIMG->Draw();
+		}
 
 		if (PlayerData::GetInstance().GetGameOver())
 		{

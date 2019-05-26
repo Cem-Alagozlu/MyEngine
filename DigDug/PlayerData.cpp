@@ -7,6 +7,11 @@ namespace cem
 	{
 		m_Lives = 3;
 		m_Score = 0;
+
+		for (int i = 0; i <static_cast<int>(PlayerAchievements::Count); i++)
+		{
+			m_Achievements.push_back(false);
+		}
 	}
 
 
@@ -14,7 +19,6 @@ namespace cem
 	{	
 		return m_Lives;
 	}
-
 
 
 	void PlayerData::AddLives(int life)
@@ -35,6 +39,16 @@ namespace cem
 	bool PlayerData::GetGameOver()
 	{
 		return m_IsGameOver;
+	}
+
+	void PlayerData::SetAchievement(PlayerAchievements achievement, bool hasAchievement)
+	{
+		m_Achievements[static_cast<int>(achievement)] = hasAchievement;
+	}
+
+	bool PlayerData::GetAchievements(PlayerAchievements achievement)
+	{
+		return m_Achievements[static_cast<int>(achievement)];
 	}
 
 	void PlayerData::AddScore(int score)

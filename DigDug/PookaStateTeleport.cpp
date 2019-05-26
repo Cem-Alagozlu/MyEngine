@@ -49,16 +49,21 @@ namespace cem
 		{
 			GetBlackboard<PookaBlackboard>()->m_IsTeleporting = false;
 		}
-
+		std::cout << "teleporting Pooka\n";
 	}
 
 	bool PookaStateTeleport::CanTransition()
 	{
-		bool isTeleporting = GetBlackboard<PookaBlackboard>()->m_IsTeleporting;
+		std::shared_ptr<GameObject> pooka = GetBlackboard<PookaBlackboard>()->m_pPooka.lock();
 
-		if (isTeleporting)
+		if (pooka)
 		{
-			return true;
+			if (!std::dynamic_pointer_cast<Pooka>(pooka)->GettingPumped()
+				&&
+				GetBlackboard<PookaBlackboard>()->m_IsTeleporting)
+			{
+				return true;
+			}
 		}
 		return false;
 	}

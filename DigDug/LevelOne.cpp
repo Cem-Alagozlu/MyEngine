@@ -2,6 +2,7 @@
 #include "LevelOne.h"
 #include "TextureComponent.h"
 #include "SoundManager.h"
+#include "Timing.h"
 
 namespace cem
 {
@@ -15,6 +16,7 @@ namespace cem
 	void LevelOne::Initialize()
 	{
 		SoundManager::GetInstance().StopAll();
+		m_Timer = 2.0f;
 		m_pWorld = std::make_shared<World>();
 		AddChild(m_pWorld);
 		m_pWorld->Initialize(*this);
@@ -25,7 +27,7 @@ namespace cem
 		AddChild(m_pPlayer);
 
 		
-		for (int i = 0; i < 2; i++)
+		for (int i = 0; i < 1; i++)
 		{
 			auto pooka = std::make_shared<Pooka>();
 			pooka->Initialize(m_pWorld, m_pPlayer);
@@ -34,7 +36,7 @@ namespace cem
 		}
 		
 		m_pPookas[0]->GetComponent<TransformComponent>()->SetPosition(Vector2f{ 375.0f,525.0f });
-		m_pPookas[1]->GetComponent<TransformComponent>()->SetPosition(Vector2f{ 75.0f,525.0f });
+		//m_pPookas[1]->GetComponent<TransformComponent>()->SetPosition(Vector2f{ 75.0f,525.0f });
 	
 
 		m_pFygar = std::make_shared<Fygar>();
@@ -43,9 +45,12 @@ namespace cem
 		AddChild(m_pFygar);
 
 		m_pFruits = std::make_shared<PickUpFruit>();
-		m_pFruits->Initialize();
+		m_pFruits->Initialize(m_pPlayer);
 		AddChild(m_pFruits);
 
+		m_pRock = std::make_shared<Rock>(m_pWorld);
+		m_pRock->Initialize();
+		AddChild(m_pRock);
 
 		m_pPlayerHUD = std::make_shared<PlayerHUD>();
 		m_pPlayerHUD->Initialize();
@@ -55,15 +60,26 @@ namespace cem
 		LevelSetup();
 
 
+		m_pLevelOneIMG = std::make_shared<GameObject>();
+		m_pLevelOneIMG->AddComponent(std::make_shared<TransformComponent>());
+		m_pLevelOneIMG->AddComponent(std::make_shared<TextureComponent>("../Resources/Level/levelOne.png"));
+		AddChild(m_pLevelOneIMG);
+
 	}
 
 	void LevelOne::Update()
 	{
-		std::cout << "Level Scene\n";
+		m_Timer -= Timing::GetInstance().GetDeltaTime();
+		
+		if (m_Timer <= 0.0f)
+		{
+			m_pLevelOneIMG->GetComponent<TextureComponent>()->SetVisibility(false);
+		}
 	}
 
 	void LevelOne::Draw()
 	{
+		m_pLevelOneIMG->Draw();
 	}
 
 	void LevelOne::LevelSetup()

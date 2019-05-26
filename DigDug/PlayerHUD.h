@@ -17,11 +17,12 @@ namespace cem
 		void Draw() const;
 
 	private:
-		const int m_TotalAchievements{ 6 };
-		std::vector<std::shared_ptr<GameObject>> m_pLivesIMG;
-		std::vector<std::shared_ptr<GameObject>> m_pAchievments;
-		std::shared_ptr<GameObject> m_pScoreTXT,m_pGameOverIMG;
-
+		const int m_TotalAchievements{4};
+		std::vector<std::shared_ptr<GameObject>> m_pLivesIMG, m_pAchievments, m_pAchievemntsOverlay;
+		std::shared_ptr<GameObject> m_pScoreTXT,m_pGameOverIMG,m_pAchievementUnlockedIMG;
+		float m_AchievementTimer;
+		bool m_HasAchievement;
+		
 	};
 }
 

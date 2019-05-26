@@ -9,8 +9,9 @@
 namespace cem
 {
 
-	void PickUpFruit::Initialize()
+	void PickUpFruit::Initialize(std::shared_ptr<Player> pPlayer)
 	{
+		m_Player = pPlayer;
 		m_MoveOut = Vector2f{ -500.0f,-500.0f };
 		m_RandomSpawnerTime = float(rand() % 5 + 3);
 
@@ -50,10 +51,12 @@ namespace cem
 	{
 		if (std::shared_ptr<Player> player = std::dynamic_pointer_cast<Player>(otherCollision->GetGameObject()))
 		{
+			m_Player.lock()->GetPlayerObserver()->OnNotify(Events::playerFruity);
 			SetScoreFromFruit();
 			Respawn();
 		}
 	}
+
 
 	void PickUpFruit::Update(float deltaTime)
 	{
@@ -62,7 +65,7 @@ namespace cem
 		
 		if (m_RandomSpawnerTime <= 0.0f)
 		{
-			
+	
 			Respawn();
 		}
 

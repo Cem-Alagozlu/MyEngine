@@ -12,14 +12,22 @@ namespace cem
 	{
 		m_Move.Initialize(&m_Blackboard);
 		m_Teleport.Initialize(&m_Blackboard);
+		m_Pumped.Initialize(&m_Blackboard);
 
 		InitializeState(&m_Move);
 
+
 		//MOVE
 		m_Move.AddTransitionState(&m_Teleport);
+		m_Move.AddTransitionState(&m_Pumped);
 
 		//TELEPORT
 		m_Teleport.AddTransitionState(&m_Move);
+		m_Teleport.AddTransitionState(&m_Pumped);
+
+		//PUMPED
+		m_Pumped.AddTransitionState(&m_Move);
+		m_Pumped.AddTransitionState(&m_Teleport);
 
 	}
 

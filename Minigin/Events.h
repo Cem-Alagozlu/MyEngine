@@ -6,6 +6,7 @@ namespace cem
 	{
 		playerDig,
 		playerDug,
-		playerDead
+		playerDead,
+		playerFruity
 	};
 }

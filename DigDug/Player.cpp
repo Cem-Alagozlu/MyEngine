@@ -9,6 +9,7 @@
 #include "PlayerData.h"
 #include "PickUpFruit.h"
 #include "Achievements.h"
+#include "Pooka.h"
 
 namespace cem
 {
@@ -37,7 +38,7 @@ namespace cem
 		auto spriteDigging = std::make_shared<SpriteComponent>("../Resources/Character/DigDug/Dig.png", 0.0f, 0.0f, 29.0f, 14.0f, 2, 1, 8);
 		auto spritePumping = std::make_shared<SpriteComponent>("../Resources/Character/DigDug/Pump.png", 0.0f, 0.0f, 80.0f, 15.0f, 2, 1, 8);
 		auto spriteDead = std::make_shared<SpriteComponent>("../Resources/Character/DigDug/Dead.png", 0.0f, 0.0f, 64.0f, 16.0f, 3, 1, 8);
-		auto playerCollision = std::make_shared<CollisionComponent>(CollisionComponent::CollisionType::Dynamic, Rectf(0.0f, 0.0f, 12.0f, 12.0f));
+		auto playerCollision = std::make_shared<CollisionComponent>(CollisionComponent::CollisionType::Dynamic, Rectf(0.0f, 0.0f, 25.0f, 25.0f));
 
 		m_pSprites.push_back(spriteWalking);
 		m_pSprites.push_back(spriteDigging);
@@ -58,6 +59,7 @@ namespace cem
 		GetComponent<CollisionComponent>()->AddCallBack(std::bind(&Player::OnOverlap, this, std::placeholders::_1, std::placeholders::_2));
 
 		m_DigDug.GetBlackboard().m_IsPumping = false;
+		m_DigDug.GetBlackboard().m_IsPumpingEnemy = false;
 		m_DigDug.GetBlackboard().m_pPlayer = weak_from_this();
 		m_DigDug.Initialize();
 
@@ -74,9 +76,19 @@ namespace cem
 			{
 				m_DigDug.GetBlackboard().m_IsDigging = true;
 				m_pObserver->OnNotify(Events::playerDig);
+				m_pObserver->OnNotify(Events::playerDug);
 				tunnel->GetComponent<TextureComponent>()->SetVisibility(true);
 			}
 		}
+
+		if (std::shared_ptr<Pooka> pooka = std::dynamic_pointer_cast<Pooka>(otherCollision->GetGameObject()))
+		{
+			if (m_DigDug.GetBlackboard().m_IsPumping)
+			{
+				m_DigDug.GetBlackboard().m_IsPumpingEnemy = true;
+			}
+		}
+
 	}
 
 	std::shared_ptr<SpriteComponent> Player::GetPlayerSprites(PlayerSprites playerSprites)
@@ -118,9 +130,6 @@ namespace cem
 
 
 			GetComponent<TransformComponent>()->SetPosition(velocity + currPos);
-			m_DigDug.GetBlackboard().m_IsPumping = false;
-			m_DigDug.GetBlackboard().m_HasDied = false;
-			m_DigDug.GetBlackboard().m_IsDigging = false;
 			m_DigDug.GetBlackboard().m_Velocity = Vector2f{ 0,0 };
 			m_IsButtonPressed = false;
 
@@ -152,10 +161,26 @@ namespace cem
 		return m_DigDug.GetBlackboard().m_IsPumping;
 	}
 
+	bool Player::IsPlayerPumpingEnemy()
+	{
+		return m_DigDug.GetBlackboard().m_IsPumpingEnemy;
+	}
+
+	void Player::SetEnemyPumped(bool enemyPumped)
+	{
+		m_DigDug.GetBlackboard().m_IsPumpingEnemy = enemyPumped;
+	}
+
 	void Player::SetObserver(Observer* pObserver)
 	{
 		m_pObserver = pObserver;
 	}
+
+	Observer* Player::GetPlayerObserver()
+	{
+		return m_pObserver;
+	}
+
 
 	void Player::MoveLeft()
 	{

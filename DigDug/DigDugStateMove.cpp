@@ -44,7 +44,6 @@ namespace cem
 	{
 		auto digdugBlackboard = GetBlackboard<DigDugBlackboard>();
 		Vector2f velocity = digdugBlackboard->m_Velocity;
-		std::cout << "moving\n";
 		std::shared_ptr<GameObject> player = digdugBlackboard->m_pPlayer.lock();
 
 		if (player)
@@ -54,21 +53,21 @@ namespace cem
 			{
 				sprite->SetAngle(0.0);
 				sprite->FlipTexture(SDL_FLIP_HORIZONTAL);
-				digdugBlackboard->m_Direction = DigDugBlackboard::Direction::right;
+				digdugBlackboard->m_Direction = DigDugBlackboard::Direction::left;
 			}
-			else if (velocity.x > 0.0f)
+			 if (velocity.x > 0.0f)
 			{
 				sprite->SetAngle(0.0);
 				sprite->FlipTexture(SDL_FLIP_NONE);
-				digdugBlackboard->m_Direction = DigDugBlackboard::Direction::left;
+				digdugBlackboard->m_Direction = DigDugBlackboard::Direction::right;
 			}
-			else if (velocity.y < 0.0f)
+			 if (velocity.y < 0.0f)
 			{
 				sprite->FlipTexture(SDL_FLIP_VERTICAL);
 				sprite->SetAngle(-90.0);
 				digdugBlackboard->m_Direction = DigDugBlackboard::Direction::down;
 			}
-			else if (velocity.y > 0.0f)
+			 if (velocity.y > 0.0f)
 			{
 				sprite->FlipTexture(SDL_FLIP_VERTICAL);
 				sprite->SetAngle(90.0);
@@ -82,9 +81,8 @@ namespace cem
 	{
 		Vector2f velocity = GetBlackboard<DigDugBlackboard>()->m_Velocity;
 		bool isDigging = GetBlackboard<DigDugBlackboard>()->m_IsDigging;
-		bool isDead = GetBlackboard<DigDugBlackboard>()->m_HasDied;
 
-		if (!(velocity.x == 0) || !(velocity.y == 0) && !isDigging &&!isDead)
+		if (isDigging == false && !(velocity.x == 0) || isDigging == false && !(velocity.y == 0) )
 		{
 			return true;
 		}

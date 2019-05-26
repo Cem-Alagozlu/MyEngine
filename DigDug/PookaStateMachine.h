@@ -3,6 +3,7 @@
 #include "PookaBlackboard.h"
 #include "PookaStateMove.h"
 #include "PookaStateTeleport.h"
+#include "PookaStatePumped.h"
 
 namespace cem
 {
@@ -19,6 +20,7 @@ namespace cem
 		//add states here
 		PookaStateMove m_Move;
 		PookaStateTeleport m_Teleport;
+		PookaStatePumped m_Pumped;
 		PookaBlackboard m_Blackboard;
 	};
 
