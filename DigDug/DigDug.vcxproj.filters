@@ -147,6 +147,15 @@
     <ClInclude Include="PookaStatePumped.h">
       <Filter>Characters\Pooka\StateMachine</Filter>
     </ClInclude>
+    <ClInclude Include="FygarStatePumped.h">
+      <Filter>Characters\Fygar\StateMachine</Filter>
+    </ClInclude>
+    <ClInclude Include="FygarStateFire.h">
+      <Filter>Characters\Fygar\StateMachine</Filter>
+    </ClInclude>
+    <ClInclude Include="LevelTwo.h">
+      <Filter>Level</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="MenuExtra.cpp">
@@ -253,6 +262,15 @@
     </ClCompile>
     <ClCompile Include="PookaStatePumped.cpp">
       <Filter>Characters\Pooka\StateMachine</Filter>
+    </ClCompile>
+    <ClCompile Include="FygarStatePumped.cpp">
+      <Filter>Characters\Fygar\StateMachine</Filter>
+    </ClCompile>
+    <ClCompile Include="FygarStateFire.cpp">
+      <Filter>Characters\Fygar\StateMachine</Filter>
+    </ClCompile>
+    <ClCompile Include="LevelTwo.cpp">
+      <Filter>Level</Filter>
     </ClCompile>
   </ItemGroup>
 </Project>

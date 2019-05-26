@@ -1,6 +1,5 @@
 #include "DigDugPCH.h"
 #include "PookaStateTeleport.h"
-#include "DigDugBlackboard.h"
 #include "PookaBlackboard.h"
 #include "Pooka.h"
 #include "Timing.h"
@@ -49,7 +48,7 @@ namespace cem
 		{
 			GetBlackboard<PookaBlackboard>()->m_IsTeleporting = false;
 		}
-		std::cout << "teleporting Pooka\n";
+
 	}
 
 	bool PookaStateTeleport::CanTransition()

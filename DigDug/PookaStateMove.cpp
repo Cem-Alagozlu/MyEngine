@@ -50,7 +50,6 @@ namespace cem
 		{
 			GetBlackboard<PookaBlackboard>()->m_IsTeleporting = true;
 		}
-		std::cout << "moving Pooka\n";
 	}
 
 	bool PookaStateMove::CanTransition()

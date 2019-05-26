@@ -33,7 +33,7 @@ namespace cem
 		std::shared_ptr<SpriteComponent> GetPlayerSprites(PlayerSprites playerSprites);
 		void SetSpritesInvisible();
 		bool IsPlayerPumping();
-		bool IsPlayerPumpingEnemy();
+		bool IsPlayerPumpingEnemy(std::shared_ptr<GameObject> pEnemy);
 		void SetEnemyPumped(bool enemyPumped);
 
 		void SetObserver(Observer* pObserver);

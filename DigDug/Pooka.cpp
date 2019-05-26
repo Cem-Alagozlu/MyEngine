@@ -4,6 +4,7 @@
 #include "Timing.h"
 #include "PlayerData.h"
 #include "ThreadManager.h"
+#include "Rock.h"
 
 namespace cem
 {
@@ -21,6 +22,8 @@ namespace cem
 	{
 		m_pWorld = pWorld;
 		m_pPlayer = pPlayer;
+		m_IsDead = false;
+		m_Pooka.GetBlackboard().m_IsBeingPumped = false;
 		AddComponent(std::make_shared<TransformComponent>());
 
 		auto spriteWalking = std::make_shared<SpriteComponent>("../Resources/Character/Pooka/Walk.png", 0.0f, 0.0f, 30.0f, 14.0f, 2, 1, 2);
@@ -62,24 +65,34 @@ namespace cem
 		m_Pooka.GetBlackboard().m_pPooka = weak_from_this();
 		m_Pooka.Initialize();
 		m_Pooka.GetBlackboard().m_Speed = 2.0f;
+		m_Pooka.GetBlackboard().m_PumpPhase = 0;
 	}
 
 	void Pooka::OnOverlap(std::shared_ptr<CollisionComponent> pookaCollision, std::shared_ptr<CollisionComponent> otherCollision)
 	{
-		std::shared_ptr<Tunnel> tunnel = std::dynamic_pointer_cast<Tunnel>(otherCollision->GetGameObject());
-
+		
 		if (std::shared_ptr<Player> player = std::dynamic_pointer_cast<Player>(otherCollision->GetGameObject()))
 		{
 			if (player->IsPlayerPumping())
 			{
+				m_Pooka.GetBlackboard().m_PumpedTimer += 0.5f;
 				SetSpritesInvisible();
 			}
 			else
 			{
-				m_pPlayer.lock()->GetPlayerObserver()->OnNotify(Events::playerDead);
-				//PlayerData::GetInstance().AddLives(-1);
-				//player->GetComponent<TransformComponent>()->SetPosition(Vector2f{ 0.0f,0.0f });
+				if (!m_Pooka.GetBlackboard().m_IsBeingPumped)
+				{
+					m_pPlayer.lock()->GetPlayerObserver()->OnNotify(Events::playerDead);
+					PlayerData::GetInstance().AddLives(-1);
+					player->GetComponent<TransformComponent>()->SetPosition(Vector2f{ 0.0f,0.0f });
+				}
 			}
+		}
+
+
+		if (std::shared_ptr<Rock> rock = std::dynamic_pointer_cast<Rock>(otherCollision->GetGameObject()))
+		{
+			m_IsDead = true;
 		}
 
 	}
@@ -113,7 +126,7 @@ namespace cem
 
 	bool Pooka::GettingPumped()
 	{
-		return m_pPlayer.lock()->IsPlayerPumpingEnemy();
+		return m_pPlayer.lock()->IsPlayerPumpingEnemy(shared_from_this());
 	}
 
 	void Pooka::SetGettingPumped(bool isPumped)
@@ -121,12 +134,21 @@ namespace cem
 		m_pPlayer.lock()->SetEnemyPumped(isPumped);
 	}
 
+	bool Pooka::IsDead()
+	{
+		return m_IsDead;
+	}
+
+	void Pooka::SetDead(bool isDead)
+	{
+		m_IsDead = isDead;
+	}
+
 
 	void Pooka::Update(float deltaTime)
 	{
 		GameObject::Update(deltaTime);
 		
-	
 			ThreadManager::GetInstance().GetEnemyThread().AddTask([this]()
 			{
 

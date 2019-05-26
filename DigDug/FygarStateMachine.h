@@ -3,6 +3,9 @@
 #include "FygarBlackboard.h"
 #include "FygarStateMove.h"
 #include "FygarStateTeleport.h"
+#include "FygarStatePumped.h"
+#include "FygarStateFire.h"
+
 namespace cem
 {
 	class FygarStateMachine final : public StateMachine
@@ -16,6 +19,8 @@ namespace cem
 	private:
 		FygarStateMove m_Move;
 		FygarStateTeleport m_Teleport;
+		FygarStatePumped m_Pumped;
+		FygarStateFire m_Fire;
 		FygarBlackboard m_Blackboard;
 	};
 }

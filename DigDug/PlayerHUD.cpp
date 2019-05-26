@@ -93,32 +93,14 @@ namespace cem
 		}
 
 		//ACHIEVEMENTS
-		if (PlayerData::GetInstance().GetAchievements(PlayerData::PlayerAchievements::digAchievement)
-			&& m_pAchievemntsOverlay[0]->GetComponent<TextureComponent>()->GetVisibility())
+		for (int i = 0; i < m_pAchievemntsOverlay.size(); i++)
 		{
-			m_HasAchievement = true;
-			m_pAchievemntsOverlay[0]->GetComponent<TextureComponent>()->SetVisibility(false);
-		}
-
-		if (PlayerData::GetInstance().GetAchievements(PlayerData::PlayerAchievements::dugAchievement)
-			&& m_pAchievemntsOverlay[1]->GetComponent<TextureComponent>()->GetVisibility())
-		{
-			m_HasAchievement = true;
-			m_pAchievemntsOverlay[1]->GetComponent<TextureComponent>()->SetVisibility(false);
-		}
-
-		if (PlayerData::GetInstance().GetAchievements(PlayerData::PlayerAchievements::deadAchievement)
-			&& m_pAchievemntsOverlay[2]->GetComponent<TextureComponent>()->GetVisibility())
-		{
-			m_HasAchievement = true;
-			m_pAchievemntsOverlay[2]->GetComponent<TextureComponent>()->SetVisibility(false);
-		}
-
-		if (PlayerData::GetInstance().GetAchievements(PlayerData::PlayerAchievements::fruityAchievement)
-			&& m_pAchievemntsOverlay[3]->GetComponent<TextureComponent>()->GetVisibility())
-		{
-			m_HasAchievement = true;
-			m_pAchievemntsOverlay[3]->GetComponent<TextureComponent>()->SetVisibility(false);
+				if (PlayerData::GetInstance().GetAchievements(static_cast<PlayerData::PlayerAchievements>(i))
+					&& m_pAchievemntsOverlay[i]->GetComponent<TextureComponent>()->GetVisibility())
+				{
+					m_HasAchievement = true;
+					m_pAchievemntsOverlay[i]->GetComponent<TextureComponent>()->SetVisibility(false);
+				}
 		}
 
 

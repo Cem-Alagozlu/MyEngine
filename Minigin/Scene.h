@@ -20,6 +20,7 @@ namespace cem
 		Scene& operator=(Scene&& other) noexcept = delete;
 
 		void AddChild(std::shared_ptr<GameObject> gameObject);
+		void RemoveChild(std::shared_ptr<GameObject> gameObject);
 
 	protected:
 

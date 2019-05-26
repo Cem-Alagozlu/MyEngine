@@ -106,29 +106,32 @@ namespace cem
 
 	void MenuMain::MoveDown()
 	{
-		if (m_ManagerScene.GetMenuState() == MenuScene::MenuState::menuMain)
+		if (m_ManagerScene.GetMenuState() == MenuScene::MenuState::menuMain && m_PlayButtonPressed == 0)
 		{
 			--m_Index;
 			if (m_Index < 0)
 			{
 				m_Index = 3;
 			}
+			SoundManager::GetInstance().PlaySoundEffect("Confirm", false, true);
 		}
+	
 	}
 
 
 
 	void MenuMain::MoveUp()
 	{
-		if (m_ManagerScene.GetMenuState() == MenuScene::MenuState::menuMain)
+		if (m_ManagerScene.GetMenuState() == MenuScene::MenuState::menuMain && m_PlayButtonPressed == 0)
 		{
 			++m_Index;
 			if (m_Index > 3)
 			{
 				m_Index = 0;
 			}
-
+			SoundManager::GetInstance().PlaySoundEffect("Confirm", false, true);
 		}
+
 	}
 
 	void MenuMain::SelectMenu()
@@ -158,8 +161,9 @@ namespace cem
 				m_ManagerScene.SetMenuState(MenuScene::MenuState::menuQuit);
 				break;
 			}
+
 		}
-		//SoundManager::GetInstance().PlaySoundEffect("Confirm", false, true);
+	
 	}
 
 	void MenuMain::SetImagesBack()

@@ -10,6 +10,7 @@
 #include "PickUpFruit.h"
 #include "Achievements.h"
 #include "Pooka.h"
+#include "Fygar.h"
 
 namespace cem
 {
@@ -77,6 +78,7 @@ namespace cem
 				m_DigDug.GetBlackboard().m_IsDigging = true;
 				m_pObserver->OnNotify(Events::playerDig);
 				m_pObserver->OnNotify(Events::playerDug);
+				PlayerData::GetInstance().AddScore(5);
 				tunnel->GetComponent<TextureComponent>()->SetVisibility(true);
 			}
 		}
@@ -85,6 +87,16 @@ namespace cem
 		{
 			if (m_DigDug.GetBlackboard().m_IsPumping)
 			{
+				m_DigDug.GetBlackboard().m_pEnemy = pooka;
+				m_DigDug.GetBlackboard().m_IsPumpingEnemy = true;
+			}
+		}
+
+		if (std::shared_ptr<Fygar> fygar = std::dynamic_pointer_cast<Fygar>(otherCollision->GetGameObject()))
+		{
+			if (m_DigDug.GetBlackboard().m_IsPumping)
+			{
+				m_DigDug.GetBlackboard().m_pEnemy = fygar;
 				m_DigDug.GetBlackboard().m_IsPumpingEnemy = true;
 			}
 		}
@@ -100,6 +112,7 @@ namespace cem
 	{
 		if (!PlayerData::GetInstance().GetGameOver())
 		{
+
 
 			GameObject::Update(deltaTime);
 			m_DigDug.Update();
@@ -161,9 +174,13 @@ namespace cem
 		return m_DigDug.GetBlackboard().m_IsPumping;
 	}
 
-	bool Player::IsPlayerPumpingEnemy()
+	bool Player::IsPlayerPumpingEnemy(std::shared_ptr<GameObject> pEnemy)
 	{
-		return m_DigDug.GetBlackboard().m_IsPumpingEnemy;
+		if (m_DigDug.GetBlackboard().m_pEnemy.lock() == pEnemy)
+		{
+			return m_DigDug.GetBlackboard().m_IsPumpingEnemy;
+		}
+		return false;
 	}
 
 	void Player::SetEnemyPumped(bool enemyPumped)
@@ -186,6 +203,7 @@ namespace cem
 	{
 		if (!m_IsButtonPressed)
 		{
+
 			m_DigDug.GetBlackboard().m_Velocity.x = -m_Speed * Timing::GetInstance().GetDeltaTime();
 			m_IsButtonPressed = true;
 		}

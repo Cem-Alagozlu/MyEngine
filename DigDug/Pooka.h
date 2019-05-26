@@ -14,8 +14,6 @@ namespace cem
 		{
 			walking = 0,
 			teleporting = 1,
-			crushed = 2,
-			blowup = 3
 		};
 
 		enum class PookaTextures : int
@@ -37,7 +35,8 @@ namespace cem
 		void SetTexturesInvisible();
 		bool GettingPumped();
 		void SetGettingPumped(bool isPumped);
-
+		bool IsDead();
+		void SetDead(bool isDead);
 
 	protected:
 		virtual void Update(float deltaTime) override;
@@ -45,6 +44,7 @@ namespace cem
 
 	private:
 		PookaStateMachine m_Pooka;
+		bool m_IsDead;
 		std::vector<std::shared_ptr<SpriteComponent>> m_pSprites;
 		std::vector<std::shared_ptr<TextureComponent>> m_pTextures;
 		const int m_BlowUpIMG{ 3 };

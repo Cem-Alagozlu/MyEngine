@@ -3,6 +3,7 @@
 #include "TextureComponent.h"
 #include "SoundManager.h"
 #include "Timing.h"
+#include "LevelTwo.h"
 
 namespace cem
 {
@@ -15,7 +16,7 @@ namespace cem
 
 	void LevelOne::Initialize()
 	{
-		SoundManager::GetInstance().StopAll();
+		SoundManager::GetInstance().StopSoundEffect("Confirm");
 		m_Timer = 2.0f;
 		m_pWorld = std::make_shared<World>();
 		AddChild(m_pWorld);
@@ -27,7 +28,7 @@ namespace cem
 		AddChild(m_pPlayer);
 
 		
-		for (int i = 0; i < 1; i++)
+		for (int i = 0; i < 2; i++)
 		{
 			auto pooka = std::make_shared<Pooka>();
 			pooka->Initialize(m_pWorld, m_pPlayer);
@@ -36,7 +37,8 @@ namespace cem
 		}
 		
 		m_pPookas[0]->GetComponent<TransformComponent>()->SetPosition(Vector2f{ 375.0f,525.0f });
-		//m_pPookas[1]->GetComponent<TransformComponent>()->SetPosition(Vector2f{ 75.0f,525.0f });
+		m_pPookas[1]->GetComponent<TransformComponent>()->SetPosition(Vector2f{ 75.0f,525.0f });
+
 	
 
 		m_pFygar = std::make_shared<Fygar>();
@@ -75,7 +77,36 @@ namespace cem
 		{
 			m_pLevelOneIMG->GetComponent<TextureComponent>()->SetVisibility(false);
 		}
+
+		for (auto it = m_pPookas.begin(); it != m_pPookas.end();)
+		{
+			if ((*it)->IsDead())
+			{
+				RemoveChild(*it);
+				it = m_pPookas.erase(it);
+			}
+			else
+			{
+				++it;
+			}
+				
+		}
+
+		if (m_pFygar && m_pFygar->IsDead())
+		{
+			RemoveChild(m_pFygar);
+			m_pFygar.reset();
+		}
+
+
+		if (!m_pFygar && m_pPookas.empty())
+		{
+			SceneManager::GetInstance().CreateScene(std::make_shared<LevelTwo>());
+			SceneManager::GetInstance().SetActiveGameScene("LevelTwo");
+		}
 	}
+
+
 
 	void LevelOne::Draw()
 	{

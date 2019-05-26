@@ -14,6 +14,7 @@ namespace cem
 		~PhysicsManager();
 
 		void AddComponent(std::shared_ptr<CollisionComponent> collisionComponent);
+		void RemoveComponent(std::shared_ptr<CollisionComponent> collisionComponent);
 		void Update();
 
 

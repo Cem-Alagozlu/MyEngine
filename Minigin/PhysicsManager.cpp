@@ -18,6 +18,15 @@ namespace cem
 		m_pCollisionComponents.push_back(collisionComponent);
 	}
 
+	void PhysicsManager::RemoveComponent(std::shared_ptr<CollisionComponent> collisionComponent)
+	{
+		auto it = std::find(m_pCollisionComponents.begin(), m_pCollisionComponents.end(), collisionComponent);
+		if (it != m_pCollisionComponents.end())
+		{
+			m_pCollisionComponents.erase(it);
+		}
+	}
+
 	void PhysicsManager::Update()
 	{
 		for (size_t i = 0; i < m_pCollisionComponents.size(); i++)

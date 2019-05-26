@@ -19,6 +19,15 @@ namespace cem
 		float m_Speed;
 		float m_RandomTeleportTimer;
 		float m_MinTeleportTimer;
+		float m_MinFireTime;
+		float m_RandomFireTimer;
+		bool m_IsFiring = false;
+		bool m_IsBeingPumped;
+		int m_PumpPhase;
+		float m_PumpedTimer;
 	};
 }
+
+
+
 

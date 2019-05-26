@@ -54,11 +54,18 @@ namespace cem
 
 	bool FygarStateTeleport::CanTransition()
 	{
-		bool isTeleporting = GetBlackboard<FygarBlackboard>()->m_IsTeleporting;
+		std::shared_ptr<GameObject> fygar = GetBlackboard<FygarBlackboard>()->m_pFygar.lock();
 
-		if (isTeleporting)
+		if (fygar)
 		{
-			return true;
+			if (!std::dynamic_pointer_cast<Fygar>(fygar)->GettingPumped()
+				&&
+				GetBlackboard<FygarBlackboard>()->m_IsTeleporting
+				&& 
+				!GetBlackboard<FygarBlackboard>()->m_IsFiring)
+			{
+				return true;
+			}
 		}
 		return false;
 	}

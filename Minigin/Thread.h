@@ -17,6 +17,7 @@ namespace cem
 		void Run();
 		//notify & wait
 		std::condition_variable m_ConVar;
+		std::condition_variable m_WaitForComplete;
 		std::mutex m_Mutex;
 		std::deque<std::function<void()>> m_Tasks;
 		std::thread m_Thread;

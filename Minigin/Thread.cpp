@@ -32,9 +32,14 @@ namespace cem
 
 	void Thread::Wait()
 	{
+		if(!m_Tasks.empty())
+		{
+			return;
+		}
+		std::unique_lock<std::mutex>lock(m_Mutex);
 		while (!m_Tasks.empty())
 		{
-			//wait untill its empty
+			m_WaitForComplete.wait(lock);
 		}
 	}
 
@@ -54,6 +59,7 @@ namespace cem
 			// 100% cpu usage of thread
 			// wait untill if
 			std::unique_lock<std::mutex> uniqueLock(m_Mutex);
+			m_WaitForComplete.notify_all();
 			m_ConVar.wait(uniqueLock, [this]() {return !m_Tasks.empty() || !m_IsRunning; });
 		}
 	}

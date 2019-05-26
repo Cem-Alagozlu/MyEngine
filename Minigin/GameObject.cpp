@@ -8,6 +8,14 @@ namespace cem
 
 	GameObject::~GameObject()
 	{
+		for (size_t i = 0; i < m_pComponents.size(); i++)
+		{
+			std::shared_ptr<CollisionComponent> collComp = std::dynamic_pointer_cast<CollisionComponent>(m_pComponents[i]);
+			if (collComp)
+			{
+				PhysicsManager::GetInstance().RemoveComponent(collComp);
+			}
+		}
 	}
 
 	void GameObject::AddComponent(std::shared_ptr<BaseComponent> component)

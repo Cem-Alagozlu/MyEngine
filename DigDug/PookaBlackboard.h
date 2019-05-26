@@ -11,8 +11,8 @@ namespace cem
 		PookaBlackboard();
 		~PookaBlackboard();
 
-
-
+		bool m_IsBeingPumped;
+		int m_PumpPhase;
 		std::weak_ptr<GameObject> m_pPooka;
 		bool m_IsTeleporting = false;
 		Vector2f m_Velocity;

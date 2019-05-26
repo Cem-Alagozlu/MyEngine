@@ -155,7 +155,7 @@ namespace cem
 			{
 				m_Index = 3;
 			}
-			std::cout << "Index : " << m_Index << std::endl;
+			SoundManager::GetInstance().PlaySoundEffect("Confirm", false, true);
 		}
 	}
 
@@ -170,7 +170,7 @@ namespace cem
 				m_Index = 0;
 			}
 
-			std::cout << "Index : " << m_Index << std::endl;
+			SoundManager::GetInstance().PlaySoundEffect("Confirm", false, true);
 		}
 	
 	}

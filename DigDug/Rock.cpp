@@ -25,12 +25,12 @@ namespace cem
 
 		if (std::shared_ptr<Pooka> pooka = std::dynamic_pointer_cast<Pooka>(otherCollision->GetGameObject()))
 		{
-			std::cout << "lel u ded\n";
+			pooka->SetDead(true);
 		}
 
 		if (std::shared_ptr<Fygar> fygar = std::dynamic_pointer_cast<Fygar>(otherCollision->GetGameObject()))
 		{
-			std::cout << "lel u ded\n";
+			fygar->SetDead(true);
 		}
 	}
 

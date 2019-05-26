@@ -30,11 +30,14 @@
     <ClInclude Include="DigDugStatePump.h" />
     <ClInclude Include="Fygar.h" />
     <ClInclude Include="FygarBlackboard.h" />
+    <ClInclude Include="FygarStateFire.h" />
     <ClInclude Include="FygarStateMachine.h" />
     <ClInclude Include="FygarStateMove.h" />
+    <ClInclude Include="FygarStatePumped.h" />
     <ClInclude Include="FygarStateTeleport.h" />
     <ClInclude Include="IMenu.h" />
     <ClInclude Include="LevelOne.h" />
+    <ClInclude Include="LevelTwo.h" />
     <ClInclude Include="MenuExtra.h" />
     <ClInclude Include="MenuMain.h" />
     <ClInclude Include="MenuQuit.h" />
@@ -72,10 +75,13 @@
     <ClCompile Include="DigDugStatePump.cpp" />
     <ClCompile Include="Fygar.cpp" />
     <ClCompile Include="FygarBlackboard.cpp" />
+    <ClCompile Include="FygarStateFire.cpp" />
     <ClCompile Include="FygarStateMachine.cpp" />
     <ClCompile Include="FygarStateMove.cpp" />
+    <ClCompile Include="FygarStatePumped.cpp" />
     <ClCompile Include="FygarStateTeleport.cpp" />
     <ClCompile Include="LevelOne.cpp" />
+    <ClCompile Include="LevelTwo.cpp" />
     <ClCompile Include="Main.cpp" />
     <ClCompile Include="MenuExtra.cpp" />
     <ClCompile Include="MenuMain.cpp" />
@@ -177,7 +183,7 @@
       <PrecompiledHeaderFile>DigDugPCH.h</PrecompiledHeaderFile>
     </ClCompile>
     <Link>
-      <SubSystem>Console</SubSystem>
+      <SubSystem>Windows</SubSystem>
       <AdditionalDependencies>SDL2_mixer.lib;SDL2_ttf.lib;SDL2_image.lib;SDL2.lib;%(AdditionalDependencies)</AdditionalDependencies>
     </Link>
   </ItemDefinitionGroup>
@@ -193,7 +199,7 @@
       <PrecompiledHeaderFile>DigDugPCH.h</PrecompiledHeaderFile>
     </ClCompile>
     <Link>
-      <SubSystem>Console</SubSystem>
+      <SubSystem>Windows</SubSystem>
       <AdditionalDependencies>SDL2_mixer.lib;SDL2_ttf.lib;SDL2_image.lib;SDL2.lib;%(AdditionalDependencies)</AdditionalDependencies>
     </Link>
   </ItemDefinitionGroup>
@@ -213,7 +219,7 @@
     <Link>
       <EnableCOMDATFolding>true</EnableCOMDATFolding>
       <OptimizeReferences>true</OptimizeReferences>
-      <SubSystem>Console</SubSystem>
+      <SubSystem>Windows</SubSystem>
       <AdditionalDependencies>SDL2_mixer.lib;SDL2_ttf.lib;SDL2_image.lib;SDL2.lib;%(AdditionalDependencies)</AdditionalDependencies>
     </Link>
   </ItemDefinitionGroup>
@@ -233,7 +239,7 @@
     <Link>
       <EnableCOMDATFolding>true</EnableCOMDATFolding>
       <OptimizeReferences>true</OptimizeReferences>
-      <SubSystem>Console</SubSystem>
+      <SubSystem>Windows</SubSystem>
       <AdditionalDependencies>SDL2_mixer.lib;SDL2_ttf.lib;SDL2_image.lib;SDL2.lib;%(AdditionalDependencies)</AdditionalDependencies>
     </Link>
   </ItemDefinitionGroup>

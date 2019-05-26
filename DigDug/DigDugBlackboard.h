@@ -19,7 +19,7 @@ namespace cem
 		DigDugBlackboard();
 		~DigDugBlackboard();
 
-
+		std::weak_ptr<GameObject> m_pEnemy;
 		Vector2f m_Velocity;
 		bool m_IsDigging;
 		bool m_IsPumping;
